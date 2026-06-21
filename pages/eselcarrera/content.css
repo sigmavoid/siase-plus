@@ -1,0 +1,660 @@
+/* ============================================
+   SIASE+ — eSelCarrera.css
+   Paleta: azul oscuro / glassmorphism
+   Dark by default · toggle activa modo claro
+   ============================================ */
+
+:root {
+    --bg-principal: #0b1121;
+    --bg-panel: #131c31;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --texto-principal: #ffffff;
+    --texto-secundario: #a3b8cc;
+    --borde-sutil: rgba(130, 177, 255, 0.2);
+    --borde-secundario: rgba(0, 123, 255, 0.4);
+
+
+    /* Banner SVG de #siase (logos-sistemas-siase) — variantes oscuras
+       por defecto: el borde claro original (#cbd5e0) se sustituye por
+       el borde sutil del tema oscuro, y el degradado amarillo se
+       oscurece un poco para no deslumbrar sobre la barra negra. */
+    --siase-banner-border: var(--borde-sutil);
+    --siase-banner-grad-1: #c89818;
+    --siase-banner-grad-2: #c98b00;
+    --siase-banner-grad-3: #c9a618;
+    --mail-banner-grad-1: #00a786;
+    --mail-banner-grad-2: #0e8870;
+    --mail-banner-grad-3: #0ee2b8;
+}
+
+/* ══════════════════════════════
+   BASE — fondo oscuro por defecto
+══════════════════════════════ */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-principal) !important;
+    color: var(--texto-principal) !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Tablas heredadas ── */
+table,
+td,
+tr {
+    background-color: #1a1a2e !important;
+    color: var(--texto-principal) !important;
+    border-color: var(--borde-sutil) !important;
+}
+
+/* Barra azul SIASE */
+td[bgcolor="#094988"],
+td[bgcolor="094988"] {
+    background-color: #1e3a5f !important;
+}
+
+/* Divisores negros */
+td[bgcolor="#000000"],
+td[bgcolor="000000"] {
+    background-color: #2a2a3a !important;
+}
+
+/* Links */
+a {
+    color: var(--color-secundario) !important;
+}
+
+a:hover {
+    color: var(--texto-principal) !important;
+}
+
+/* .margen — contenedor de paneles */
+div.margen {
+    color: var(--texto-secundario) !important;
+    font-family: inherit;
+}
+
+/* Título de selección */
+.titulo {
+    color: var(--texto-principal) !important;
+    font-size: 15px;
+}
+
+/* Barra "Listado de Carreras" */
+.barra {
+    background-color: var(--color-primario) !important;
+    color: #fff !important;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+/* Botones */
+input[type="button"],
+button {
+    background-color: var(--color-primario) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 6px 18px !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    transition: box-shadow 0.2s, transform 0.2s !important;
+}
+
+input[type="button"]:hover,
+button:hover {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Aviso info (tabla auto-style1) */
+.auto-style1 {
+    background-color: #1e2d45 !important;
+    border-color: #00000000 !important;
+    color: var(--texto-secundario) !important;
+    border-radius: 8px;
+    width: 100% !important;
+    font-size: 12px;
+}
+
+/* Imágenes de pestañas — suavizadas */
+img[src*="pestana"] {
+    opacity: 0.7;
+    filter: brightness(0.75) hue-rotate(190deg);
+}
+
+/* Estilo2 (texto barra superior) */
+.Estilo2 {
+    color: var(--texto-principal) !important;
+    font-family: Segoe UI !important;
+}
+
+/* ══════════════════════════════
+   MODO CLARO (toggle activo)
+══════════════════════════════ */
+body.light-mode {
+    background-color: #f0f4f8 !important;
+    color: #1a202c !important;
+}
+
+/* El JS solo añadía la clase a <body>, así que el fondo de <html>
+   (visible en la parte de arriba/bordes de la página, p.ej. al hacer
+   "rubber-band" scroll arriba del todo) seguía pintado con
+   --bg-principal (oscuro). Se replica la clase también en <html>
+   (ver content.js) y se cubre aquí su fondo en modo claro. */
+html.light-mode {
+    background-color: #f0f4f8 !important;
+}
+
+body.light-mode table,
+body.light-mode td,
+body.light-mode tr {
+    background-color: #ffffff !important;
+    color: #1a202c !important;
+    border-color: #cbd5e0 !important;
+}
+
+body.light-mode td[bgcolor="#094988"],
+body.light-mode td[bgcolor="094988"] {
+    background-color: #1d4ed8 !important;
+}
+
+body.light-mode td[bgcolor="#000000"],
+body.light-mode td[bgcolor="000000"] {
+    background-color: #e2e8f0 !important;
+}
+
+body.light-mode a {
+    color: #1d4ed8 !important;
+}
+
+body.light-mode a:hover {
+    color: #1e40af !important;
+}
+
+body.light-mode div.margen {
+    color: #374151 !important;
+}
+
+body.light-mode .titulo {
+    color: #111827 !important;
+}
+
+body.light-mode .barra {
+    background-color: #1d4ed8 !important;
+}
+
+body.light-mode input[type="button"],
+body.light-mode button {
+    background-color: #1d4ed8 !important;
+}
+
+body.light-mode .auto-style1 {
+    background-color: #e8f0fe !important;
+    border-color: #1d4fd800 !important;
+    color: #1a202c !important;
+    font-size: 12px;
+}
+
+body.light-mode img[src*="pestana"] {
+    opacity: 1;
+    filter: none;
+}
+
+body.light-mode .Estilo2 {
+    color: #ffffff !important;
+}
+
+/* Banner SVG de #siase — en modo claro vuelve a sus colores
+   originales (borde claro + amarillo más brillante), que es como
+   fue diseñado el SVG. */
+body.light-mode {
+    --siase-banner-border: #cbd5e0;
+    --siase-banner-grad-1: #fbbe1e;
+    --siase-banner-grad-2: #fbae00;
+    --siase-banner-grad-3: #fbcf1e;
+}
+
+/* ══════════════════════════════
+   TOGGLE — centrado bajo tablas
+══════════════════════════════ */
+#modo-toggle-container {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    margin: 16px auto 8px;
+    background: rgba(19, 28, 49, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--borde-sutil);
+    border-radius: 999px;
+    padding: 7px 18px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+    transition: box-shadow 0.2s;
+}
+
+#modo-toggle-container:hover {
+    box-shadow: 0 4px 22px rgba(0, 123, 255, 0.25);
+}
+
+/* En modo claro, el propio contenedor se adapta */
+body.light-mode #modo-toggle-container {
+    background: rgba(240, 244, 248, 0.9);
+    border-color: #cbd5e0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiqueta con icono dinámico */
+.switch-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--texto-secundario);
+    user-select: none;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Icono: luna = modo oscuro activo, sale el sol al activar claro */
+.switch-label::before {
+    content: '🌙';
+    font-size: 13px;
+}
+
+body.light-mode .switch-label {
+    color: #4b5563;
+}
+
+body.light-mode .switch-label::before {
+    content: '☀️';
+}
+
+/* Track del switch */
+.switch-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch-slider input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #2e3f5c;
+    border-radius: 999px;
+    border: 1px solid var(--borde-sutil);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 2px;
+    background: var(--texto-secundario);
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
+}
+
+/* Toggle ON = modo claro activado */
+input:checked+.slider {
+    background: #f59e0b;
+    border-color: #fcd34d;
+}
+
+input:checked+.slider::before {
+    transform: translateX(20px);
+    background: #fff;
+}
+
+/* ══════════════════════════════
+   TARJETA PRINCIPAL #siase-card
+══════════════════════════════ */
+#siase-card {
+    position: relative;
+    width: 860px;
+    max-width: 98vw;
+    margin: 24px auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--borde-sutil);
+    border-radius: 20px;
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(130, 177, 255, 0.06) inset;
+    overflow: hidden;
+}
+
+body.light-mode #siase-card {
+    background: #ffffff;
+    border-color: #cbd5e0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Banner: imagen ── */
+#siase-banner-img {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+#siase-banner-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+/* ── Banner: barra azul ── */
+#siase-banner-barra {
+    background-color: #1e3a5f;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+body.light-mode #siase-banner-barra {
+    background-color: #1d4ed8;
+}
+
+/* ══════════════════════════════
+   BARRA SUPERIOR — toggle + Salir
+══════════════════════════════ */
+#siase-topbar {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Toggle dentro de la topbar — sin ancho fijo, compacto */
+#siase-topbar #modo-toggle-container {
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 5px 12px !important;
+    background: rgba(11, 17, 33, 0.72);
+    border: 1px solid var(--borde-sutil);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.light-mode #siase-topbar #modo-toggle-container {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #cbd5e0;
+}
+
+/* Botón Salir en topbar */
+#siase-btn-salir {
+    background: rgba(220, 38, 38, 0.85) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 5px 14px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3) !important;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+    transform: none !important;
+}
+
+#siase-btn-salir:hover {
+    background: rgba(185, 28, 28, 0.95) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.45) !important;
+}
+
+/* ══════════════════════════════
+   LAYOUT #siase-layout
+══════════════════════════════ */
+#siase-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    /* Altura de respaldo mientras el JS calcula la altura real del
+       panel más largo (#codice). Se sobreescribe en línea desde
+       content.js con un valor ligeramente mayor al contenido de
+       #codice, para que el layout no "salte" de tamaño al cambiar
+       entre #siase / #correo / #codice / #nexus. */
+    min-height: 460px;
+}
+
+/* ── Nav lateral ── */
+#siase-nav {
+    flex: 0 0 auto;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 12px 8px;
+    gap: 2px;
+    background: rgba(11, 17, 33, 0.4);
+    border-right: 1px solid var(--borde-sutil);
+    min-height: 333px;
+}
+
+body.light-mode #siase-nav {
+    background: #f8fafc;
+    border-right-color: #e2e8f0;
+}
+
+/* ── Nav bar vertical ── */
+#siase-nav-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#siase-nav-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+#siase-nav-bar a:hover,
+#siase-nav-bar a:focus-visible {
+    background: rgba(0, 123, 255, 0.12);
+    border-color: var(--borde-secundario);
+    transform: translateX(3px);
+    box-shadow: 0 2px 12px rgba(0, 123, 255, 0.18);
+    outline: none;
+}
+
+#siase-nav-bar a img {
+    display: block;
+    width: 140px;
+    height: auto;
+    border-radius: 5px;
+    border: none !important;
+    opacity: 0.88;
+    transition: opacity 0.18s;
+}
+
+#siase-nav-bar a:hover img,
+#siase-nav-bar a:focus-visible img {
+    opacity: 1;
+}
+
+body.light-mode #siase-nav-bar a {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+body.light-mode #siase-nav-bar a:hover {
+    background: rgba(29, 78, 216, 0.08);
+    border-color: rgba(29, 78, 216, 0.3);
+    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.12);
+}
+
+/* ── Contenido principal ── */
+#siase-content {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* Divs de secciones (#siase, #correo, etc.) sin tablas de borde */
+#siase-content>div>table {
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+}
+
+#siase-content>div>table td {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* ══════════════════════════════
+   PANELES (#siase, #correo, #codice, #nexus)
+   table → nav, mismo lenguaje visual que #siase-nav-bar
+══════════════════════════════ */
+nav.siase-panel-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1px solid var(--borde-sutil);
+    background: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+body.light-mode nav.siase-panel-nav {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: #cbd5e0;
+}
+
+.siase-panel-img {
+    width: 100%;
+    line-height: 0;
+}
+
+.siase-panel-img img,
+.siase-panel-img svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+nav.siase-panel-nav div.margen {
+    padding: 18px;
+}
+
+/* ══════════════════════════════
+   CONTENCIÓN de paneles (#siase, #correo, #codice, #nexus)
+   El HTML original los posiciona con position:absolute + right/top
+   fijos, lo que hacía que el contenido se saliera de #siase-content
+   e invadiera el nav lateral. Se anula esa posición y el panel
+   activo se controla con la clase .siase-panel-hidden (ver JS)
+   en vez de coordenadas fijas.
+══════════════════════════════ */
+#siase-content>#siase,
+#siase-content>#correo,
+#siase-content>#codice,
+#siase-content>#nexus {
+    position: static !important;
+    visibility: visible !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word;
+}
+
+#siase-content>.siase-panel-hidden {
+    display: none !important;
+}
+
+#codice>nav>div.margen>p:nth-child(6) {
+    font-size: 12px;
+    align-self: center;
+}
+
+#contenido>form>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(0, 0, 0, 0.025);
+    transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: inherit !important;
+    text-align: center !important;
+}
+
+body.light-mode #contenido>form>a:hover,
+#contenido>form>a:hover {
+    background: rgba(255, 217, 0, 0.12) !important;
+    border-color: rgba(255, 196, 0, 0.4);
+    box-shadow: 0 2px 12px rgba(255, 187, 0, 0.18);
+    outline: none;
+
+    /* Forzamos a revertir propiedades que el tema light-mode cambie y tú no quieras (ej. el color del texto) */
+    color: inherit !important;
+}
+
+#nexus>nav>div.margen>center>div {
+    border-radius: 10px;
+}
+
+body.light-mode #siase-banner-svg>g>rect,
+#correo-banner-svg>g>rect,
+#codice-banner-svg>g>rect,
+#nexus-banner-svg>g>rect {
+    fill: var(--siase-banner-border) !important;
+}

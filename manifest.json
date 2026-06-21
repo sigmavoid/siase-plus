@@ -6,14 +6,41 @@
   "content_scripts": [
     {
       "matches": [
-        "*://deimos.dgi.uanl.mx/*"
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/login.htm*",
+        "*://www.uanl.mx/enlinea/*"
       ],
       "all_frames": true,
       "css": [
-        "content.css"
+        "pages/login/content.css"
       ],
       "js": [
-        "content.js"
+        "pages/login/content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/eselcarrera.htm*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/eselcarrera/content.css"
+      ],
+      "js": [
+        "pages/eselcarrera/content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/*default*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content.css"
+      ],
+      "js": [
+        "pages/default/content.js"
       ],
       "run_at": "document_end"
     }
@@ -24,7 +51,8 @@
         "CodiSaludo.png"
       ],
       "matches": [
-        "*://deimos.dgi.uanl.mx/*"
+        "*://deimos.dgi.uanl.mx/*",
+        "*://www.uanl.mx/*"
       ]
     }
   ]

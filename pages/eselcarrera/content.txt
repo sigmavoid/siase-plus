@@ -1,0 +1,685 @@
+<!-- Programa:  eSelCarrera.htm                                 -->
+<!-- Autor:     CPR                                             -->
+<!--            Selecciona la Carrera para el uso del sistema   -->
+<!--            CPR  Acutalizacion para el single-sign-on       -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DN81BCCZTF"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-DN81BCCZTF");</script>
+<html>
+
+<head>
+    <!-- E4GL Disabled: meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" / -->
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws//jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.css"
+        rel="stylesheet">
+    </link>
+    <script
+        src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/external/jquery/jquery.js "></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.js"></script>
+    <link rel="shortcut icon" href="../../uanlimg/ws/favicon.ico?1484372620" type="image/x-icon" />
+    <script type="text/javascript">
+        $(document).on("ready", function () {
+            $("#linkCodice").on("click", function (evento) {
+                $("#idfrCodice").attr("action", "https://www.codice.uanl.mx/MiCuenta?Usu=[TOKEN_USUARIO]&Ctrl=[TOKEN_CONTROL]&HTMLUsuario=[NUMERO_USUARIO]&HTMLTipCve=01");
+                self.document.frCodice.submit();
+                /***
+                $.ajax({
+                    url : 'eselcarrera31.htm',
+                    data :  'proc=1&HTMLTipCve=01&HTMLUsuario=[NUMERO_USUARIO]&HTMLK=[TOKEN_SESION]',
+                    type : 'GET',
+                    dataType : 'xml',
+                    success : function(xml) {
+                               if ($(xml).find('CveMensaje').text()!='00') {
+                                   alert($(xml).find('Mensaje').text() + ' (' + $(xml).find('CveMensaje').text() + ').');
+                               }
+                               else {
+                                   $("#idfrCodice").attr("action", $(xml).find('Resultado').text());
+                                   self.document.frCodice.submit();
+                               }
+                   },
+                    error : function(xhr, status) {
+                         alert('Disculpe, existió un problema');
+                    },
+                    complete : function(xhr, status) {
+                         //alert('Petición realizada');
+                    }
+                });
+                ***/
+                //$(this).attr("href", "http://jaguar.dgi.uanl.mx/opacpruebas/wfrmMiCuenta.aspx?TokenId=6330746e4b5171645138417638534648644d424764436b43643248414535656159714d504666306266454657773533356832714261584d6e4a51336471704c64564d556e4e45553555426b547777642b5131597a41413d3d");
+            });
+            $("#linkNexus").on("click", function (evento) {
+                //alert('Estimado usuario, el servicio actualmente no se encuentra disponible, de antemano le ofrecemos una disculpa por estos inconvenientes. En cuanto quede restablecido se dará nuevamente el acceso. Gracias.');
+                $("#idfrNexus").attr("action", "https://plataformanexus.uanl.mx/#/LoginSIASE?Usu=[TOKEN_USUARIO]&Ctrl=[TOKEN_CONTROL]&HTMLUsuario=[NUMERO_USUARIO]&HTMLTipCve=01");
+                self.document.frNexus.submit();
+                /***
+                $.ajax({
+                    url : 'eselcarrera31.htm',
+                    data :  'proc=2&HTMLTipCve=01&HTMLUsuario=[NUMERO_USUARIO]&HTMLK=[TOKEN_SESION]',
+                    type : 'GET',
+                    dataType : 'xml',
+                    success : function(xml) {
+                               if ($(xml).find('CveMensaje').text()!='00') {
+                                   alert($(xml).find('Mensaje').text() + ' (' + $(xml).find('CveMensaje').text() + ').');
+                               }
+                               else {
+                                   $("#idfrNexus").attr("action", $(xml).find('Resultado').text());
+                                   self.document.frNexus.submit();
+                               }
+                   },
+                    error : function(xhr, status) {
+                         alert('Disculpe, existió un problema');
+                    },
+                    complete : function(xhr, status) {
+                         //alert('Petición realizada');
+                    }
+                });
+                ***/
+                //$(this).attr("href", "http://jaguar.dgi.uanl.mx/opacpruebas/wfrmMiCuenta.aspx?TokenId=6330746e4b5171645138417638534648644d424764436b43643248414535656159714d504666306266454657773533356832714261584d6e4a51336471704c64564d556e4e45553555426b547777642b5131597a41413d3d");
+            });
+        });
+    </script>
+    <style>
+        <!--
+        .auto-style1 {
+            border-style: solid;
+            border-width: 3px;
+            text-align: center;
+        }
+
+        #correo {
+            position: absolute;
+            visibility: hidden;
+            right: 100px;
+            top: 180px;
+        }
+
+        #nexus {
+            position: absolute;
+            visibility: hidden;
+            right: 100px;
+            top: 180px;
+        }
+
+        #codice {
+            position: absolute;
+            visibility: hidden;
+            text-align: justify;
+            width: 550px;
+            right: 100px;
+            top: 180px;
+            padding: 3px, 10px, 3px, 10px;
+        }
+
+        #unibolsa {
+            position: absolute;
+            visibility: hidden;
+            right: 100px;
+            top: 180px;
+        }
+
+        #siase {
+            position: absolute;
+            visibility: visible;
+            right: 100px;
+            top: 180px;
+            font-family: arial;
+        }
+
+        .margen {
+            padding: 20px;
+            font-size: 12px;
+            font-family: Arial Unicode MS;
+            color: #000000;
+        }
+
+        .barra {
+            background-color: #094988;
+            display: block;
+            color: #FFFFFF;
+            padding: 4px;
+        }
+
+        .titulo {
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .Estilo2 {
+            color: #FFFFFF;
+            font-family: Arial Unicode MS;
+        }
+
+        #bloqueo {
+            visibility: hidden;
+            position: absolute;
+            padding: 0px;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #444;
+            width: 100%;
+            height: 800px;
+            z-index: 1;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+
+        #Mensaje {
+            visibility: hidden;
+            position: absolute;
+            background-color: #FFC;
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+            padding: 5px;
+            margin: 15px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #C90;
+            -webkit-border-radius: 10px;
+            /* Safari  */
+            -moz-border-radius: 10px;
+            /* Firefox */
+            left: 200px;
+            top: 100px;
+            width: 500px;
+            height: 240px;
+            z-index: 2;
+            font-family: Arial Unicode MS;
+            font-size: 12px;
+            font-style: normal;
+            color: #00B;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #ExUn {
+            visibility: hidden;
+            position: absolute;
+            background-color: #FFF;
+            opacity: 0.9;
+            filter: alpha(opacity=90);
+            padding: 5px;
+            margin: 15px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #C90;
+            -webkit-border-radius: 10px;
+            /* Safari  */
+            -moz-border-radius: 10px;
+            /* Firefox */
+            left: 50px;
+            top: 10px;
+            width: 735px;
+            height: 530px;
+            z-index: 3;
+            font-family: Arial Unicode MS;
+            font-size: 12px;
+            font-style: normal;
+            color: #00B;
+            text-align: center;
+        }
+
+        // style="z-index:1; background-color:#444; opacity: 0.5; filter:  alpha(opacity=50); visibility:visible; width:100%; height:100%; position:absolute"            
+        -->
+    </style>
+    <script language="javaScript">
+        <!-
+                var activo="siase";
+                function oculta(ncdr){
+                        document.getElementById(ncdr).style.visibility = 'hidden';
+                }
+                function muestra(ncdr){
+                        if(activo!=""){
+                                oculta(activo);
+                        }
+                        document.getElementById(ncdr).style.visibility = 'visible';
+                        activo=ncdr;
+                }
+        //-->
+    </script>
+    <script language="JavaScript">
+        function Ejecuta(vcPrograma) {
+            //alert('Opcion no Disponible');
+            //document.SelCarrera.action="http://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/"+vcPrograma;
+            document.SelCarrera.submit();
+        }    
+    </script>
+    <script type="text/javascript" language="Javascript">
+        function HabMensajeMaestros() {
+            document.getElementById("bloqueo").style.visibility = 'visible';
+            document.getElementById("Mensaje").style.visibility = 'visible';
+        }
+        function DesMensajeMaestros() {
+            document.getElementById("bloqueo").style.visibility = 'visible';
+            document.getElementById("Mensaje").style.visibility = 'hidden';
+            document.getElementById("ExUn").style.visibility = 'visible';
+        }
+        finCapt
+        function finCapt() {
+            document.getElementById("bloqueo").style.visibility = 'hidden';
+            document.getElementById("Mensaje").style.visibility = 'hidden';
+            document.getElementById("ExUn").style.visibility = 'hidden';
+        }
+    </script>
+    <script language="javascript">
+        function aleatorio(inferior, superior) {
+            numPosibilidades = superior - inferior
+            aleat = Math.random() * numPosibilidades
+            aleat = Math.round(aleat)
+            return parseInt(inferior) + aleat
+        }
+        function Trim(cadena) {
+            var x, CadenaSinBlancos;
+            CadenaSinBlancos = '';
+            for (x = 0; x < cadena.length; x++) {
+                if (cadena.charAt(x) != ' ') {
+                    CadenaSinBlancos = CadenaSinBlancos + cadena.charAt(x);
+                }
+            }
+            return CadenaSinBlancos;
+        }
+        function ValorRadio(NombreElemento) {
+            Elemento = document.getElementsByName(NombreElemento);
+            for (i = 0; i < Elemento.length; i++) {
+                if (Elemento[i].checked) {
+                    return Elemento[i].value;
+                }
+            }
+            return "";
+        }
+        function nuevoAjax() {
+            /* Crea el objeto AJAX. Esta funcion es generica para cualquier utilidad de este tipo, por
+            lo que se puede copiar tal como esta aqui */
+            var xmlhttp = false;
+            try {
+                // Creacion del objeto AJAX para navegadores no IE
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                try {
+                    // Creacion del objet AJAX para IE
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (E) {
+                    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') xmlhttp = new XMLHttpRequest();
+                }
+            }
+            return xmlhttp;
+        }
+        function cargaContenido(sProc, idOrigen, idDestino, sParamExtr) {
+            var valor;
+            //alert(idOrigen.type);
+            if (idOrigen.type == 'radio') {
+                valor = ValorRadio(idOrigen.name);
+            }
+            var ajax = nuevoAjax();
+            //alert("https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/eselcarrera30.htm?select="+sProc+"&"+aleatorio(0,10)+"="+aleatorio(0,15)+sParamExtr);
+            ajax.open("GET", "https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/eselcarrera30.htm?select=" + sProc + "&" + aleatorio(0, 10) + "=" + aleatorio(0, 15) + sParamExtr, true);
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 1) {
+                    // Mientras carga elimino la opcion "Selecciona Opcion..." y pongo una que dice "Cargando..."
+                    //selectDestino.length=0;
+                    //var nuevaOpcion=document.createElement("option"); nuevaOpcion.value=0; nuevaOpcion.innerHTML="Cargando...";
+                    //selectDestino.appendChild(nuevaOpcion); selectDestino.disabled=true;    
+                }
+                if (ajax.readyState == 4) {
+                    //idDestino.parentNode.innerHTML=ajax.responseText;
+                    //alert(ajax.responseText);
+                    var Resp = (ajax.responseText);
+                    //alert(Resp);
+                    var ValorResp = Resp.split("|");
+                    //alert(ValorResp.length);
+                    if (ValorResp.length < 2) {
+                        alert('La informacion no pudo ser guardada, intentelo mas tarde');
+                    }
+                    else {
+                        var MensajeSiase = ValorResp[0].split(",");
+                        if (Trim(MensajeSiase[0]) == '00') {
+                            //idDestino.innerHTML=ajax.responseText;
+                            //alert('Su inforamcion fue grabada.');
+                            //alert(idOrigen.name);
+                            //alert(Trim(ValorResp[1]));
+                            //alert(Trim(ValorResp[1])!='<!-- Generated by Webspeed: http://www.webspeed.com/ -->');
+                            if (sProc == '1') {
+                                if (Trim(ValorResp[1]) != '<!-- Generated by Webspeed: http://www.webspeed.com/ -->') {
+                                    document.getElementById('Mensaje').innerHTML = ValorResp[1];
+                                    document.getElementById("ExUn").style.visibility = 'hidden';
+                                    document.getElementById("Mensaje").style.visibility = 'visible';
+                                }
+                            }
+                        }
+                        else if (Trim(MensajeSiase[0]) == '01') {
+                            document.getElementById("ExUn").style.visibility = 'hidden';
+                            document.getElementById("Mensaje").style.visibility = 'hidden';
+                            document.getElementById("bloqueo").style.visibility = 'hidden';
+                        }
+                        else {
+                            alert(MensajeSiase[1] + " (" + Trim(MensajeSiase[0]) + ")");
+                        }
+                    }
+                }
+            }
+            ajax.send(null);
+        }
+    </script>
+</head>
+
+<body>
+    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td width="360"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/interfase/banner-siase.png" width="738"
+                    height="150"></td>
+        </tr>
+        <tr>
+            <td bgcolor="#094988">
+                <div align="center" class="Estilo2">Sistema Integral
+                    para la Administración de los Servicios Educativos </div>
+            </td>
+        </tr>
+    </table>
+    <table width="800" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td width="251">
+                <br />
+                <table border="0" cellspacing="0" cellpadding="6" align="right">
+                    <tr>
+                        <td><a href="#" onMouseOver="muestra('siase')"><img
+                                    src="https://deimos.dgi.uanl.mx/uanlimg/ws/logos-sistemas-siase.png" border="0"
+                                    width="150" height="50" /></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onMouseOver="muestra('correo')"><img
+                                    src="https://deimos.dgi.uanl.mx/uanlimg/ws/logos-sistemas-correou.png" border="0"
+                                    width="150" height="50" /></a></td>
+                    </tr>
+                    <!--         <tr><td><a href="#" onmouseover="muestra('unibolsa')"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/unibolsa_btn.jpg" border="0" /></a></td></tr> -->
+                    <tr>
+                        <td><a href="#" onmouseover="muestra('nexus')"><img
+                                    src="https://deimos.dgi.uanl.mx/uanlimg/ws/logos-sistemas-nexus.png" border="0"
+                                    width="150" height="50" /></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onmouseover="muestra('codice')"><img
+                                    src="https://deimos.dgi.uanl.mx/uanlimg/ws/logos-sistemas-codice.png" border="0"
+                                    width="150" height="50" /></a></td>
+                    </tr>
+                </table>
+            </td>
+            <td width="544" align="center">
+                <!-- Seccion SIASE -->
+                <div id="siase">
+                    <table border="0" cellspacing="0" cellpadding="0" width="540">
+                        <tr>
+                            <td colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/pestana2_siase.jpg"></td>
+                        </tr>
+                        <td bgcolor="#000000" width="1"></td>
+                        <td width="538">
+                            <div class="margen">
+                                <p class="titulo">Seleccione la Carrera</p>
+                                <div id="contenido">
+                                    <FORM name="SelCarrera" ACTION="default.htm" METHOD="post" TARGET="_self">
+                                        <p class="barra">Listado de Carreras</p>
+                                        <a href="javascript:self.document.SelCarrera.HTMLCve_Dependencia.value='02316';
+                                                  self.document.SelCarrera.HTMLCve_Unidad.value='01';
+                                                  self.document.SelCarrera.HTMLCve_Nivel_Academico.value='02';
+                                                  self.document.SelCarrera.HTMLCve_Grado_Academico.value='03';
+                                                  self.document.SelCarrera.HTMLCve_Modalidad.value='1';
+                                                  self.document.SelCarrera.HTMLCve_Plan_Estudio.value='401';
+                                                  self.document.SelCarrera.HTMLCve_Carrera.value='10';
+                                                  self.document.SelCarrera.HTMLTipCve.value='01';
+                                                  self.document.SelCarrera.HTMLUsuCve.value='[NUMERO_USUARIO]';
+                                                  self.document.SelCarrera.submit()">
+                                            <p>FACULTAD DE INGENIERÍA MECÁNICA Y ELÉCTRICA - INGENIERO EN TECNOLOGIA DE
+                                                SOFTWARE</p>
+                                        </a>
+                                        <div align="center"><input type="button" class="Boton01" value="Salir"
+                                                onClick="location='https://www.uanl.mx'"></div>
+                                        <br>
+                                        <table align="center" class="auto-style1" style="width: 70%">
+                                            <tr>
+                                                <td class="auto-style1"><strong>Si no aparece tu informaci&oacute;n en
+                                                        el
+                                                        Listado de Carreras, favor de revisar en tu dependencia las
+                                                        fechas de
+                                                        liberaci&oacute;n de tu Boleta.</strong></td>
+                                            </tr>
+                                        </table>
+                                </div>
+                                <input type="hidden" name="HTMLCve_Dependencia" value=""></input>
+                                <input type="hidden" name="HTMLCve_Unidad" value="">
+                                <input type="hidden" name="HTMLCve_Nivel_Academico" value="">
+                                <input type="hidden" name="HTMLCve_Grado_Academico" value="">
+                                <input type="hidden" name="HTMLCve_Modalidad" value="">
+                                <input type="hidden" name="HTMLCve_Plan_Estudio" value="">
+                                <input type="hidden" name="HTMLCve_Carrera" value="">
+                                <input type="hidden" name="HTMLTipCve" value="">
+                                <input type="hidden" name="HTMLUsuCve" value="">
+                                <input type="hidden" name="HTMLCve_Tipo_Inscripcion" value="">
+                                <input type="hidden" name="HTMLProg" value="">
+                                <input type="hidden" name="HTMLRI" value="">
+                                <input type="hidden" name="HTMLUsuario" value="">
+                                <input type="hidden" name="HTMLtrim" value="[TOKEN_SESION]">
+                                </FORM>
+                            </div>
+                        </td>
+                        <td bgcolor="#000000" width="1"></td>
+        </tr>
+        <tr>
+            <td bgcolor="#000000" width="1" colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/negro.jpg"></td>
+        </tr>
+    </table>
+    </div>
+    <div id="correo">
+        <table border="0" cellspacing="0" cellpadding="0" width="540">
+            <tr>
+                <td colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/pestana2_correo.jpg" width="538"
+                        height="28"></td>
+            </tr>
+            <td bgcolor="#000000" width="1"></td>
+            <td width="538">
+                <div class="margen">
+                    <p align="justify">
+                        <strong>Correo Electrónico Universitario</strong><br>Servicio de correo electrónico para
+                        universitarios, cuenta con Agenda, Contactos, Tareas, Notas y Mensajeria instantanea.
+                        Para acceder a este servicio solo necesitas una computadora con acceso a Internet, y utilizar la
+                        misma contraseña que utilizas en el SIASE.
+                    </p>
+                    <br><br>
+                    <div align="center">
+                        <p>[CORREO_INSTITUCIONAL]</p>
+                        <!--                     <a href="http://office365.uanl.mx/LiveAtEduRedirect/RedirectLiveAtEdu.aspx?usuario=" class="style3" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/ingresar.jpg" border="0"></a> -->
+                        <a href="https://login.microsoftonline.com/?whr=uanl.edu.mx" class="style3" target="_blank"><img
+                                src="https://deimos.dgi.uanl.mx/uanlimg/ws/ingresar.jpg" border="0"></a>
+                    </div><br>
+                </div>
+            </td>
+            <td bgcolor="#000000" width="1"></td>
+            </tr>
+            <tr>
+                <td bgcolor="#000000" width="1" colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/negro.jpg">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="codice">
+        <table border="0" cellspacing="0" cellpadding="0" width="540">
+            <tr>
+                <td colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/pestana2_codice.jpg" width="538"
+                        height="28"></td>
+            </tr>
+            <td bgcolor="#000000" width="1"></td>
+            <td width="538">
+                <div class="margen">
+                    <p align="justify">
+                        <strong>Codice</strong><br>Es el Sistema Institucional para la Administración de Bibliotecas
+                        donde se encuentran registrados todos los materiales (libros, revistas, CDs, etc.) que existen
+                        físicamente en las bibliotecas de nuestra Universidad*, y en este se lleva el control de los
+                        préstamos de los materiales y otros procesos propios de las bibliotecas. Para acceder a este
+                        servicio y consultar tus préstamos pendientes de devolver, así como las multas pendientes de
+                        pagar, puedes hacerlo desde el siguiente botón:
+                    </p>
+                    <br><br>
+                    <div align="center">
+                        <form name="frCodice" id="idfrCodice" method="post">
+                            <input type="button" name="btnCodice" id="linkCodice" value="Ingresar">
+                        </form>
+                    </div><br>
+                    <p align="justify">
+                        * Excepto bibliotecas de administración central: Capilla Alfonsina Biblioteca Universitaria,
+                        Biblioteca Universitaria Raúl Rangel Frías y Biblioteca de Ciencias Agropecuarias y Biológicas.
+                    </p>
+                </div>
+            </td>
+            <td bgcolor="#000000" width="1"></td>
+            </tr>
+            <tr>
+                <td bgcolor="#000000" width="1" colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/negro.jpg">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="nexus">
+        <!--         <img src="https://deimos.dgi.uanl.mx/uanlimg/ws/contenido_nexus.jpg"> -->
+        <table border="0" cellspacing="0" cellpadding="0" width="540">
+            <tr>
+                <td colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/pestana2_nexus.jpg" width="538"
+                        height="28"></td>
+            </tr>
+            <td bgcolor="#000000" width="1"></td>
+            <td width="538">
+                <div class="margen">
+                    <p align="justify">
+                        <strong>Nexus</strong><br>Es una plataforma que facilita la colaboración entre alumnos y
+                        maestros en el proceso de enseñanza y aprendizaje, en sus modalidades presencial, a distancia y
+                        mixto.
+                    </p>
+                    <br><br>
+                    <div align="center">
+                        <form name="frNexus" id="idfrNexus" method="GET" target="_new">
+                            <input type="button" name="btnNexus" id="linkNexus" value="Ingresar">
+                        </form>
+                    </div><br>
+                    <center>
+                        <div style="width:400px; background:#F69709;  padding:10px; text-align:center;">
+                            <p>
+                                <font color="#FFFFFF"><strong>Carga Moderada</strong>
+                            </p>
+                            </font>
+                        </div>
+                    </center>
+                    <p align="justify">
+                    </p>
+                </div>
+            </td>
+            <td bgcolor="#000000" width="1"></td>
+            </tr>
+            <tr>
+                <td bgcolor="#000000" width="1" colspan="3"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/negro.jpg">
+                </td>
+            </tr>
+        </table>
+        <!--         <img src="https://deimos.dgi.uanl.mx/uanlimg/ws/nexus_btn.jpg"> -->
+    </div>
+    </td>
+    </tr>
+    </table>
+    <div id="bloqueo"></div>
+    <div id="Mensaje">
+        <h1>Se le recuerda que tiene que entrar a revisar sus datos personales, actualizarlos de ser necesario y
+            validarlos.</h1>
+        <center>
+            <input type="button" value="Aceptar" onClick="DesMensajeMaestros()">
+        </center>
+    </div>
+    <div id="ExUn"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="idMensajePrimerIngreso">
+        <p align="center">
+        <h2>Aviso Importante</h2>
+        </p>
+        <p>Alumnos de <strong>primer ingreso procedentes de instituciones ajenas a la UANL (nacionales y
+                extranjeras)</strong>, se les informa que la entrega de documentos será de manera digital, consulte la
+            fecha programada para la carga de documentos en su Instructivo de Inscripción.</p>
+        <p>Dar clic para ver tutorial: <a href="https://youtu.be/vPk3YjfTx4I">https://youtu.be/vPk3YjfTx4I</a></p>
+        <p align="center">ATENTAMENTE</p>
+        <p align="center">DEPARTAMENTO ESCOLAR Y DE ARCHIVO DE LA UANL</p>
+        <p align="center">División de Inscripciones y Credencialización</p>
+        <!--     <p><h2>Proceso de Inscripción para alumnos de primer ingreso Ajenos a la UANL</h2></p>                                                                                                                                                                                     -->
+        <!--     <p><h3>Revise su programación a partir del lunes 20 de julio de 2020, cumpliendo con las indicaciones siguientes:</h3></p>                                                                                                                                                 -->
+        <!--     <p>1. Ingresar a la página : https://www.uanl.mx/enlinea/.</p>                                                                                                                                                                                                             -->
+        <!--     <p>2. Ingresa a Formato de Inscripción y leer detenidamente las instrucciones y documentación requerida para su inscripción antes de subir los documentos y hacer clic en Acepto, ya que de esto depende la autorización de su inscripción como estudiante de la UANL.</p> -->
+        <!--     <p>3. Ingresar a Recibo de Servicios Academicos y Escolares y realizar el pago en la Institución Bancaria Autorizada.</p>                                                                                                                                                                   -->
+        <!--     <p>4. Dar clic al link de Carga documentos para inscripción.</p>                                                                                                                                                                                                           -->
+        <!--     <p>5. Los documentos deben estar en formato PDF y digitalizados a color por ambos lados si así lo requiere el documento.</p>                                                                                                                                               -->
+        <!--     <p>6. El subir los documentos no garantiza su inscripción, consulte el estatus de su trámite en 48 horas posteriores a la carga de los documentos en la opción de Carga documentos para inscripción.</p>                                                                   -->
+        <!--     <p>7. Recuerde que el proporcionar documentos carentes de validez oficial es un delito, evite la aplicación de sanciones que contempla la legislación universitaria y los efectos legales que esto conlleve.</p>                                                           -->
+        <!--     <p>ATENTAMENTE DEPARTAMENTO ESCOLAR Y DE ARCHIVO DE LA UANL</p>                                                                                                                                                                                                            -->
+        <!--     <p>División de Inscripciones y Credencialización</p>                                                                                                                                                                                                                       -->
+    </div>
+    <div id="idMensajePass" style="display:none;" title="Es necesario cambiar su contraseña">
+        <h2>Problemas para integrar con Outlook y Teams</h2>
+        <p>Su contraseña no cumple con los requisitos para Outlook y Teams, es necesario que la cambie a la brevedad
+            para poder sincronizar su cuenta de correo institucional con las plataformas de Microsoft.</p>
+        <p>Para realizar el cambio entre a la opci&oacute;n de cambio de contraseña en SIASE.</p>
+        <p>Atte Direcci&oacute;n de Tecnologias de Informaci&oacute;n.
+        <p>
+    </div>
+</body>
+
+</HTML>
+<script language="JavaScript">
+    function MensajeInicial() {
+        if ('' == "") {
+            alert('Estimado Usuario: Su contraseña no cumple con los requisitos mínimos de una contraseña segura, es necesario que la actualice. Considere que debe de llevar por lo menos una mayuscula, un número y tener una longitud mínima de 9 caracteres. Lo anterior para poder acceder a su Correo Universitario.');
+        }
+    }
+    $(document).ready(function () {
+        $("#idMensajePrimerIngreso").dialog({
+            autoOpen: false,
+            show: "fade",
+            hide: "fade",
+            width: 700,
+            modal: true,
+            buttons: {
+                Aceptar: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        vlgPrimerIngreso = 'yes';
+        if (vlgPrimerIngreso == 'no') {
+            $("#idMensajePrimerIngreso").dialog("open");
+        };
+        $("#idMensajePass").dialog({
+            autoOpen: false,
+            show: "fade",
+            hide: "fade",
+            width: 700,
+            modal: true,
+            buttons: {
+                Aceptar: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        vlgMensajePass = 'yes';
+        if (vlgMensajePass == 'no') {
+            $("#idMensajePass").dialog("open");
+        };
+    });
+</script>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->
