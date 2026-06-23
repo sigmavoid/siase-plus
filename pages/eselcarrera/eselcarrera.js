@@ -1,5 +1,5 @@
 // content.js — SIASE+ eSelCarrera
-// Dark by default · toggle activa modo CLARO
+// Light by default · toggle activa modo OSCURO
 
 console.log('%c✦ SIASE+ %cactivo',
     'background:#007bff;color:#fff;font-weight:bold;padding:2px 6px;border-radius:4px 0 0 4px',
@@ -8,7 +8,16 @@ console.log('%c✦ SIASE+ %cactivo',
 
 document.title = "SIASE+";
 
+// Eliminar favicons existentes
+document.querySelectorAll('link[rel*="icon"]').forEach(el => el.remove());
 
+// Crear nuevo favicon
+const favicon = document.createElement("link");
+favicon.rel = "icon";
+favicon.type = "image/png";
+favicon.href = chrome.runtime.getURL("media/img/siase.png");
+
+document.head.appendChild(favicon);
 if (window.self === window.top) {
 
     // ═══════════════════════════════════════════════════════════
@@ -138,8 +147,8 @@ if (window.self === window.top) {
     topBar.innerHTML = `
         <div id="modo-toggle-container">
             <span class="switch-label">Tema</span>
-            <label class="switch-slider" title="Alternar modo claro">
-                <input type="checkbox" id="modoToggle" aria-label="Modo claro">
+            <label class="switch-slider" title="Alternar modo oscuro">
+                <input type="checkbox" id="modoToggle" aria-label="Modo oscuro">
                 <span class="slider"></span>
             </label>
         </div>
@@ -159,54 +168,55 @@ if (window.self === window.top) {
     // ═══════════════════════════════════════════════════════════
     const toggle = document.getElementById('modoToggle');
 
-    const aplicarModo = (esClaro) => {
+    const aplicarModo = (esOscuro) => {
         // Se aplica tanto a <html> como a <body>: <body> cubre el
         // contenido visible, pero <html> es el que se ve en la parte
         // de arriba/bordes de la página (p.ej. overscroll), y solo
-        // tenía el color oscuro por defecto sin esto.
-        document.documentElement.classList.toggle('light-mode', esClaro);
-        document.body.classList.toggle('light-mode', esClaro);
+        // tenía el color claro por defecto sin esto.
+        document.documentElement.classList.toggle('dark-mode', esOscuro);
+        document.body.classList.toggle('dark-mode', esOscuro);
 
         // Corrige elementos con bgcolor inline
         document.querySelectorAll('[bgcolor]').forEach(el => {
             if (!el.dataset.origBg) el.dataset.origBg = el.getAttribute('bgcolor');
             const bg = el.dataset.origBg.toLowerCase().replace('#', '');
-            if (esClaro) {
-                if (bg === '094988') el.style.backgroundColor = '#1d4ed8';
-                else if (bg === '000000') el.style.backgroundColor = '#e2e8f0';
-                else el.style.backgroundColor = '#ffffff';
-            } else {
+            if (esOscuro) {
                 if (bg === '094988') el.style.backgroundColor = '#1e3a5f';
                 else if (bg === '000000') el.style.backgroundColor = '#2a2a3a';
                 else el.style.backgroundColor = '#1a1a2e';
+            } else {
+                if (bg === '094988') el.style.backgroundColor = '#1d4ed8';
+                else if (bg === '000000') el.style.backgroundColor = '#e2e8f0';
+                else el.style.backgroundColor = '#ffffff';
             }
         });
 
         // Barra del banner (era un td con bgcolor, ahora es un div)
         const barra = document.getElementById('siase-banner-barra');
         if (barra) {
-            barra.style.backgroundColor = esClaro ? '#1d4ed8' : '#1e3a5f';
+            barra.style.backgroundColor = esOscuro ? '#1e3a5f' : '#1d4ed8';
         }
     };
 
     toggle.addEventListener('change', () => {
-        const esClaro = toggle.checked;
-        aplicarModo(esClaro);
-        try { localStorage.setItem('siase-tema', esClaro ? 'light' : 'dark'); } catch (_) { }
+        const esOscuro = toggle.checked;
+        aplicarModo(esOscuro);
+        try { localStorage.setItem('siase-tema', esOscuro ? 'dark' : 'light'); } catch (_) { }
     });
 
     const guardado = (() => { try { return localStorage.getItem('siase-tema'); } catch (_) { return null; } })();
-    const esClaro = guardado
-        ? guardado === 'light'
-        : window.matchMedia('(prefers-color-scheme: light)').matches;
+    const esOscuro = guardado
+        ? guardado === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    toggle.checked = esClaro;
-    aplicarModo(esClaro);
+    toggle.checked = esOscuro;
+    aplicarModo(esOscuro);
 
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         const hay = (() => { try { return localStorage.getItem('siase-tema'); } catch (_) { return null; } })();
         if (!hay) { toggle.checked = e.matches; aplicarModo(e.matches); }
     });
+
 
     // ═══════════════════════════════════════════════════════════
     // 6. REFACTOR + CONTENCIÓN de paneles (#siase, #correo, #codice, #nexus)

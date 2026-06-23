@@ -1,0 +1,79 @@
+<!-- Programa:  maintop.htm                                     -->
+<!-- Autor:     sistemas escolares/DGI                          -->
+<!--            UANL 24-08-2007                                 -->
+<!--            Construye menu superior del sistema             -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+
+    <title>SIASE - Menu</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DN81BCCZTF"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-DN81BCCZTF");</script>
+</head>
+<link href="https://deimos.dgi.uanl.mx/uanlimg/ws/css/graltop2019.css" rel="stylesheet" type="text/css">
+
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="MenuLink">
+        <tr>
+            <td width="12%" rowspan="2" align="center" valign="middle"><img
+                    src="https://deimos.dgi.uanl.mx/uanlimg/ws/logo.jpg" width="78" height="78"></td>
+
+            <!--DIV SUPERIOR DERECHO-->
+            <td width="5%" rowspan="2" align="right"><img
+                    src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA3LjEtYzAwMCA3OS45Y2NjNGRlOTMsIDIwMjIvMDMvMTQtMTQ6MDc6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI0RkJBNTdCMDZBNTExRURBNDI4QzA2QkVEN0JBMDZEIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI0RkJBNTdBMDZBNTExRURBNDI4QzA2QkVEN0JBMDZEIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMDIyIFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBOEY4N0JBRjA2QTMxMUVEQkMyNkU5Q0MxMERBRTM4NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBOEY4N0JCMDA2QTMxMUVEQkMyNkU5Q0MxMERBRTM4NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEABALCwsMCxAMDBAXDw0PFxsU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"
+                    width="84" height="97" border="1"></td>
+            <!--DIV SUPERIOR DERECHO-->
+            <td width="18%"><span class="style1"><span class="style2">&nbsp;Matr&iacute;cula</span>: XXXXXXX<br>
+                    <!--DIV SUPERIOR DERECHO--><strong class="style2">&nbsp;Nombre</strong>: NOMBRE<br>
+                    <!--DIV SUPERIOR DERECHO--><strong class="style2">&nbsp;Carrera</strong>: CARRERA<br>
+                    <!--DIV SUPERIOR DERECHO--><strong class="style2">&nbsp;Plan de Estudios</strong>: MODELO ACADEMICO
+                    XXX</span></td>
+            <td width="60%" bgcolor="#FFFFFF"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/foto2030.jpg" width="534"
+                    height="82"></td>
+            <td width="5%" align="left" bgcolor="#FFFFFF"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/02316.jpg"
+                    width="80" height="80"></td>
+        </tr>
+        <tr>
+            <!-- Seccion de Opciones del Maintop -->
+            <td bgcolor="#094988" colspan="3">
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01&HTMLCve_Modulo=001"
+                    target="left">Escolar</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01&HTMLCve_Modulo=002"
+                    target="left">Tesoreria</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01&HTMLCve_Modulo=014"
+                    target="left">DGPPE</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01&HTMLCve_Modulo=006"
+                    target="left">AFI</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01&HTMLCve_Modulo=020"
+                    target="left">English UANL</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/ceregexci02.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+                    target="center">EXCI</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/pass01.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+                    target="center">Contrase&ntilde;a</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/feria.sh/cveseg01.htm?Matr=2132062&hdSpM69=lbjlilhaAldiEana"
+                    target="center">Clave de Seguridad</a>&nbsp;
+                <a href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/avisopriv.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+                    target="center">Aviso de Privacidad</a>&nbsp;
+                <!--DIV SUPERIOR DERECHO--><a
+                    href="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/cerrar.htm?HTMLUsuario=2132062&HTMLtrim=34785242&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+                    target="left">Salir</a>&nbsp;
+                <a href="https://www.facebook.com/enlineauanl?fref=ts" target="_blank"><img
+                        src="https://deimos.dgi.uanl.mx/uanlimg/ws/facebook2019.gif" width="16" height="16"
+                        title="Servicios en L&iacute;nea" border="0" bgcolor="red"></a>&nbsp;
+                <a href="https://twitter.com/#!/servenlineaUANL" target="_blank"><img
+                        src="https://deimos.dgi.uanl.mx/uanlimg/ws/twitter2019.gif" width="16" height="16"
+                        title="Servicios en L&iacute;nea" border="0" bgcolor="red"></a>
+            </td>
+        </tr>
+        <tr height="4">
+            <td colspan="5" bgcolor="#2E476F"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/transparent.gif" width="1"
+                    height="4"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->

@@ -1,0 +1,410 @@
+/* ============================================
+   SIASE+ — header.css
+   Paleta: azul / glassmorphism
+   Light by default · toggle activa modo OSCURO
+   ============================================ */
+
+/* ══════════════════════════════
+   RESET body del frame header
+   (el frame tiene su propio <body>)
+══════════════════════════════ */
+/* Variables del tema */
+:root {
+    --bg-panel: #131c31;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --texto-principal: #ffffff;
+    --texto-secundario: #a3b8cc;
+    --borde-sutil: rgba(130, 177, 255, 0.2);
+    --borde-secundario: rgba(0, 123, 255, 0.4);
+    --font-anthropic-sans: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #f0f4f8;
+    color: #1a202c;
+    font-family: var(--font-anthropic-sans);
+    overflow: hidden;
+    /* sin scroll interno en el frame */
+}
+
+
+
+/* ══════════════════════════════
+   #siase-header — contenedor raíz
+══════════════════════════════ */
+#siase-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    background: #eeb504;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* ── Fila superior ── */
+#siase-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 14px;
+    gap: 10px;
+    min-height: 64px;
+}
+
+/* ── Logos (izquierda) ── */
+#siase-header-logos {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+#siase-header-logos img {
+    display: block;
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+#siase-header-logos img.header-banner-wide {
+    height: 64px;
+    border-radius: 6px;
+}
+
+#siase-header-logos img.header-escudo {
+    height: 64px;
+}
+
+/* ══════════════════════════════
+   #siase-user-card — tarjeta derecha
+══════════════════════════════ */
+#siase-user-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #f8fafc;
+    border: 1px solid #cbd5e0;
+    border-radius: 14px;
+    padding: 7px 12px 7px 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Foto del carnet */
+#siase-user-card>img {
+    display: block;
+    width: 54px;
+    height: 66px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(29, 78, 216, 0.4);
+    flex-shrink: 0;
+}
+
+/* Info textual */
+#siase-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: 11.5px;
+    color: #374151;
+    line-height: 1.55;
+}
+
+#siase-user-info .user-field {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+#siase-user-info .user-label {
+    color: #1d4ed8;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#siase-user-info .user-value {
+    color: #111827;
+}
+
+/* Separador vertical interno */
+.user-card-sep {
+    width: 1px;
+    align-self: stretch;
+    background: #e2e8f0;
+    margin: 2px 2px;
+    flex-shrink: 0;
+}
+
+/* ── Controles: toggle + Salir ── */
+#siase-user-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+/* Contenedor del toggle */
+#header-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(240, 244, 248, 0.9);
+    border: 1px solid #cbd5e0;
+    border-radius: 999px;
+    padding: 4px 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    white-space: nowrap;
+}
+
+.switch-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #4b5563;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.switch-label::before {
+    content: '☀️';
+    font-size: 12px;
+}
+
+/* Track del toggle */
+.switch-slider {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.switch-slider input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #cbd5e0;
+    border-radius: 999px;
+    border: 1px solid #e2e8f0;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    top: 2px;
+    background: var(--texto-secundario);
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.switch-slider input:checked+.slider::before {
+    transform: translateX(18px);
+    background: #ffffff;
+}
+
+/* Botón Salir */
+#siase-btn-salir {
+    background: rgba(220, 38, 38, 0.82) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 4px 14px !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    font-family: var(--font-anthropic-sans) !important;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+    white-space: nowrap;
+}
+
+#siase-btn-salir:hover {
+    background: rgba(185, 28, 28, 0.95) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.45) !important;
+}
+
+/* ══════════════════════════════
+   #siase-header-nav — menú horizontal
+══════════════════════════════ */
+#siase-header-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1px;
+    padding: 5px 14px;
+    background: #004579;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+#siase-header-nav::-webkit-scrollbar {
+    display: none;
+}
+
+/* Chrome */
+
+#siase-header-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 11px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88) !important;
+    text-decoration: none !important;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s, transform 0.15s;
+    flex-shrink: 0;
+}
+
+#siase-header-nav a:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.nav-sep {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+.nav-social {
+    padding: 4px 6px !important;
+}
+
+/* SVG inline de redes sociales — color dinámico vía currentColor */
+.nav-svg-icon {
+    display: block;
+    width: 15px;
+    height: 15px;
+    /* Modo claro: blanco sobre fondo azul del nav */
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.18s, transform 0.18s;
+    flex-shrink: 0;
+}
+
+.nav-social:hover .nav-svg-icon {
+    color: #ffffff;
+    transform: scale(1.18);
+}
+
+/* ══════════════════════════════
+   MODO OSCURO
+══════════════════════════════ */
+html.dark-mode,
+body.dark-mode {
+    background: #0b1121;
+    color: #ffffff;
+}
+
+body.dark-mode #siase-header {
+    background: #c49303;
+    border-bottom-color: var(--borde-sutil);
+}
+
+body.dark-mode #siase-user-card {
+    background: #0b1121;
+    border-color: var(--borde-sutil);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode #siase-user-card>img {
+    border-color: var(--borde-secundario);
+}
+
+body.dark-mode #siase-user-info {
+    color: var(--texto-secundario);
+}
+
+body.dark-mode #siase-user-info .user-label {
+    color: var(--color-secundario);
+}
+
+body.dark-mode #siase-user-info .user-value {
+    color: var(--texto-principal);
+}
+
+body.dark-mode .user-card-sep {
+    background: var(--borde-sutil);
+}
+
+body.dark-mode #header-toggle-container {
+    background: rgba(11, 17, 33, 0.6);
+    border-color: var(--borde-sutil);
+}
+
+body.dark-mode .switch-label {
+    color: var(--texto-secundario);
+}
+
+body.dark-mode .switch-label::before {
+    content: '🌙';
+}
+
+body.dark-mode .slider {
+    background: #2e3f5c;
+    border-color: var(--borde-sutil);
+}
+
+body.dark-mode #siase-header-nav {
+    background: #01365e;
+    border-top-color: var(--borde-sutil);
+}
+
+body.dark-mode #siase-header-nav a {
+    color: var(--color-secundario) !important;
+}
+
+body.dark-mode #siase-header-nav a:hover {
+    background: rgba(0, 123, 255, 0.14);
+    border-color: var(--borde-secundario);
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+}
+
+body.dark-mode .nav-sep {
+    background: var(--borde-sutil);
+}
+
+/* En modo oscuro el nav tiene fondo más oscuro: se mantiene blanco/gris claro */
+body.dark-mode .nav-svg-icon {
+    color: rgba(130, 177, 255, 0.82);
+}
+
+body.dark-mode .nav-social:hover .nav-svg-icon {
+    color: #ffffff;
+}

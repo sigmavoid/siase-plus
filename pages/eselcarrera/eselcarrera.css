@@ -1,7 +1,7 @@
 /* ============================================
    SIASE+ — eSelCarrera.css
-   Paleta: azul oscuro / glassmorphism
-   Dark by default · toggle activa modo claro
+   Paleta: azul / glassmorphism
+   Light by default · toggle activa modo OSCURO
    ============================================ */
 
 :root {
@@ -15,28 +15,27 @@
     --borde-secundario: rgba(0, 123, 255, 0.4);
 
 
-    /* Banner SVG de #siase (logos-sistemas-siase) — variantes oscuras
-       por defecto: el borde claro original (#cbd5e0) se sustituye por
-       el borde sutil del tema oscuro, y el degradado amarillo se
-       oscurece un poco para no deslumbrar sobre la barra negra. */
-    --siase-banner-border: var(--borde-sutil);
-    --siase-banner-grad-1: #c89818;
-    --siase-banner-grad-2: #c98b00;
-    --siase-banner-grad-3: #c9a618;
+    /* Banner SVG de #siase (logos-sistemas-siase) — variantes claras
+       por defecto: borde claro original (#cbd5e0) y degradado
+       amarillo brillante, tal como fue diseñado el SVG. */
+    --siase-banner-border: #cbd5e0;
+    --siase-banner-grad-1: #fbbe1e;
+    --siase-banner-grad-2: #fbae00;
+    --siase-banner-grad-3: #fbcf1e;
     --mail-banner-grad-1: #00a786;
     --mail-banner-grad-2: #0e8870;
     --mail-banner-grad-3: #0ee2b8;
 }
 
 /* ══════════════════════════════
-   BASE — fondo oscuro por defecto
+   BASE — fondo claro por defecto
 ══════════════════════════════ */
 html,
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-principal) !important;
-    color: var(--texto-principal) !important;
+    background-color: #f0f4f8 !important;
+    color: #1a202c !important;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -44,47 +43,47 @@ body {
 table,
 td,
 tr {
-    background-color: #1a1a2e !important;
-    color: var(--texto-principal) !important;
-    border-color: var(--borde-sutil) !important;
+    background-color: #ffffff !important;
+    color: #1a202c !important;
+    border-color: #cbd5e0 !important;
 }
 
 /* Barra azul SIASE */
 td[bgcolor="#094988"],
 td[bgcolor="094988"] {
-    background-color: #1e3a5f !important;
+    background-color: #1d4ed8 !important;
 }
 
 /* Divisores negros */
 td[bgcolor="#000000"],
 td[bgcolor="000000"] {
-    background-color: #2a2a3a !important;
+    background-color: #e2e8f0 !important;
 }
 
 /* Links */
 a {
-    color: var(--color-secundario) !important;
+    color: #1d4ed8 !important;
 }
 
 a:hover {
-    color: var(--texto-principal) !important;
+    color: #1e40af !important;
 }
 
 /* .margen — contenedor de paneles */
 div.margen {
-    color: var(--texto-secundario) !important;
+    color: #374151 !important;
     font-family: inherit;
 }
 
 /* Título de selección */
 .titulo {
-    color: var(--texto-principal) !important;
+    color: #111827 !important;
     font-size: 15px;
 }
 
 /* Barra "Listado de Carreras" */
 .barra {
-    background-color: var(--color-primario) !important;
+    background-color: #1d4ed8 !important;
     color: #fff !important;
     border-radius: 6px;
     padding: 5px 10px;
@@ -94,7 +93,7 @@ div.margen {
 /* Botones */
 input[type="button"],
 button {
-    background-color: var(--color-primario) !important;
+    background-color: #1d4ed8 !important;
     color: #fff !important;
     border: none !important;
     border-radius: 20px !important;
@@ -113,18 +112,18 @@ button:hover {
 
 /* Aviso info (tabla auto-style1) */
 .auto-style1 {
-    background-color: #1e2d45 !important;
-    border-color: #00000000 !important;
-    color: var(--texto-secundario) !important;
+    background-color: #e8f0fe !important;
+    border-color: #1d4fd800 !important;
+    color: #1a202c !important;
     border-radius: 8px;
     width: 100% !important;
     font-size: 12px;
 }
 
-/* Imágenes de pestañas — suavizadas */
+/* Imágenes de pestañas */
 img[src*="pestana"] {
-    opacity: 0.7;
-    filter: brightness(0.75) hue-rotate(190deg);
+    opacity: 1;
+    filter: none;
 }
 
 /* Estilo2 (texto barra superior) */
@@ -134,89 +133,90 @@ img[src*="pestana"] {
 }
 
 /* ══════════════════════════════
-   MODO CLARO (toggle activo)
+   MODO OSCURO (toggle activo)
 ══════════════════════════════ */
-body.light-mode {
-    background-color: #f0f4f8 !important;
-    color: #1a202c !important;
+body.dark-mode {
+    background-color: var(--bg-principal) !important;
+    color: var(--texto-principal) !important;
 }
 
 /* El JS solo añadía la clase a <body>, así que el fondo de <html>
    (visible en la parte de arriba/bordes de la página, p.ej. al hacer
-   "rubber-band" scroll arriba del todo) seguía pintado con
-   --bg-principal (oscuro). Se replica la clase también en <html>
-   (ver content.js) y se cubre aquí su fondo en modo claro. */
-html.light-mode {
-    background-color: #f0f4f8 !important;
+   "rubber-band" scroll arriba del todo) seguía pintado con el fondo
+   claro por defecto. Se replica la clase también en <html>
+   (ver content.js) y se cubre aquí su fondo en modo oscuro. */
+html.dark-mode {
+    background-color: var(--bg-principal) !important;
 }
 
-body.light-mode table,
-body.light-mode td,
-body.light-mode tr {
-    background-color: #ffffff !important;
-    color: #1a202c !important;
-    border-color: #cbd5e0 !important;
+body.dark-mode table,
+body.dark-mode td,
+body.dark-mode tr {
+    background-color: #1a1a2e !important;
+    color: var(--texto-principal) !important;
+    border-color: var(--borde-sutil) !important;
 }
 
-body.light-mode td[bgcolor="#094988"],
-body.light-mode td[bgcolor="094988"] {
-    background-color: #1d4ed8 !important;
+body.dark-mode td[bgcolor="#094988"],
+body.dark-mode td[bgcolor="094988"] {
+    background-color: #1e3a5f !important;
 }
 
-body.light-mode td[bgcolor="#000000"],
-body.light-mode td[bgcolor="000000"] {
-    background-color: #e2e8f0 !important;
+body.dark-mode td[bgcolor="#000000"],
+body.dark-mode td[bgcolor="000000"] {
+    background-color: #2a2a3a !important;
 }
 
-body.light-mode a {
-    color: #1d4ed8 !important;
+body.dark-mode a {
+    color: var(--color-secundario) !important;
 }
 
-body.light-mode a:hover {
-    color: #1e40af !important;
+body.dark-mode a:hover {
+    color: var(--texto-principal) !important;
 }
 
-body.light-mode div.margen {
-    color: #374151 !important;
+body.dark-mode div.margen {
+    color: var(--texto-secundario) !important;
 }
 
-body.light-mode .titulo {
-    color: #111827 !important;
+body.dark-mode .titulo {
+    color: var(--texto-principal) !important;
 }
 
-body.light-mode .barra {
-    background-color: #1d4ed8 !important;
+body.dark-mode .barra {
+    background-color: var(--color-primario) !important;
 }
 
-body.light-mode input[type="button"],
-body.light-mode button {
-    background-color: #1d4ed8 !important;
+body.dark-mode input[type="button"],
+body.dark-mode button {
+    background-color: var(--color-primario) !important;
 }
 
-body.light-mode .auto-style1 {
-    background-color: #e8f0fe !important;
-    border-color: #1d4fd800 !important;
-    color: #1a202c !important;
+body.dark-mode .auto-style1 {
+    background-color: #1e2d45 !important;
+    border-color: #00000000 !important;
+    color: var(--texto-secundario) !important;
     font-size: 12px;
 }
 
-body.light-mode img[src*="pestana"] {
-    opacity: 1;
-    filter: none;
+body.dark-mode img[src*="pestana"] {
+    opacity: 0.7;
+    filter: brightness(0.75) hue-rotate(190deg);
 }
 
-body.light-mode .Estilo2 {
-    color: #ffffff !important;
+body.dark-mode .Estilo2 {
+    color: var(--texto-principal) !important;
 }
 
-/* Banner SVG de #siase — en modo claro vuelve a sus colores
-   originales (borde claro + amarillo más brillante), que es como
-   fue diseñado el SVG. */
-body.light-mode {
-    --siase-banner-border: #cbd5e0;
-    --siase-banner-grad-1: #fbbe1e;
-    --siase-banner-grad-2: #fbae00;
-    --siase-banner-grad-3: #fbcf1e;
+/* Banner SVG de #siase — en modo oscuro se oscurece un poco el
+   degradado amarillo (para no deslumbrar sobre la barra negra) y el
+   borde claro original se sustituye por el borde sutil del tema
+   oscuro. */
+body.dark-mode {
+    --siase-banner-border: var(--borde-sutil);
+    --siase-banner-grad-1: #c89818;
+    --siase-banner-grad-2: #c98b00;
+    --siase-banner-grad-3: #c9a618;
 }
 
 /* ══════════════════════════════
@@ -230,13 +230,13 @@ body.light-mode {
     gap: 10px;
     width: fit-content;
     margin: 16px auto 8px;
-    background: rgba(19, 28, 49, 0.8);
+    background: rgba(240, 244, 248, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--borde-sutil);
+    border: 1px solid #cbd5e0;
     border-radius: 999px;
     padding: 7px 18px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     transition: box-shadow 0.2s;
 }
@@ -245,18 +245,18 @@ body.light-mode {
     box-shadow: 0 4px 22px rgba(0, 123, 255, 0.25);
 }
 
-/* En modo claro, el propio contenedor se adapta */
-body.light-mode #modo-toggle-container {
-    background: rgba(240, 244, 248, 0.9);
-    border-color: #cbd5e0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* En modo oscuro, el propio contenedor se adapta */
+body.dark-mode #modo-toggle-container {
+    background: rgba(19, 28, 49, 0.8);
+    border-color: var(--borde-sutil);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
 }
 
 /* Etiqueta con icono dinámico */
 .switch-label {
     font-size: 12px;
     font-weight: 500;
-    color: var(--texto-secundario);
+    color: #4b5563;
     user-select: none;
     letter-spacing: 0.3px;
     display: flex;
@@ -264,18 +264,18 @@ body.light-mode #modo-toggle-container {
     gap: 5px;
 }
 
-/* Icono: luna = modo oscuro activo, sale el sol al activar claro */
+/* Icono: sol = modo claro activo, sale la luna al activar oscuro */
 .switch-label::before {
-    content: '🌙';
+    content: '☀️';
     font-size: 13px;
 }
 
-body.light-mode .switch-label {
-    color: #4b5563;
+body.dark-mode .switch-label {
+    color: var(--texto-secundario);
 }
 
-body.light-mode .switch-label::before {
-    content: '☀️';
+body.dark-mode .switch-label::before {
+    content: '🌙';
 }
 
 /* Track del switch */
@@ -298,7 +298,7 @@ body.light-mode .switch-label::before {
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background: #2e3f5c;
+    background: #cbd5e0;
     border-radius: 999px;
     border: 1px solid var(--borde-sutil);
     transition: background 0.3s, border-color 0.3s;
@@ -317,10 +317,10 @@ body.light-mode .switch-label::before {
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
 }
 
-/* Toggle ON = modo claro activado */
+/* Toggle ON = modo oscuro activado */
 input:checked+.slider {
-    background: #f59e0b;
-    border-color: #fcd34d;
+    background: #2e3f5c;
+    border-color: var(--borde-sutil);
 }
 
 input:checked+.slider::before {
@@ -336,19 +336,19 @@ input:checked+.slider::before {
     width: 860px;
     max-width: 98vw;
     margin: 24px auto;
-    background: var(--bg-panel);
-    border: 1px solid var(--borde-sutil);
+    background: #ffffff;
+    border: 1px solid #cbd5e0;
     border-radius: 20px;
-    box-shadow:
-        0 8px 40px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(130, 177, 255, 0.06) inset;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-body.light-mode #siase-card {
-    background: #ffffff;
-    border-color: #cbd5e0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+body.dark-mode #siase-card {
+    background: var(--bg-panel);
+    border-color: var(--borde-sutil);
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(130, 177, 255, 0.06) inset;
 }
 
 /* ── Banner: imagen ── */
@@ -368,7 +368,7 @@ body.light-mode #siase-card {
 
 /* ── Banner: barra azul ── */
 #siase-banner-barra {
-    background-color: #1e3a5f;
+    background-color: #1d4ed8;
     color: #fff;
     text-align: center;
     padding: 5px 10px;
@@ -376,8 +376,8 @@ body.light-mode #siase-card {
     font-size: 13px;
 }
 
-body.light-mode #siase-banner-barra {
-    background-color: #1d4ed8;
+body.dark-mode #siase-banner-barra {
+    background-color: #1e3a5f;
 }
 
 /* ══════════════════════════════
@@ -400,20 +400,21 @@ body.light-mode #siase-banner-barra {
     max-width: none !important;
     margin: 0 !important;
     padding: 5px 12px !important;
-    background: rgba(11, 17, 33, 0.72);
-    border: 1px solid var(--borde-sutil);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #cbd5e0;
     border-radius: 999px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-body.light-mode #siase-topbar #modo-toggle-container {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: #cbd5e0;
+body.dark-mode #siase-topbar #modo-toggle-container {
+    background: rgba(11, 17, 33, 0.72);
+    border-color: var(--borde-sutil);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Botón Salir en topbar */
@@ -466,14 +467,14 @@ body.light-mode #siase-topbar #modo-toggle-container {
     align-items: flex-end;
     padding: 12px 8px;
     gap: 2px;
-    background: rgba(11, 17, 33, 0.4);
-    border-right: 1px solid var(--borde-sutil);
-    min-height: 333px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    min-height: 350px;
 }
 
-body.light-mode #siase-nav {
-    background: #f8fafc;
-    border-right-color: #e2e8f0;
+body.dark-mode #siase-nav {
+    background: rgba(11, 17, 33, 0.4);
+    border-right-color: var(--borde-sutil);
 }
 
 /* ── Nav bar vertical ── */
@@ -494,7 +495,7 @@ body.light-mode #siase-nav {
     padding: 6px 8px;
     border-radius: 10px;
     border: 1px solid transparent;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.02);
     transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
     cursor: pointer;
     text-decoration: none !important;
@@ -502,10 +503,10 @@ body.light-mode #siase-nav {
 
 #siase-nav-bar a:hover,
 #siase-nav-bar a:focus-visible {
-    background: rgba(0, 123, 255, 0.12);
-    border-color: var(--borde-secundario);
+    background: rgba(29, 78, 216, 0.08);
+    border-color: rgba(29, 78, 216, 0.3);
     transform: translateX(3px);
-    box-shadow: 0 2px 12px rgba(0, 123, 255, 0.18);
+    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.12);
     outline: none;
 }
 
@@ -524,14 +525,14 @@ body.light-mode #siase-nav {
     opacity: 1;
 }
 
-body.light-mode #siase-nav-bar a {
-    background: rgba(0, 0, 0, 0.02);
+body.dark-mode #siase-nav-bar a {
+    background: rgba(255, 255, 255, 0.03);
 }
 
-body.light-mode #siase-nav-bar a:hover {
-    background: rgba(29, 78, 216, 0.08);
-    border-color: rgba(29, 78, 216, 0.3);
-    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.12);
+body.dark-mode #siase-nav-bar a:hover {
+    background: rgba(0, 123, 255, 0.12);
+    border-color: var(--borde-secundario);
+    box-shadow: 0 2px 12px rgba(0, 123, 255, 0.18);
 }
 
 /* ── Contenido principal ── */
@@ -564,14 +565,14 @@ nav.siase-panel-nav {
     width: 100%;
     box-sizing: border-box;
     border-radius: 12px;
-    border: 1px solid var(--borde-sutil);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #cbd5e0;
+    background: rgba(0, 0, 0, 0.02);
     overflow: hidden;
 }
 
-body.light-mode nav.siase-panel-nav {
-    background: rgba(0, 0, 0, 0.02);
-    border-color: #cbd5e0;
+body.dark-mode nav.siase-panel-nav {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--borde-sutil);
 }
 
 .siase-panel-img {
@@ -637,14 +638,14 @@ nav.siase-panel-nav div.margen {
     text-align: center !important;
 }
 
-body.light-mode #contenido>form>a:hover,
+body.dark-mode #contenido>form>a:hover,
 #contenido>form>a:hover {
     background: rgba(255, 217, 0, 0.12) !important;
     border-color: rgba(255, 196, 0, 0.4);
     box-shadow: 0 2px 12px rgba(255, 187, 0, 0.18);
     outline: none;
 
-    /* Forzamos a revertir propiedades que el tema light-mode cambie y tú no quieras (ej. el color del texto) */
+    /* Forzamos a revertir propiedades que el tema dark-mode cambie y tú no quieras (ej. el color del texto) */
     color: inherit !important;
 }
 
@@ -652,7 +653,10 @@ body.light-mode #contenido>form>a:hover,
     border-radius: 10px;
 }
 
-body.light-mode #siase-banner-svg>g>rect,
+/* El fill usa la variable de tema, que ya cambia sola entre modo
+   claro/oscuro (ver :root y body.dark-mode arriba), así que esta
+   regla no necesita ir condicionada a ninguna clase. */
+#siase-banner-svg>g>rect,
 #correo-banner-svg>g>rect,
 #codice-banner-svg>g>rect,
 #nexus-banner-svg>g>rect {

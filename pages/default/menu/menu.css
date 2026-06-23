@@ -1,0 +1,839 @@
+/* ============================================
+   SIASE+ — menu.css
+   Paleta: azul / glassmorphism
+   Light by default · modo OSCURO vía .dark-mode
+   (mismo canal de tema que header.css / eselcarrera.css)
+   ============================================ */
+
+/* ══════════════════════════════
+   RESET body del frame menú
+   El frame nunca scrollea como un todo: solo el nav interno
+   (#siase-menu) tiene scroll propio (ver más abajo).
+══════════════════════════════ */
+
+:root {
+    --bg-panel: #131c31;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --texto-principal: #ffffff;
+    --texto-secundario: #a3b8cc;
+    --borde-sutil: rgba(130, 177, 255, 0.2);
+    --borde-secundario: rgba(0, 123, 255, 0.4);
+    /* Separación entre botones ligeramente ampliada para mejor estética */
+    --menu-item-gap: 5px;
+
+    --font-anthropic-sans: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f0f4f8;
+    color: #1a202c;
+    font-family: var(--font-anthropic-sans);
+    overflow: hidden;
+}
+
+
+html.dark-mode,
+body.dark-mode {
+    background: #0b1121;
+    color: var(--texto-principal);
+}
+
+/* ══════════════════════════════
+   #siase-menu-wrap — contenedor raíz
+══════════════════════════════ */
+#siase-menu-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 12px 8px 18px;
+    gap: 10px;
+    overflow: hidden;
+    /* el wrap en sí nunca scrollea: el título y la Nomenclatura de
+       Horario quedan siempre visibles, fijos arriba/abajo */
+}
+
+#siase-menu-titulo {
+    flex: 0 0 auto;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #64748b;
+    padding: 4px 10px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 2px;
+}
+
+body.dark-mode #siase-menu-titulo {
+    color: var(--texto-secundario);
+    border-bottom-color: var(--borde-sutil);
+}
+
+/* ══════════════════════════════
+   #siase-menu — nav principal
+   Único elemento con scroll propio del frame: se limita a ~13
+   filas visibles (--menu-visible-items); el resto requiere
+   scrollear aquí, sin afectar al título ni a la Nomenclatura de
+   Horario, que quedan fijos fuera de esta zona.
+══════════════════════════════ */
+#siase-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--menu-item-gap);
+    width: 100%;
+    box-sizing: border-box;
+
+    /* Estas dos propiedades permiten que el menú tome todo el espacio restante disponible */
+    flex: 1 1 auto;
+    min-height: 0;
+
+    /* El max-height fue eliminado para permitir fluidez dinámica */
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+}
+
+#siase-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+#siase-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#siase-menu::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 999px;
+}
+
+#siase-menu::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+body.dark-mode #siase-menu {
+    scrollbar-color: var(--borde-secundario) transparent;
+}
+
+body.dark-mode #siase-menu::-webkit-scrollbar-thumb {
+    background: rgba(0, 123, 255, 0.35);
+}
+
+body.dark-mode #siase-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secundario);
+}
+
+/* ── Links simples ── */
+/* ── 1. Botón principal (Contenedor) ── */
+.menu-link {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-anthropic-sans);
+
+    /* Altura fija, eliminamos max-height dinámico */
+    min-height: 44px;
+    padding: 10px 11px;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(0, 0, 0, 0.02);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #1f2937 !important;
+    text-decoration: none !important;
+    line-height: 1.4;
+
+    /* Preparación para el marquee: corta el desborde */
+    overflow: hidden;
+    position: relative;
+
+    /* Transición de colores y sombras únicamente */
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, color 0.18s;
+}
+
+/* ── 2. Exclusivo para el texto ── */
+.menu-text {
+    display: inline-block;
+    white-space: nowrap;
+    /* El span no tiene overflow ni mask: es solo el portador del texto */
+}
+
+/* ── 3. Hover en el Botón (Estilo general) ── */
+.menu-link:hover,
+.menu-link:focus-visible {
+    background: rgba(29, 78, 216, 0.08);
+    border-color: rgba(29, 78, 216, 0.3);
+    color: #1d4ed8 !important;
+    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.12);
+    outline: none;
+}
+
+/* ── 4. Desvanecido + Marquee (Aplicado al Wrapper interno) ── */
+
+/* 1. Contenedor invisible que aísla el texto */
+.text-mask-wrapper {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    display: block;
+}
+
+/* 2. Máscara solo en el wrapper, protegiendo el fondo del botón */
+.text-mask-wrapper.has-marquee {
+    -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    mask-image: linear-gradient(to right, black 70%, transparent 100%);
+}
+
+/* 3. Al hacer hover: quitamos la máscara del wrapper invisible */
+.menu-link:hover .text-mask-wrapper.has-marquee,
+.menu-link:focus-visible .text-mask-wrapper.has-marquee,
+.menu-group-toggle:hover .text-mask-wrapper.has-marquee,
+.menu-group-toggle:focus-visible .text-mask-wrapper.has-marquee,
+.menu-sublink:hover .text-mask-wrapper.has-marquee,
+.menu-sublink:focus-visible .text-mask-wrapper.has-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+/* 4. Al hacer hover: disparamos la animación en el texto interno */
+.menu-link:hover .long-text,
+.menu-link:focus-visible .long-text,
+.menu-group-toggle:hover .long-text,
+.menu-group-toggle:focus-visible .long-text,
+.menu-sublink:hover .long-text,
+.menu-sublink:focus-visible .long-text {
+    animation: marqueeScroll 4s linear infinite alternate;
+}
+
+/* 5. Keyframes usando la medida exacta calculada por JS */
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(0);
+    }
+
+    90% {
+        transform: translateX(var(--scroll-dist, -30%));
+    }
+
+    100% {
+        transform: translateX(var(--scroll-dist, -30%));
+    }
+}
+
+.menu-sublink {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151 !important;
+    text-decoration: none !important;
+    line-height: 1.35;
+    transition: background 0.18s, color 0.18s, transform 0.15s;
+
+    /* Propiedades añadidas para soportar el Marquee */
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+body.dark-mode .menu-link {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--texto-secundario) !important;
+}
+
+body.dark-mode .menu-link::before {
+    background: #45597a;
+}
+
+body.dark-mode .menu-link:hover,
+body.dark-mode .menu-link:focus-visible {
+    background: rgba(0, 123, 255, 0.12);
+    border-color: var(--borde-secundario);
+    color: var(--texto-principal) !important;
+    box-shadow: 0 2px 12px rgba(0, 123, 255, 0.18);
+}
+
+body.dark-mode .menu-link:hover::before,
+body.dark-mode .menu-link:focus-visible::before {
+    background: var(--color-secundario);
+}
+
+/* ══════════════════════════════
+   .menu-group — secciones colapsables
+   (Becas / Nomenclatura de Horario)
+══════════════════════════════ */
+.menu-group {
+    /* Sin overflow:hidden: el submenú empuja el layout hacia abajo */
+    border-radius: 10px;
+}
+
+/* ── Toggle: idéntico a .menu-link ── */
+.menu-group-toggle {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-anthropic-sans);
+    min-height: 44px;
+    padding: 10px 11px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(0, 0, 0, 0.02);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #1f2937;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    line-height: 1.4;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, color 0.18s;
+}
+
+.menu-group-toggle::-webkit-details-marker {
+    display: none;
+}
+
+/* Texto del toggle: ocupa el espacio y cede a la flecha */
+.menu-group-toggle .menu-text {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Flecha — discreta, rota 90° al abrir */
+.menu-group-toggle::after {
+    content: '›';
+    font-size: 14px;
+    line-height: 1;
+    color: #94a3b8;
+    flex-shrink: 0;
+    margin-left: 8px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.18s;
+}
+
+.menu-group[open]>.menu-group-toggle::after {
+    transform: rotate(90deg);
+}
+
+/* Hover / focus — igual que .menu-link */
+.menu-group-toggle:hover,
+.menu-group-toggle:focus-visible {
+    background: rgba(29, 78, 216, 0.08);
+    border-color: rgba(29, 78, 216, 0.3);
+    color: #1d4ed8;
+    box-shadow: 0 2px 10px rgba(29, 78, 216, 0.12);
+    outline: none;
+}
+
+.menu-group-toggle:hover::after,
+.menu-group-toggle:focus-visible::after {
+    color: #1d4ed8;
+}
+
+body.dark-mode .menu-group-toggle {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--texto-secundario);
+}
+
+body.dark-mode .menu-group-toggle::after {
+    color: #45597a;
+}
+
+body.dark-mode .menu-group-toggle:hover,
+body.dark-mode .menu-group-toggle:focus-visible {
+    background: rgba(0, 123, 255, 0.12);
+    border-color: var(--borde-secundario);
+    color: var(--texto-principal);
+    box-shadow: 0 2px 12px rgba(0, 123, 255, 0.18);
+}
+
+body.dark-mode .menu-group-toggle:hover::after,
+body.dark-mode .menu-group-toggle:focus-visible::after {
+    color: var(--color-secundario);
+}
+
+/* ── Items: animación de apertura con grid 0fr → 1fr ── */
+.menu-group-items {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+    /* El overflow:hidden va en el wrapper interno (primer hijo directo) */
+}
+
+.menu-group-items>* {
+    overflow: hidden;
+    /* Padding visible solo cuando abre, via padding-top animado */
+    padding: 0 0 0 14px;
+    border-left: 2px solid #e2e8f0;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.menu-group[open]>.menu-group-items {
+    grid-template-rows: 1fr;
+}
+
+.menu-group[open]>.menu-group-items>* {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+body.dark-mode .menu-group-items>* {
+    border-left-color: var(--borde-sutil);
+}
+
+.menu-sublink {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151 !important;
+    text-decoration: none !important;
+    line-height: 1.35;
+    transition: background 0.18s, color 0.18s, transform 0.15s;
+}
+
+.menu-sublink:hover,
+.menu-sublink:focus-visible {
+    background: rgba(29, 78, 216, 0.08);
+    color: #1d4ed8 !important;
+    transform: translateX(2px);
+    outline: none;
+}
+
+body.dark-mode .menu-sublink {
+    color: var(--texto-secundario) !important;
+}
+
+body.dark-mode .menu-sublink:hover,
+body.dark-mode .menu-sublink:focus-visible {
+    background: rgba(0, 123, 255, 0.12);
+    color: var(--texto-principal) !important;
+}
+
+/* Las divisiones internas de un mismo link (p.ej. "* Carga de
+   documentos*" / "* Seguimiento...") heredan tipografía compacta */
+.menu-sublink div {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ══════════════════════════════
+   Panel auxiliar — Nomenclatura de Horario
+══════════════════════════════ */
+.menu-group-aux {
+    flex: 0 0 auto;
+    margin-top: 8px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+}
+
+body.dark-mode .menu-group-aux {
+    border-top-color: var(--borde-sutil);
+}
+
+.menu-schedule-legend {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 8px 6px 4px 14px;
+    margin-top: 2px;
+    max-height: 160px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+}
+
+.menu-schedule-legend::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu-schedule-legend::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 999px;
+}
+
+body.dark-mode .menu-schedule-legend {
+    scrollbar-color: var(--borde-secundario) transparent;
+}
+
+body.dark-mode .menu-schedule-legend::-webkit-scrollbar-thumb {
+    background: rgba(0, 123, 255, 0.35);
+}
+
+.menu-schedule-legend span {
+    font-size: 10.5px;
+    font-family: 'Courier New', ui-monospace, monospace;
+    color: #4b5563;
+    line-height: 1.4;
+}
+
+body.dark-mode .menu-schedule-legend span {
+    color: var(--texto-secundario);
+}
+
+/* ══════════════════════════════
+   WIDGET DE PERFIL — #siase-profile-widget
+   Ocupa el primer lugar en #siase-menu-wrap,
+   antes del nav principal.
+   El dropdown se renderiza como portal (position:fixed en body)
+   para evitar clipping por overflow:hidden del wrap.
+══════════════════════════════ */
+#siase-profile-widget {
+    flex: 0 0 auto;
+    margin-bottom: 2px;
+    font-family: var(--font-anthropic-sans);
+}
+
+/* ── Trigger compacto ── */
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.18s, border-color 0.18s;
+    outline: none;
+}
+
+.profile-trigger:hover,
+.profile-trigger:focus-visible {
+    background: rgba(29, 78, 216, 0.08);
+    border-color: rgba(29, 78, 216, 0.2);
+}
+
+.profile-trigger.open {
+    background: rgba(29, 78, 216, 0.10);
+    border-color: rgba(29, 78, 216, 0.25);
+}
+
+body.dark-mode .profile-trigger:hover,
+body.dark-mode .profile-trigger:focus-visible {
+    background: rgba(0, 123, 255, 0.12);
+    border-color: var(--borde-sutil);
+}
+
+body.dark-mode .profile-trigger.open {
+    background: rgba(0, 123, 255, 0.14);
+    border-color: var(--borde-secundario);
+}
+
+/* Avatar circular — trigger */
+.profile-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    letter-spacing: 0.02em;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Info en el trigger */
+.profile-trigger-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 1px;
+}
+
+.profile-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2937;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.profile-role {
+    font-size: 10.5px;
+    color: #6b7280;
+    line-height: 1.2;
+}
+
+body.dark-mode .profile-name {
+    color: var(--texto-principal);
+}
+
+body.dark-mode .profile-role {
+    color: var(--texto-secundario);
+}
+
+/* Chevron */
+.profile-chevron {
+    font-size: 16px;
+    color: #9ca3af;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.profile-trigger.open .profile-chevron {
+    transform: rotate(90deg);
+}
+
+/* ── Dropdown (portal en body) ── */
+.profile-dropdown {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    min-width: 200px;
+
+    font-family: var(--font-anthropic-sans);
+}
+
+.profile-dropdown.is-open {
+    display: block;
+}
+
+body.dark-mode .profile-dropdown {
+    background: #131c31;
+    border-color: var(--borde-sutil);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Cabecera del dropdown — actúa como trigger de cierre */
+.profile-dd-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.profile-dd-header:hover {
+    background: rgba(29, 78, 216, 0.06);
+}
+
+body.dark-mode .profile-dd-header:hover {
+    background: rgba(0, 123, 255, 0.08);
+}
+
+/* Avatar en el dropdown (más grande) */
+.profile-dd-avatar-lg {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.profile-dd-avatar-lg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-dd-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 1px;
+}
+
+.profile-dd-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.35;
+}
+
+.profile-dd-role {
+    font-size: 10.5px;
+    color: #6b7280;
+}
+
+body.dark-mode .profile-dd-name {
+    color: var(--texto-principal);
+}
+
+body.dark-mode .profile-dd-role {
+    color: var(--texto-secundario);
+}
+
+.profile-dd-chevron {
+    font-size: 15px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+/* Separadores */
+.profile-dd-sep {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 0;
+}
+
+body.dark-mode .profile-dd-sep {
+    background: var(--borde-sutil);
+}
+
+/* Campos informativos */
+.profile-dd-fields {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-dd-field {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.profile-dd-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.profile-dd-value {
+    font-size: 11.5px;
+    color: #1f2937;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+body.dark-mode .profile-dd-label {
+    color: #3d5175;
+}
+
+body.dark-mode .profile-dd-value {
+    color: var(--texto-secundario);
+}
+
+/* Acciones (toggle + salir) */
+.profile-dd-actions {
+    padding: 6px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-dd-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 8px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #374151;
+    cursor: pointer;
+    text-decoration: none !important;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    line-height: 1;
+}
+
+.profile-dd-action:hover {
+    background: rgba(29, 78, 216, 0.07);
+    border-color: rgba(29, 78, 216, 0.15);
+    color: #1d4ed8;
+}
+
+body.dark-mode .profile-dd-action {
+    color: var(--texto-secundario);
+}
+
+body.dark-mode .profile-dd-action:hover {
+    background: rgba(0, 123, 255, 0.10);
+    border-color: var(--borde-sutil);
+    color: var(--texto-principal);
+}
+
+.profile-dd-action-label {
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+/* Fila del toggle — etiqueta <label> para clickear todo el row */
+.profile-dd-toggle-row {
+    cursor: pointer;
+}
+
+.profile-dd-toggle-row .switch-slider {
+    pointer-events: none;
+    /* el label maneja el click */
+}
+
+/* Salir — color rojo */
+.profile-dd-salir {
+    color: #dc2626 !important;
+}
+
+.profile-dd-salir:hover {
+    background: rgba(220, 38, 38, 0.07) !important;
+    border-color: rgba(220, 38, 38, 0.18) !important;
+    color: #b91c1c !important;
+}
+
+body.dark-mode .profile-dd-salir {
+    color: #f87171 !important;
+}
+
+body.dark-mode .profile-dd-salir:hover {
+    background: rgba(220, 38, 38, 0.12) !important;
+}

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "SIASE Mejorado",
+  "name": "SIASE Plus",
   "version": "1.0",
   "description": "Mejora la interfaz de inicio de sesión de SIASE.",
   "content_scripts": [
@@ -11,10 +11,10 @@
       ],
       "all_frames": true,
       "css": [
-        "pages/login/content.css"
+        "pages/login/login.css"
       ],
       "js": [
-        "pages/login/content.js"
+        "pages/login/login.js"
       ],
       "run_at": "document_end"
     },
@@ -24,23 +24,29 @@
       ],
       "all_frames": true,
       "css": [
-        "pages/eselcarrera/content.css"
+        "pages/eselcarrera/eselcarrera.css"
       ],
       "js": [
-        "pages/eselcarrera/content.js"
+        "pages/eselcarrera/eselcarrera.js"
       ],
       "run_at": "document_end"
     },
     {
       "matches": [
-        "*://deimos.dgi.uanl.mx/*default*"
+        "*://deimos.dgi.uanl.mx/*default*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/maintop.htm*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/mainleftdin01.htm*"
       ],
       "all_frames": true,
       "css": [
-        "pages/default/content.css"
+        "pages/default/default.css",
+        "pages/default/header/header.css",
+        "pages/default/menu/menu.css"
       ],
       "js": [
-        "pages/default/content.js"
+        "pages/default/default.js",
+        "pages/default/header/header.js",
+        "pages/default/menu/menu.js"
       ],
       "run_at": "document_end"
     }
@@ -48,7 +54,9 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "CodiSaludo.png"
+        "CodiSaludo.png",
+        "media/img/siase.png",
+        "media/img/header_siase.png"
       ],
       "matches": [
         "*://deimos.dgi.uanl.mx/*",

@@ -3,8 +3,8 @@
 :root {
     --bg-principal: #0b1121;
     --bg-panel: #131c31;
-    --color-primario: #007bff;
-    --color-secundario: #82b1ff;
+    --color-primario: #ffb600;
+    --color-secundario: #ffd261;
     --texto-principal: #ffffff;
     --texto-secundario: #a3b8cc;
     --panel-translucido: rgba(19, 28, 49, 0.6);
@@ -173,7 +173,7 @@ fieldset>div:last-of-type::before {
     background: linear-gradient(to bottom, transparent, var(--color-primario), transparent);
 
     /* Sombra de resplandor usando el mismo tono verde */
-    box-shadow: 0 0 12px var(--color-primario), 0 0 4px var(--color-primario);
+    /* box-shadow: 0 0 12px var(--color-primario), 0 0 4px var(--color-primario); */
 }
 
 
