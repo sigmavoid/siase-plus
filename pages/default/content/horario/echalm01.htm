@@ -1,0 +1,589 @@
+<!-- Programa:  echalm01.htm                                    -->
+<!-- Autor:     sistemas escolares/DGI                         -->
+<!--            UANL                                           -->
+<!--            Consulta de horario de alumnos                 -->
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="es-MX" xml:lang="es-MX">
+    <meta charset="es_MX.UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema Escolar de la Universidad Aut�noma de Nuevo Le�n">
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws/scripts/bootstrap531/css/bootstrap.min.css" rel="preload"
+        as="style">
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws/scripts/bootstrap531/js/bootstrap.bundle.min.js" rel="preload"
+        as="script">
+    <link rel="shortcut icon" href="https://deimos.dgi.uanl.mx/uanlimg/ws/favicon.ico" type="image/x-icon">
+    <link sameSite=NONE secure href="https://deimos.dgi.uanl.mx/uanlimg/ws/scripts/bootstrap531/css/bootstrap.min.css"
+        rel="stylesheet">
+    <script sameSite=NONE secure defer
+        src="https://deimos.dgi.uanl.mx/uanlimg/ws/scripts/bootstrap531/js/bootstrap.bundle.min.js"></script>
+    <link defer secure rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <script defer src="https://deimos.dgi.uanl.mx/uanlimg/ws/scripts/validaFormularios.js"></script>
+    <Cache-Control: max-age=31536000>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+            @import url("https://fonts.googleapis.com/css?family=Dosis&display=swap");
+        </style>
+        <noscript>
+            <div class="display-6 msg alert alert-danger text-center">
+                <i class="fas fa-info" style="font-size:5rem;"></i>
+                <br>
+                Est� p�gina requiere funcionalidad JavaScript.<br>
+                Aqui tiene los pasos a seguir para habilitarlos<br>
+                <a href="http://www.enable-javascript.com/es/" target="_blank">Instrucciones para habilitar javascript
+                    en tu explorador</a>
+                .
+            </div>
+        </noscript>
+        <style type="text/css">
+            :root {
+                --c-blanco: #ffffff;
+                --c-negro: #000000;
+                /*Rojo*/
+                --c-rojo-3: #cf6363;
+                --c-rojo-4: #c94f4f;
+                --c-rojo-5: #c33c3c;
+                --c-rojo-6: #b03636;
+                --c-rojo-7: #9c3030;
+                /*Verde*/
+                --c-verde-3: #2db92d;
+                --c-verde-4: #28a428;
+                --c-verde-5: #239023;
+                --c-verde-6: #228b22;
+                --c-verde-7: #1e7b1e;
+                /*Azul*/
+                --c-azul-3: #0069cc;
+                --c-azul-4: #005cb3;
+                --c-azul-5: #004f99;
+                --c-azul-6: #004A8F;
+                --c-azul-7: #004280;
+                /*Amarillo*/
+                /*--c-amarillo-3: #e4e44e;                --c-amarillo-4: #e1e137;                --c-amarillo-5: #dede21;                --c-amarillo-6: #c8c81e;                --c-amarillo-7: #b1b11b;*/
+                --c-amarillo-3: #f4f425;
+                --c-amarillo-4: #ffff00;
+                --c-amarillo-5: #e6e600;
+                --c-amarillo-6: #cccc00;
+                --c-amarillo-7: #b3b300;
+                /*Naranja*/
+                --c-naranja-3: #fcd269;
+                --c-naranja-4: #fbcb50;
+                --c-naranja-5: #fbc43d;
+                --c-naranja-6: #fbc337;
+                --c-naranja-7: #fabc1e;
+                /*Gris*/
+                --c-gris-1: #f5f5f5;
+                --c-gris-2: #dbdbdb;
+                --c-gris-3: #999999;
+                --c-gris-4: #8c8c8c;
+                --c-gris-5: #808080;
+                --c-gris-6: #757575;
+                --c-gris-7: #5c5c5c;
+                --c-gris-8: #424242;
+                --c-gris-9: #292929;
+                --c-primario: VAR(--c-azul-6);
+                --c-secundario: VAR(--c-naranja-5);
+                --c-amarillo: var(--c-amarillo-5);
+                --c-rojo: var(--c-rojo-3);
+                --c-verde: var(--c-verde-6);
+                --c-azul: VAR(--c-primario);
+            }
+
+            body {
+                font-family: Montserrat, sans-serif !important;
+                background-color: var(--c-blanco);
+                COLOR: var(--c-gris-8);
+            }
+
+            .container-init {
+                text-align: CENTER !important;
+                padding: 1.5rem !important;
+                box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+                background-color: var(--c-gris-1);
+            }
+
+            code {
+                font-size: .8rem;
+                font-style: italic;
+                line-spacing: 0%;
+            }
+
+            html {
+                font-size: 12px;
+            }
+
+            @media (min-width: 576px) {
+                html {
+                    font-size: 12px;
+                }
+            }
+
+            @media (min-width: 768px) {
+                html {
+                    font-size: 12px;
+                }
+            }
+
+            @media (min-width: 992px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+
+            @media (min-width: 2560px) {
+                html {
+                    font-size: 14px;
+                }
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.9rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            h4 {
+                font-size: 1.7rem;
+            }
+
+            h5 {
+                font-size: 1.5rem;
+            }
+
+            h6 {
+                font-size: 1.4rem;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: Dosis, sans-serif !important;
+                letter-spacing: .15rem;
+                font-weight: lighter;
+                transition: ALL .4s ease;
+                COLOR: VAR(--c-gris-9);
+                margin: 0;
+                vertical-align: middle;
+            }
+
+            .bg-init {
+                background-image: url("https://deimos.dgi.uanl.mx/uanlimg/ws/dsp_bg1.png");
+                /*background-attachment-fixed;*/
+            }
+
+            INPUT,
+            SELECT,
+            textarea {
+                /*width:100%;*/
+                padding: .25rem .5rem;
+                font-size: .875rem;
+                font-weight: 400;
+                line-height: 1.5;
+                COLOR: var(--c-gris-8);
+                background-color: var(--c-blanco);
+                background-clip: padding-box;
+                border: solid 1px var(--c-gris-2);
+                border-radius: 3px;
+                transition: ALL .2s ease-in-out;
+            }
+
+            textarea {
+                resize: both;
+                overflow: auto;
+                MAX-WIDTH: 100%;
+                HEIGHT: 80px;
+            }
+
+            INPUT:hover,
+            SELECT:hover,
+            textarea:hover {
+                border-color: var(--c-secundario);
+            }
+
+            INPUT:focus,
+            SELECT:focus,
+            textarea:focus {
+                outline: solid var(--c-secundario);
+                border-color: var(--c-secundario);
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .cls_obligatorio_no {
+                border: solid 1px var(--c-rojo-3) !important;
+            }
+
+            a {
+                COLOR: var(--c-primario);
+                transition: ALL .4s ease;
+            }
+
+            a:hover {
+                opacity: .8;
+            }
+
+            :disabled {
+                opacity: .7 !important;
+                CURSOR: not-allowed;
+            }
+
+            .tabla {
+                WIDTH: 100%;
+                margin: 0 0 20px 0;
+                font-size: inherit;
+                /*border: solid 1px var(--c-gris-8);*/
+                margin: 0;
+            }
+
+            .tabla tbody {
+                /*border: solid 1px var(--c-gris-8);*/
+                border-radius: 4px;
+            }
+
+            .tabla th {
+                padding: 6px 5px;
+                text-align: CENTER;
+                background-color: var(--c-gris-7);
+                color: var(--c-blanco);
+                text-align: center;
+                padding: 5px;
+                font-size:
+                    /*.8rem*/
+                    1rem;
+                font-weight: bold;
+                border: solid 1px var(--c-gris-1) !important;
+                border-radius: 0;
+            }
+
+            .tabla td {
+                font-size:
+                    /*.9rem*/
+                    1rem;
+                border: solid 1px var(--c-gris-1);
+                padding: 4px;
+                COLOR: var(--c-gris-8);
+            }
+
+            .tabla tr:nth-child(odd) {
+                background-color: var(--c-blanco);
+            }
+
+            .tabla tr:nth-child(even) {
+                background-color: var(--c-blanco);
+            }
+
+            .tabla tr:hover {
+                background-color: var(--c-gris-2);
+            }
+
+            .tabla tr:hover td {
+                border: solid 1px var(--c-blanco);
+            }
+
+            .tabla th:FIRST-CHILD {
+                border-radius: 4px 0 0 0;
+            }
+
+            .tabla th:LAST-CHILD {
+                border-radius: 0 4px 0 0;
+            }
+
+            .tabla th:only-child {
+                border-radius: 4px 4px 0 0 !important;
+            }
+
+            .tabla-blanca tr {
+                background-color: var(--c-blanco) !important;
+            }
+
+            .tabla-blanca tr:hover td {
+                border: solid 1px var(--c-gris-1);
+            }
+
+            .tabla-gris tr {
+                background-color: var(--c-gris-1) !important;
+            }
+
+            .tabla-gris tr:hover td {
+                border: solid 1px var(--c-gris-1);
+            }
+
+            .boton {
+                background-color: var(--c-primario);
+                border: solid 1px var(--c-primario);
+                border-radius: 3px;
+                padding: 9px 10px;
+                color: var(--c-blanco);
+                transition: all .4s ease;
+                font-size: .8rem;
+                animation-name: area-initialize;
+                animation-duration: .8s;
+                DISPLAY: inline-BLOCK;
+                text-decoration: NONE;
+                HEIGHT: auto;
+                margin: 0;
+                WIDTH: auto;
+            }
+
+            .boton:hover {
+                background-color: var(--c-blanco);
+                border: solid 1px var(--c-primario);
+                color: var(--c-primario);
+                box-shadow: inset 0px 0px 4px var(--c-primario);
+                border-radius: 3px;
+                transform: scale(1.07);
+                DISPLAY: inline-block;
+                text-decoration: NONE;
+            }
+
+            .regresar {
+                background-color: var(--c-primario);
+                border: solid 1px var(--c-primario);
+                COLOR: var(--c-blanco);
+            }
+
+            .regresar:hover {
+                background-color: var(--c-blanco);
+                COLOR: var(--c-gris-8);
+            }
+
+            .borrar,
+            input[value="Borrar"] {
+                background-color: VAR(--c-rojo-7);
+                border: solid 1px VAR(--c-rojo-7);
+                COLOR: var(--c-blanco);
+            }
+
+            .borrar:hover,
+            input[value="Borrar"]:hover {
+                background-color: var(--c-blanco);
+                COLOR: var(--c-gris-8);
+                box-shadow: inset 0px 0px 5px VAR(--c-rojo-7);
+            }
+
+            input[type="checkbox"],
+            input[type="radio"] {
+                vertical-align: middle;
+            }
+
+            .card {
+                POSITION: relative;
+                margin: 0;
+            }
+
+            .card:hover {
+                box-shadow: 0px 3px 6px grey;
+                border: solid 1px var(--c-primario);
+                border-top: solid 1px var(--c-primario);
+                z-index: 10;
+                POSITION: relative;
+            }
+
+            .card.selected {
+                border-color: var(--c-secundario);
+                /*border-radius: 4px;*/
+            }
+
+            .card-title {
+                margin: 0;
+                padding: 5px;
+                COLOR: var(--c-blanco);
+                background-color: var(--c-primario);
+                border-radius: 4px 4px 0 0;
+            }
+
+            .card:hover .card-title {
+                border-radius: 2px 2px 0 0;
+            }
+
+            .card-icon-bg {
+                position: absolute;
+                font-size: 6em;
+                opacity: .06;
+                color: var(--c-primario);
+                z-index: -1;
+                RIGHT: 50px;
+            }
+
+            .card-icon-bg:hover {
+                transform: scale(1);
+                filter: contrast(100%);
+                transition: NONE;
+                z-index: 0;
+            }
+
+            .gradient {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 100%);
+                transition: ALL .4s ease;
+            }
+
+            .gradient:hover {
+                background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            }
+
+            .lbl {
+                display: inline-block;
+                font-size: 1rem;
+                border: dashed 1px lightgray;
+                padding: 5px;
+                margin: 1px;
+                transition: ALL .4s ease;
+            }
+
+            .contrast {
+                MAX-WIDTH: 100%;
+            }
+
+            .contrast:hover {
+                filter: contrast(150%);
+                transition: ALL .4s ease;
+                z-index: 1;
+            }
+
+            .msg {
+                animation-name: msg-muestra;
+                animation-duration: 1s;
+            }
+
+            @-webkit-keyframes msg-muestra {
+                0% {
+                    background-color: TRANSPARENT;
+                    COLOR: TRANSPARENT;
+                    RIGHT: -1000px;
+                }
+
+                50% {
+                    background-color: var(--c-amarillo);
+                    border-color: var(--c-amarillo);
+                    RIGHT: 0;
+                }
+            }
+
+            @keyframes msg-muestra {
+                0% {
+                    background-color: TRANSPARENT;
+                    COLOR: TRANSPARENT;
+                    RIGHT: -1000px;
+                }
+
+                50% {
+                    background-color: var(--c-amarillo);
+                    border: var(--c-amarillo);
+                    RIGHT: 0;
+                }
+            }
+
+            .bread-crumb,
+            .breadcrumb {
+                font-size: .8rem;
+                text-align: LEFT;
+                align: LEFT;
+                WIDTH: 90%;
+                margin: auto;
+                padding: 5px 10px;
+                border-radius: 4px;
+                MAX-WIDTH: 1200px;
+                background-color: var(--c-gris-2);
+                COLOR: var(--c-gris-8);
+            }
+
+            .zoom {
+                transition: ALL .4s ease;
+                animation-name: area-initialize;
+                animation-duration: .8s;
+            }
+
+            .zoom:hover {
+                transform: scale(1.1);
+            }
+
+            .zoom-min {
+                transition: ALL .4s ease;
+            }
+
+            .zoom-min:hover {
+                transform: scale(1.03);
+            }
+
+            .no-zoom {
+                transform: scale(1) !important;
+            }
+
+            .selected-bg {
+                background-color: var(--c-secundario) !important;
+            }
+
+            .selected-border {
+                border-color: var(--c-secundario) !important;
+            }
+        </style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DN81BCCZTF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-DN81BCCZTF");
+        </script>
+</head>
+
+<body class="bg-init">
+    <div class="container container-init">
+        <form method="POST"
+            action="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/control.p?HTMLUsuario=2132062&HTMLtrim=27276460&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+            name="mi_forma">
+            <input name="HTMLTrund" type="hidden" value="">
+            <input name="HTMLResill" type="hidden" value="67963">
+            <h6 class="text-start">Consulta de Horario</h6>
+            <hr>
+            <div class="container">
+                Periodo:&nbsp;&nbsp;
+                <select name="HTMLPeriodo" size="1">
+                    <option selected value="0">Selecciona</option>
+                    <option value="0x00000000003b9101">Semestral &nbsp;Enero - Junio 2026</option>
+                    <option value="0x00000000003b9102">Semestral &nbsp;Agosto-Diciembre 2025</option>
+                    <option value="0x00000000003b9104">Semestral &nbsp;Enero - Junio 2025</option>
+                    <option value="0x00000000003b9106">Semestral &nbsp;Agosto-Diciembre 2024</option>
+                    <option value="0x00000000003b9108">Semestral &nbsp;ENERO-JUNIO 2024</option>
+                    <option value="0x00000000003b910a">Semestral &nbsp;Agosto-Diciembre 2023</option>
+                    <option value="0x00000000003b910c">Semestral &nbsp;ENERO-JUNIO 2023</option>
+                    <option value="0x00000000003b910e">Semestral &nbsp;Agosto-Diciembre 2022</option>
+                </select>
+            </div>
+            <hr>
+            <button class="boton m-2" onclick="inicio();">Aceptar</button>
+        </form>
+    </div>
+</body>
+
+</html>
+<script language="javascript">
+    function inicio() {
+        document.mi_forma.HTMLTrund.value = "echalm02";
+        document.mi_forma.submit();
+    }
+</script>
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->

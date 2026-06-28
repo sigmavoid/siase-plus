@@ -3,6 +3,11 @@
   "name": "SIASE Plus",
   "version": "1.0",
   "description": "Mejora la interfaz de inicio de sesión de SIASE.",
+  "icons": {
+    "16": "media/img/icon16.png",
+    "48": "media/img/icon48.png",
+    "128": "media/img/icon128.png"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -49,6 +54,98 @@
         "pages/default/menu/menu.js"
       ],
       "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/maincenter.htm*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content/maincenter/maincenter.css"
+      ],
+      "js": [
+        "pages/default/content/maincenter/maincenter.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/cgi-bin/fotos.sh/iaFoto01.htm*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content/subirFoto/iaFoto01.css"
+      ],
+      "js": [
+        "pages/default/content/subirFoto/iaFoto01.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/*default*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/econkdx01.htm*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content/kardex/kardex.css"
+      ],
+      "js": [
+        "pages/default/content/kardex/kardex.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/econcfs01.htm*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/econcfs02.htm*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/control.p*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content/calificaciones/califs.css"
+      ],
+      "js": [
+        "pages/default/content/calificaciones/califs.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/echalm01.htm*",
+        "*://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/echalm02.htm*"
+      ],
+      "all_frames": true,
+      "css": [
+        "pages/default/content/horario/horario.css"
+      ],
+      "js": [
+        "pages/default/content/horario/horario.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://plataformanexus.uanl.mx/*"
+      ],
+      "css": [
+        "pages/nexus/nexus.css"
+      ],
+      "js": [
+        "pages/nexus/content_script.js",
+        "pages/nexus/nexus.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://plataformanexus.uanl.mx/*"
+      ],
+      "js": [
+        "pages/nexus/interceptor.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
@@ -56,12 +153,31 @@
       "resources": [
         "CodiSaludo.png",
         "media/img/siase.png",
-        "media/img/header_siase.png"
+        "media/img/header_siase.png",
+        "pages/default/content/kardex/kardex.css",
+        "pages/default/content/kardex/kardex.js",
+        "pages/default/content/calificaciones/califs.css",
+        "pages/default/content/calificaciones/califs.js",
+        "pages/default/content/horario/horario.css",
+        "pages/default/content/horario/horario.js"
       ],
       "matches": [
         "*://deimos.dgi.uanl.mx/*",
         "*://www.uanl.mx/*"
       ]
     }
-  ]
+  ],
+  "permissions": [
+    "identity",
+    "notifications"
+  ],
+  "oauth2": {
+    "client_id": "102715404531-4me6m73kltlfucnrkk4comivo2bv264g.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  },
+  "background": {
+    "service_worker": "pages/nexus/background.js"
+  }
 }

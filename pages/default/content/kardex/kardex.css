@@ -1,0 +1,465 @@
+/* ============================================
+   SIASE+ — kardex.css
+   Alineado con maincenter.css
+   Light by default · toggle activa modo OSCURO
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-anthropic-sans: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --bg-surface: #ffffff;
+    --bg-surface-2: #f8fafc;
+    --texto-principal: #111827;
+    --texto-secundario: #4b5563;
+    --texto-terciario: #6b7280;
+    --borde: #e2e8f0;
+    --sombra-card: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.05);
+    --sombra-card-hover: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.07);
+    --radio: 14px;
+    --radio-sm: 8px;
+    --notice-accent: #1d4ed8;
+    --success: #16a34a;
+    --warning: #d97706;
+}
+
+/* ── Modo oscuro ── */
+html.dark-mode,
+body.dark-mode {
+    background-color: #080c18 !important;
+    color: #e2e8f0 !important;
+    --bg-surface: #131c31;
+    --bg-surface-2: #0f1829;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #a3b8cc;
+    --texto-terciario: #64748b;
+    --borde: rgba(130, 177, 255, 0.15);
+    --sombra-card: 0 2px 16px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+    --sombra-card-hover: 0 8px 32px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(0, 123, 255, 0.18);
+    --notice-accent: #82b1ff;
+    --warning: #fbbf24;
+    --success: #4ade80;
+}
+
+/* ── Base ── */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-anthropic-sans) !important;
+    background-color: #f8fafc;
+    color: var(--texto-principal);
+    line-height: 1.55;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── CORRECCIÓN CRÍTICA: Overrides de tabla legacy  ──
+   Se definen hardcoded en light y se sobreescriben en dark.
+   El !important aquí cede ante selectores más específicos   */
+table,
+td,
+tr {
+    background-color: #ffffff !important;
+    color: #1a202c !important;
+    border-color: #cbd5e0 !important;
+}
+
+/* En dark mode revertimos el forzado de tablas globales */
+body.dark-mode table,
+body.dark-mode td,
+body.dark-mode tr {
+    background-color: #131c31 !important;
+    color: var(--texto-principal) !important;
+    border-color: var(--borde) !important;
+}
+
+/* ── Contenedor raíz ── */
+#kdx-wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    font-family: var(--font-anthropic-sans);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Encabezado del alumno ── */
+#kdx-header {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 16px 20px 14px;
+    font-family: var(--font-anthropic-sans);
+}
+
+#kdx-header .kdx-alumno {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+}
+
+#kdx-header .kdx-meta {
+    font-size: 12.5px;
+    color: var(--texto-secundario);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#kdx-header .kdx-meta span b {
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+/* ── Título de sección ── */
+.kdx-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-left: 12px;
+    margin: 0;
+    font-family: var(--font-anthropic-sans);
+}
+
+.kdx-section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario);
+    border-radius: 2px;
+}
+
+/* ── Indicadores de promedio ── */
+#kdx-promedios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 560px) {
+    #kdx-promedios {
+        grid-template-columns: 1fr;
+    }
+}
+
+.kdx-prom-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.kdx-prom-card:hover {
+    box-shadow: var(--sombra-card-hover);
+    transform: translateY(-2px);
+}
+
+.kdx-prom-card--normal {
+    border-left: 4px solid var(--notice-accent);
+}
+
+.kdx-prom-card--general {
+    border-left: 4px solid var(--warning);
+}
+
+.kdx-prom-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    /* --texto-secundario en lugar de terciario: mejor contraste en dark */
+    color: var(--texto-secundario);
+}
+
+.kdx-prom-value {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.kdx-prom-card--normal .kdx-prom-value {
+    color: var(--notice-accent);
+}
+
+.kdx-prom-card--general .kdx-prom-value {
+    color: var(--warning);
+}
+
+.kdx-prom-sub {
+    font-size: 11.5px;
+    /* --texto-secundario: en dark = #a3b8cc, mucho más visible que terciario #64748b */
+    color: var(--texto-secundario);
+}
+
+/* En dark, los valores grandes de promedio necesitan más luminosidad */
+html.dark-mode .kdx-prom-card--normal .kdx-prom-value {
+    color: #93c5fd;
+    /* blue-300 */
+}
+
+html.dark-mode .kdx-prom-card--general .kdx-prom-value {
+    color: #fcd34d;
+    /* amber-300 */
+}
+
+/* ── Tabla del kardex ── */
+#kdx-table-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    overflow-x: auto;
+    /* FIX: permitir scroll vertical para que no quede cortado */
+    overflow-y: visible;
+}
+
+#kdx-table-wrap table {
+    width: 100% !important;
+    border-collapse: collapse;
+    font-family: var(--font-anthropic-sans);
+    font-size: 12px;
+    background: transparent !important;
+}
+
+/* Restaurar colores dentro de la tabla (cancela el override global) */
+#kdx-table-wrap table,
+#kdx-table-wrap table td,
+#kdx-table-wrap table tr {
+    background-color: unset !important;
+    color: unset !important;
+    border-color: unset !important;
+}
+
+/* Encabezado de columnas — paleta azul */
+#kdx-table-wrap table tr:first-child th,
+#kdx-table-wrap table tr:first-child td {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 2px solid #1e40af !important;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    letter-spacing: 0.02em;
+}
+
+html.dark-mode #kdx-table-wrap table tr:first-child th,
+html.dark-mode #kdx-table-wrap table tr:first-child td {
+    background: #1e3a8a !important;
+    color: #bfdbfe !important;
+    border-bottom-color: #1e40af !important;
+}
+
+/* Celdas de datos — light: azul marino legible */
+#kdx-table-wrap table tr td {
+    padding: 6px 8px;
+    color: #1e3a5f !important;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.10) !important;
+    white-space: nowrap;
+    background-color: unset !important;
+}
+
+/* Celdas de datos — dark: azul claro de alto contraste */
+html.dark-mode #kdx-table-wrap table tr td {
+    color: #c8deff !important;
+    border-bottom-color: rgba(130, 177, 255, 0.12) !important;
+}
+
+/* Filas alternadas — light: blanco / azul muy pálido */
+#kdx-table-wrap table tr[bgcolor="#eeefe7"] td {
+    background: #eff6ff !important;
+    /* blue-50 */
+}
+
+#kdx-table-wrap table tr[bgcolor="#ffffff"] td {
+    background: #ffffff !important;
+}
+
+/* Filas alternadas — dark: dos tonos de azul oscuro diferenciados */
+html.dark-mode #kdx-table-wrap table tr[bgcolor="#eeefe7"] td {
+    background: #0f1e38 !important;
+}
+
+html.dark-mode #kdx-table-wrap table tr[bgcolor="#ffffff"] td {
+    background: #0a1628 !important;
+}
+
+/* Col 5 — 1ª oportunidad resaltada */
+#kdx-table-wrap table tr td:nth-child(5) {
+    font-weight: 700;
+    color: #1d4ed8 !important;
+}
+
+html.dark-mode #kdx-table-wrap table tr td:nth-child(5) {
+    color: #93c5fd !important;
+    /* blue-300 — más brillante que antes */
+}
+
+/* ── Bloque de totales ──
+   FIX: margin-bottom para que no quede cortado bajo el fold  */
+#kdx-totales {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 20px 24px;
+    font-family: var(--font-anthropic-sans);
+    /* margen inferior extra para scroll cómodo */
+    margin-bottom: 8px;
+}
+
+#kdx-totales .kdx-totales-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--notice-accent);
+    margin-bottom: 12px;
+}
+
+.kdx-credito-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.kdx-credito-row:last-of-type {
+    border-bottom: none;
+}
+
+.kdx-cr-label {
+    font-family: var(--font-anthropic-sans);
+    color: var(--texto-secundario);
+}
+
+.kdx-cr-val {
+    font-weight: 700;
+    color: var(--texto-principal);
+}
+
+.kdx-credito-row--total .kdx-cr-label {
+    font-weight: 700;
+    color: var(--texto-principal);
+    font-size: 14px;
+}
+
+.kdx-credito-row--total .kdx-cr-val {
+    font-size: 14px;
+    color: var(--notice-accent);
+}
+
+/* ── Barra de créditos ── */
+#kdx-progress-wrap {
+    margin-top: 18px;
+}
+
+#kdx-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.kdx-prog-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-secundario);
+}
+
+.kdx-prog-pct {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--success);
+    letter-spacing: -0.02em;
+}
+
+#kdx-progress-track {
+    width: 100%;
+    height: 10px;
+    background: var(--borde);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#kdx-progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #1d4ed8, #60a5fa);
+    transition: width 1s cubic-bezier(.4, 0, .2, 1);
+    width: 0%;
+}
+
+html.dark-mode #kdx-progress-fill {
+    background: linear-gradient(90deg, #1d4ed8, #82b1ff);
+}
+
+#kdx-progress-sub {
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--texto-terciario);
+}
+
+/* ── Nota al pie ── */
+#kdx-totales p {
+    color: var(--texto-terciario);
+}
+
+/* ── Clases para <font> tags de la tabla de SIASE ── */
+
+/* Encabezado: siempre blanco (fondo azul en light y dark) */
+.kdx-font-header {
+    color: #ffffff !important;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* Datos en light: azul marino legible */
+.kdx-font-data {
+    color: #1e3a5f !important;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* Datos en dark: azul claro de alto contraste (#e2e8f0 como pediste) */
+html.dark-mode .kdx-font-data {
+    color: #e2e8f0 !important;
+}
+
+/* Ocultar elementos legacy */
+body>[id="noof"],
+#kdx>[id="noof"],
+#btnImp {
+    display: none !important;
+}

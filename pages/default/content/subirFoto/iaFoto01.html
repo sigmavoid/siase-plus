@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws//jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.css"
+        rel="stylesheet">
+    </link>
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    </link>
+    <script
+        src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/external/jquery/jquery.js "></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+    <link sameSite=NONE secure href="https://deimos.dgi.uanl.mx/uanlimg/ws/bootstrap501/css/bootstrap.min.css"
+        rel="stylesheet">
+    <script sameSite=NONE secure async
+        src="https://deimos.dgi.uanl.mx/uanlimg/ws/bootstrap501/js/bootstrap.bundle.min.js"></script>
+    <style type="text/css">
+        input.text {
+            margin-bottom: 12px;
+            width: 95%;
+            padding: .4em;
+        }
+
+        h1 {
+            font-size: 1.2em;
+            margin: .6em 0;
+        }
+
+        .ui-dialog .ui-state-error {
+            padding: .3em;
+        }
+
+        .validateTips {
+            border: 1px solid transparent;
+            padding: 0.3em;
+        }
+
+        body {
+            background-color: #F7F8F9;
+            width: 750px;
+            margin: 0 auto;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .tdWidth {
+            width: 260px;
+        }
+
+        .tdWidthInput {
+            width: 180px;
+        }
+
+        tr {
+            height: 35px;
+        }
+
+        input[type="text"] {
+            width: 93%;
+            padding: 4px 5px;
+            font-size: 11px;
+        }
+
+        input[type="text"]:focus,
+        input.a-form-focus[type="text"],
+        input[type="search"]:focus,
+        input.a-form-focus[type="search"],
+        input[type="number"]:focus,
+        input.a-form-focus[type="number"],
+        input[type="tel"]:focus,
+        input.a-form-focus[type="tel"],
+        input[type="password"]:focus,
+        input.a-form-focus[type="password"],
+        textarea:focus,
+        textarea.a-form-focus,
+        select.a-select-multiple:focus,
+        select.a-select-multiple.a-form-focus,
+        .a-input-text:focus,
+        .a-input-text.a-form-focus {
+            border-color: #B7CB46;
+        }
+
+        .styBotton {
+            float: left;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            height: 24px;
+            margin-top: 4px;
+            width: 100%;
+            margin-left: 11px;
+            cursor: pointer;
+        }
+
+        .dvContenedor {
+            width: 1000px;
+            margin-left: -25px;
+        }
+
+        label {
+            color: #feaf19;
+            font-size: 11px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .labelVerde {
+            color: #00AA00;
+        }
+
+        .tdBorder {
+            border-left: 1px solid #d7d7d7;
+            border-bottom: 1px solid #aaaaaa;
+        }
+
+        .tdBorder:hover {
+            background-color: #FEF6A7;
+        }
+
+        .anchoColum {
+            < !-- width: 200px;
+            -->width: 15%;
+        }
+
+        .padingFont {
+            padding: 4px 5px;
+            font-size: 11px;
+        }
+
+        .titulo {
+            padding: 10px 11px;
+            //border-bottom-right-radius: 0px;
+            //border-bottom-left-radius: 0px;
+        }
+
+        .titulo2 {
+            padding: 10px 11px;
+            border-top-right-radius: 0px;
+            border-top-left-radius: 0px;
+        }
+
+        .classDatePicker {
+            margin-bottom: -6px;
+            margin-left: 5px;
+        }
+
+        .contenedor {
+            padding: 10px 10px 10px 10px;
+            //border-bottom-right-radius: 0px;
+            //border-bottom-left-radius: 0px;
+        }
+    </style>
+    <title>Entrega de documentos</title>
+    <script language="JavaScript">
+        $(document).ready(function () {
+            $("#idGuardarArch").button();
+            $("#idTermina").button();
+            $("#idRevision").dialog({
+                autoOpen: false,
+                show: "fade",
+                hide: "fade",
+                width: 650,
+                modal: true,
+                buttons: {
+                    Aceptar: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            $("#idRevision1").dialog({
+                autoOpen: true,
+                show: "fade",
+                hide: "fade",
+                width: 650,
+                modal: true,
+                buttons: {
+                    Aceptar: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            $('#idGuardarArch').off('click').on('click', function () {
+                $('#idGuardarArch').attr("disabled", true);
+                if (document.getElementById("HTMLArchivo").value == "") {
+                    $("#idMensaje").html("<p>Favor de Adjuntar Documento</p>");
+                    $("#idMensaje").dialog("open");
+                    $('#idGuardarArch').attr("disabled", false);
+                }
+                else {
+                    var url = "ecCargaDocto30.htm";
+                    var inputFileImage = document.getElementById("HTMLArchivo");
+                    var file = inputFileImage.files[0];
+                    var data = new FormData();
+                    var fileSize = inputFileImage.files[0].size;
+                    var siezekiloByte = parseInt(fileSize / 1024);
+                    var ext = inputFileImage.value.split('.');
+                    if (ext[0] == "") {
+                        $("#idMensaje").html("<p>Favor de Adjuntar Documento</p>");
+                        $("#idMensaje").dialog("open");
+                        $('#idGuardarArch').attr("disabled", false);
+                    }
+                    else {
+                        if (ext[1] == "pdf" || ext[1] == "PDF") {
+                            if (siezekiloByte > 600) {
+                                document.getElementById("HTMLArchivo").value = "";
+                                $("#idMensaje").html("<p>Archivo muy grande</p>");
+                                $("#idMensaje").dialog("open");
+                                $('#idGuardarArch').attr("disabled", false);
+                                return false;
+                            }
+                            else {
+                                var cvedocto = $("#idCve_Docto").val();
+                                data.append('HTMLArchivo', file);
+                                data.append('pcRowID', '0x0000000003132b85');
+                                data.append('pcUsuCve', '2132062');
+                                data.append('pcTipCve', '01');
+                                data.append('vcMetodo', '3');
+                                data.append('Docto', cvedocto);
+                                data.append('Rowid', '0x0000000006f1312c');
+                                $.ajax({
+                                    url: url,
+                                    type: 'POST',
+                                    dataType: "html",
+                                    data: data,
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (a) {
+                                        $('#idGuardarArch').attr("disabled", false);
+                                        $("#idGuardarArch").hide();
+                                        $("#idLineaArchivo").hide();
+                                        $("#idMensaje").html(a);
+                                        $("#idMensaje").dialog("open");
+                                        $('div#idMensaje').on('dialogclose', function (event) {
+                                            location.reload();
+                                        });
+                                    },
+                                    error: function (XMLHttpRequest, textStatus, errorThrow) {
+                                        alert("Ocurrió un error, favor de intentar más tarde.");
+                                        $('#idGuardarArch').attr("disabled", false);
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            $("#idMensaje").html("<p>C.- Favor de adjuntar documento PDF.</p>");
+                            $("#idMensaje").dialog("open");
+                            $('#idGuardarArch').attr("disabled", false);
+                        }
+                    }
+                }
+            });
+            $("#idTermina").click(function () {
+                var vcParam = {
+                    "HTMLRI": "",
+                    "HTMLUsuario": "2132062",
+                    "HTMLCve_Tipo_Periodo": "01",
+                    "HTMLCve_Periodo": "340",
+                    "pcRowID": "0x0000000003132b85",
+                    "pcFolio": "32814",
+                    "vcMetodo": "4"
+                };
+                $.ajax({
+                    url: 'ecCargaDocto30.htm',
+                    data: vcParam,
+                    type: 'POST',
+                    dataType: 'html',
+                    success: function (a) {
+                        //$("#idEsperaCarrera").remove();
+                        $("#idRevision").html(a);
+                        $("#idRevision").dialog("open");
+                        $("#idEnviarRevision").hide();
+                        $("#idbarra").css("width", "20%");
+                        $("#idbarra").text("Validando Documentos");
+                        $("#idbarra").removeClass("bg-warning").addClass("bg-info");
+                    },
+                    error: function (xhr, status) {
+                        alert('Disculpe, existió un problema');
+                    },
+                    complete: function (xhr, status) {
+                        //alert('Petición realizada');
+                    }
+                });
+            });
+            $("#idAyuda").click(function () {
+                $("#idMensaje").html("<p id='ayuda' align='left'><strong><ul> <li>Los documentos deben estar digitalizados en formato PDF(escaneado) con buena calidad y por ambos lados en un solo archivo.</li> <li> No se aceptar&aacute;n fotograf&iacute;as convertidas en archivos PDF.</li><li>Deber&aacute; subir el archivo solicitado en el tipo de documento correspondiente; en caso de no contar con alguno de ellos, anexar comprobante que acredite el documento faltante.</li> <li>Una vez realizada la carga de los documentos, el tiempo de respuesta es de 48h.</li></ul></strong></p>");
+                $("#idMensaje").dialog("open");
+            });
+        });
+    </script>
+</head>
+
+<body
+    class="jquery-ui page page-id-71 page-template page-template-page-fullwidth page-template-page-fullwidth-php page-slug-themeroller single-author singular">
+    <center>
+        <h2>Carga de Documentos para Expediente <img align="right" id="idAyuda" " src="
+                https://deimos.dgi.uanl.mx/uanlimg/ws/Ayuda6.png"></h2>
+    </center>
+    <div id="idFormulario" class="ui-widget-content ui-corner-all">
+        <form enctype="multipart/form-data" name="mi_forma" method="post">
+            <input type="hidden" name="HTMLCve_Dependencia" value="02316"></input>
+            <input type="hidden" name="HTMLCve_Unidad" value="01">
+            <input type="hidden" name="HTMLCve_Nivel_Academico" value="02">
+            <input type="hidden" name="HTMLCve_Grado_Academico" value="03">
+            <input type="hidden" name="HTMLCve_Modalidad" value="1">
+            <input type="hidden" name="HTMLCve_Plan_Estudio" value="401">
+            <input type="hidden" name="HTMLCve_Carrera" value="10">
+            <input type="hidden" name="HTMLTipCve" value="01">
+            <input type="hidden" name="HTMLUsuCve" value="2132062">
+            <input type="hidden" name="HTMLCve_Tipo_Inscripcion" value="">
+            <input type="hidden" name="HTMLProg" value="">
+            <input type="hidden" name="HTMLRI" value="0x0000000003132b85">
+            <input type="hidden" name="HTMLUsuario" value="2132062">
+            <input type="hidden" name="HTMLtrim" value="10442856">
+            <input type="hidden" id="HTML_Solicitud" name="HTML_Solicitud" value="cRowIdSolicitud" />
+            <input type="hidden" id="HTML_Cerrado" name="HTML_Cerrado" value="" />
+            <input type="hidden" id="HTML_Doc" name="HTML_Doc" value="" />
+            <input type="hidden" id="HTML_Elimina" name="HTML_Elimina" value="" />
+            <input type="hidden" id="HTML_Dialigo" name="HTML_Dialogo" value="cDialogo" />
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr style="height: 30px;">
+                    <td width="180px" align="right">
+                        <label>Tipo de Documento:&nbsp;&nbsp;</label>
+                    </td>
+                    <td>
+                        <select name="HTMLCve_Docto" id="idCve_Docto" class="text ui-widget-content ui-corner-all">
+                            <label>Tipo de Documento:</label>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="trArchivo">
+                    <td width="150px" align="right"><label>Archivo:&nbsp;&nbsp;</label></td>
+                    <td><input type="file" name="HTMLArchivo" id="HTMLArchivo" value="" size="80"
+                            class="text ui-widget-content ui-corner-all"> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp; </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    &nbsp;
+    <div id="idContList">
+        <table id="idListado">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Fecha Carga</th>
+                    <th>Estatus</th>
+                    <th>Comentario</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1-CURP formato de la página www.gob.mx/curp/</td>
+                    <td>27/06/2022 21:40:04.980</td>
+                    <td>ACEPTADO REV 2</td>
+                    <td></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>2-Certificado de estudios de Bachillerato Legalizado por el Gobierno del Estado de Procedencia
+                    </td>
+                    <td>27/06/2022 21:46:59.581</td>
+                    <td>ACEPTADO REV 2</td>
+                    <td></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>3-Acta de Nacimiento (vigencia no mayor a seis meses)</td>
+                    <td>27/06/2022 21:47:49.916</td>
+                    <td>ACEPTADO REV 2</td>
+                    <td></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>4-Certificado de Secundaria</td>
+                    <td>11/12/2024 00:49:42.049</td>
+                    <td>CARGADO</td>
+                    <td></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <p>El estatus de su expediente es: ACEPTADO 1ER VALIDACION la barra de abajo muestra el progreso de su expediente.
+    </p>
+    <div class="progress" style="height: 20px;">
+        <div class="progress-bar bg-info" id="idbarra" role="progressbar" style="width: 60%;" aria-valuenow="60"
+            aria-valuemin="0" aria-valuemax="100">Validando Documentos</div>
+    </div>
+    <div id="idRevision" title="Revisión de Documentos">
+    </div>
+    <div id="idMensaje" title="Aviso Importante">
+        <p></p>
+    </div>
+</body>
+
+</html>
+<script language="JavaScript">
+    $(document).ready(function () {
+        var vlgError;
+        vlgError = 'yes';
+        vlgMensaje = 'yes';
+        vlgCargarDocto = 'no';
+        $("#idListado").DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "language": {
+                "emptyTable": "No hay registros",
+                "infoEmpty": "No entries to show",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron registros",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "infoEmpty": "No hay Registros para mostrar"
+            }
+        });
+        $("#idMensaje").dialog({
+            autoOpen: false,
+            show: "fade",
+            hide: "fade",
+            width: 650,
+            modal: true
+        });
+        if (vlgMensaje == 'no') {
+            $("#idMensaje").dialog("open");
+        };
+        if (vlgError == 'no') {
+            $("#idFormulario").css("display", "none");
+            $("#idContList").css("display", "none");
+            $("#idEnviarRevision").css("display", "none");
+            $("#idMensaje").dialog("open");
+        };
+    });
+</script>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->

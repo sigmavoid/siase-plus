@@ -1,0 +1,1258 @@
+<!-- Programa:  echalm02.htm                                      -->
+<!-- Autor:     sistemas escolares/DGI                            -->
+<!--            UANL                                              -->
+<!--                                                              -->
+<!--            Consulta de horario de alumnos                    -->
+<!DOCTYPE html>
+
+<HEAD>
+    <title>SIASE - Horario</title>
+    <META HTTP-EQUIV="expires" CONTENT="Sat, 01 Dec 2001 00:00:00 GMT">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="cache-control" CONTENT="no-cache">
+    <html xmlns="https://www.w3.org/1999/xhtml" lang="es-MX" xml:lang="es-MX"><!-- Required meta tags -->
+    <meta charset="es_MX.UTF-8">
+    <META NAME="AUTHOR" CONTENT="Victor Adiel Reyna Villarreal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#6E9ACB">
+    <meta name="description" content="DSSyPP: Dirección de Servicio Social Y Prácticas Profesionales">
+    <link rel="shortcut icon" href="https://deimos.dgi.uanl.mx/uanlimg/wbt/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://deimos.dgi.uanl.mx/uanlimg/wbt/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <link sameSite=NONE secure rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
+    <title>UANL</title><Cache-Control: max-age=31536000>
+        <div class="hidden">
+            <script type="text/javascript">                        <!--//-->
+            < ![CDATA[//><!--                    var images = new Array()                                function preload() {                                        for (i = 0; i < preload.arguments.length; i++) {                                                images[i] = new Image()                                                images[i].src = preload.arguments[i]                                        }                                }                                preload(                                        "https://deimos.dgi.uanl.mx/uanlimg/ws/dsp_bg1.png" /*,                                        "",                                        ""*/                                )                        //--><!]]>
+            </script>
+        </div>
+        <script language="javascript">            console.log("vr");        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+        </style>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Philosopher&display=swap");
+        </style>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Dosis&display=swap");
+        </style>
+        <script
+            language="javascript">           let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;                if (matched) { console.log("DM"); } else { console.log("N-DM"); }        </script>
+        <style type="text/css">
+            html {
+                box-sizing: border-box;
+                line-spacing: 120%;
+                line-height: 1.4;
+            }
+
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+                margin: 0;
+            }
+
+            .clearfix:before,
+            .clearfix:after {
+                content: " ";
+                display: table;
+            }
+
+            .clearfix:after {
+                clear: both;
+            }
+
+            pre {
+                white-space: pre-wrap;
+                white-space: -moz-pre-wrap;
+                white-space: -pre-wrap;
+                white-space: -o-pre-wrap;
+                word-wrap: break-word;
+            }
+
+            body {
+                font-family: Montserrat, sans-serif;
+                background-color: #fff;
+                COLOR: #333;
+                MIN-HEIGHT: 100vh;
+            }
+
+            code {
+                font-size: .8rem;
+                font-style: italic;
+                line-spacing: 0%;
+                /*DISPLAY:NONE;*/
+            }
+
+            html {
+                font-size: 12px;
+            }
+
+            @media (min-width: 576px) {
+                html {
+                    font-size: 12px;
+                }
+            }
+
+            @media (min-width: 768px) {
+                html {
+                    font-size: 12px;
+                }
+            }
+
+            @media (min-width: 992px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+
+            @media (min-width: 2560px) {
+                html {
+                    font-size: 14px;
+                }
+            }
+
+            .bg {
+                background: url("https://deimos.dgi.uanl.mx/uanlimg/ws/dsp_bg1.png");
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.9rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            h4 {
+                font-size: 1.7rem;
+            }
+
+            h5 {
+                font-size: 1.5rem;
+            }
+
+            h6 {
+                font-size: 1.4rem;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: Dosis, sans-serif !important;
+                letter-spacing: .40rem;
+                font-weight: lighter;
+                transition: ALL .4s ease;
+                COLOR: #333;
+                margin: 0;
+                vertical-align: middle;
+            }
+
+            .i {
+                color: #333;
+                opacity: .6;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            INPUT,
+            SELECT,
+            textarea {
+                POSITION: static;
+                font-size: .875rem;
+                border: solid 1px #ddd;
+                transition: ALL .4s ease;
+                padding: .25rem .5rem;
+                border-radius: 3px;
+                margin-bottom: 3px;
+                background-color: #fff;
+                COLOR: #333;
+                line-height: 1.5;
+                font-weight: 400;
+                vertical-align: middle;
+                /*MAX-WIDTH:250px;*/
+                /*MIN-WIDTH:250px;*/
+                width: 100%;
+                border-radius: 3px;
+            }
+
+            INPUT:hover,
+            SELECT:hover,
+            textarea:hover {
+                border-color: #FBC43D;
+                border-radius: 4px;
+            }
+
+            INPUT:focus,
+            SELECT:focus,
+            textarea:focus {
+                outline: solid #FBC43D;
+                border-color: #FBC43D;
+                border-radius: 4px;
+            }
+
+            INPUT[type="text"] {}
+
+            textarea {
+                font-size: inherit;
+                POSITION: static;
+                border-radius: 4px;
+                resize: both;
+                overflow: auto;
+                WIDTH: 100%;
+                MAX-WIDTH: 100%;
+                HEIGHT: 80px;
+            }
+
+            a {
+                COLOR: #004A8F;
+                FONT-weight: normal;
+                text-decoration: NONE;
+                transition: ALL .4s ease;
+            }
+
+            a:hover {
+                COLOR: #004A8F;
+                opacity: .8;
+                text-decoration: UNDERLINE;
+                transition: ALL .4s ease;
+            }
+
+            .btn-link {
+                COLOR: #004A8F;
+            }
+
+            :disabled {
+                opacity: .7 !important;
+            }
+
+            .nav-link {
+                COLOR: #004A8F;
+                transition: ALL .4s ease;
+            }
+
+            LABEL {
+                margin-bottom: 0;
+            }
+
+            img {
+                MAX-WIDTH: 100%;
+            }
+
+            img:hover {
+                filter: contrast(150%);
+                transition: ALL .4s ease;
+                z-index: 1;
+            }
+
+            .radio-text {
+                margin: 5px;
+                font-size: .8rem;
+            }
+
+            hr {
+                background-color: #333;
+            }
+
+            table {
+                WIDTH: 100%;
+                margin: 0 0 20px 0;
+                font-size: inherit;
+                border: solid 1px #4F5A65;
+            }
+
+            tbody {
+                /*border:NONE;*/
+                border: solid 1px #4F5A65;
+                border-radius: 3px;
+            }
+
+            TABLE tr:nth-child(odd) {
+                background-color: #fff;
+            }
+
+            TABLE tr:nth-child(even) {
+                background-color: #fff;
+            }
+
+            TABLE tr:hover {
+                background-color: #ddd;
+            }
+
+            TABLE tr:hover td {
+                border: solid 1px #fff;
+            }
+
+            TABLE th {
+                padding: 6px 5px;
+                text-align: CENTER;
+                background-color: #4F5A65;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                font-size: .8rem;
+                font-weight: bold;
+                border: solid 1px #f4f4f4 !important;
+                border-radius: 0;
+            }
+
+            th:FIRST-CHILD {
+                border-radius: 3px 0 0 0;
+            }
+
+            th:LAST-CHILD {
+                border-radius: 0 3px 0 0;
+            }
+
+            th:only-child {
+                border-radius: 3px 3px 0 0 !important;
+            }
+
+            td {
+                font-size: .9rem;
+                border: solid 1px #f4f4f4;
+                padding: 4px;
+                COLOR: #333;
+            }
+
+            .tabla-blanco tr {
+                background-color: #fff !important;
+            }
+
+            .tabla-blanco tr:hover td {
+                border: solid 1px #f4f4f4;
+            }
+
+            .tabla-gris tr {
+                background-color: #f4f4f4 !important;
+            }
+
+            .tabla-gris tr:hover td {
+                border: solid 1px #f4f4f4;
+            }
+
+            input[type="submit"],
+            input[type="button"],
+            .boton {
+                background-color: #004A8F;
+                border: solid 1px #004A8F;
+                border-radius: 3px;
+                padding: 9px 10px;
+                color: #fff;
+                transition: all .4s ease;
+                font-size: .8rem;
+                animation-name: area-initialize;
+                animation-duration: .8s;
+                DISPLAY: inline-BLOCK;
+                text-decoration: NONE;
+                HEIGHT: auto;
+                margin: 0;
+                WIDTH: auto;
+            }
+
+            input[type="submit"]:hover,
+            input[type="button"]:hover,
+            .boton:hover {
+                background-color: #fff;
+                border: solid 1px #004A8F;
+                color: #004A8F;
+                box-shadow: inset 0px 0px 4px #004A8F;
+                border-radius: 3px;
+                transform: scale(1.07);
+                DISPLAY: inline-block;
+                text-decoration: NONE;
+            }
+
+            input[type="submit"]:disabled,
+            input[type="button"]:disabled,
+            .boton[disabled] {
+                background-color: #004A8F;
+                COLOR: #fff;
+            }
+
+            input[value="Regresar"] {
+                background-color: #004A8F;
+                border: solid 1px #004A8F;
+                COLOR: #fff;
+            }
+
+            input[value="Regresar"]:hover {
+                background-color: #fff;
+                COLOR: #333;
+                /*box-shadow: inset 0px 0px 5px #fff;*/
+            }
+
+            .borrar,
+            input[value="Borrar"] {
+                background-color: darkred;
+                border: solid 1px darkred;
+                COLOR: #fff;
+            }
+
+            .borrar:hover,
+            input[value="Borrar"]:hover {
+                background-color: #fff;
+                border: solid 1px darkred;
+                COLOR: #333;
+                box-shadow: inset 0px 0px 5px darkred;
+            }
+
+            button:focus {
+                /*outline: none;   */
+            }
+
+            .btn-stat div font i {
+                transition: ALL .4s ease;
+            }
+
+            .btn-stat:hover div font i {
+                COLOR: #004A8F;
+            }
+
+            .btn-stat div font {
+                transition: ALL .4s ease;
+            }
+
+            .btn-stat:hover div font {
+                COLOR: #004A8F;
+            }
+
+            .btn-stat div {
+                transition: ALL .4s ease;
+            }
+
+            .btn-stat:hover div {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 100%);
+            }
+
+            .btn-asiste input {
+                margin: 0;
+                padding: 4px 15px;
+                border: NONE;
+                BACKGROUND-color: rgba(220, 220, 220, .7);
+                COLOR: #333;
+                transition: ALL .4s ease;
+                opacity: 1;
+            }
+
+            .btn-asiste input:hover {
+                COLOR: #333;
+                background-color: #fff;
+                border: NONE;
+                box-shadow: inset 0px 0px 5px #fff;
+                opacity: 1;
+            }
+
+            .btn-asiste input:disabled {
+                COLOR: #11374B;
+                background-color: rgba(220, 220, 220, 1);
+                border: NONE;
+                opacity: 1;
+            }
+
+            input[type="checkbox"],
+            input[type="radio"] {
+                vertical-align: middle;
+            }
+
+            .card {
+                border-radius: 5px;
+                padding: 10px;
+                margin: 5px;
+                border: solid 2px #ddd;
+                border-top: dashed 1px #ddd;
+                display: block;
+                vertical-align: top;
+                width: auto;
+                font-size: 1rem;
+                background: linear-gradient(180deg, #fff 0%, #f4f4f4 100%);
+                box-shadow: 0px 3px 10px .5px #ddd;
+                transition: all .4s ease;
+                z-index: 1;
+            }
+
+            .card:hover {
+                box-shadow: 0px 3px 6px grey;
+                border: solid 2px #004A8F;
+                border-top: solid 1px #004A8F;
+                z-index: 10;
+                POSITION: relative;
+            }
+
+            a:hover .card:hover {
+                text-decoration: NONE !important;
+            }
+
+            .card.selected {
+                border-color: #FBC43D;
+                border-radius: 4px;
+            }
+
+            .card-icon-bg {
+                position: absolute;
+                font-size: 6em;
+                opacity: .06;
+                color: #004A8F;
+                z-index: -1;
+            }
+
+            .card-icon-bg:hover {
+                transform: scale(1);
+                filter: contrast(100%);
+                transition: NONE;
+                z-index: 0;
+            }
+
+            .form-input-align {
+                text-align: left;
+                WIDTH: auto;
+                margin: 3px;
+                border-bottom: dotted 1px #ccc;
+                DISPLAY: BLOCK;
+            }
+
+            .gradient {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 100%);
+                transition: ALL .4s ease;
+            }
+
+            .gradient:hover {
+                background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            }
+
+            .linea,
+            .div-line {
+                border-top: dashed 1px #ddd;
+                width: 98%;
+                MAX-WIDTH: 820px;
+                height: 1px;
+                margin: 20px auto;
+            }
+
+            .lbl {
+                display: inline-block;
+                font-size: 1rem;
+                border: dashed 1px lightgray;
+                padding: 5px;
+                margin: 1px;
+                transition: ALL .4s ease;
+            }
+
+            .btn-stat .d-inline-block {
+                background-color: #eee;
+                border: NONE;
+            }
+
+            .no-underline:hover {
+                text-decoration: NONE;
+            }
+
+            .msg {
+                animation-name: msg-muestra;
+                animation-duration: 1s;
+                /*background-color: LightGoldenRodYellow!important;                 COLOR:#333;                border-color:#f4f4f4;*/
+            }
+
+            @-webkit-keyframes msg-muestra {
+                0% {
+                    background-color: TRANSPARENT;
+                    COLOR: TRANSPARENT;
+                    RIGHT: -1000px;
+                }
+
+                50% {
+                    background-color: goldenrod;
+                    border-color: goldenrod;
+                    RIGHT: 0;
+                }
+            }
+
+            @keyframes msg-muestra {
+                0% {
+                    background-color: TRANSPARENT;
+                    COLOR: TRANSPARENT;
+                    RIGHT: -1000px;
+                }
+
+                50% {
+                    background-color: goldenrod;
+                    border: goldenrod;
+                    RIGHT: 0;
+                }
+            }
+
+            .alert-dismissible {
+                padding-right: .5rem !important;
+            }
+
+            span .fa-times {
+                transition: ALL .2s ease;
+            }
+
+            span .fa-times:hover {
+                font-size: 1.1rem;
+            }
+
+            .shadow-container {
+                box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+            }
+
+            .initial-container {
+                background-color: #f4f4f4;
+            }
+
+            .navbar-toggler-icon {
+                transform: rotate(90deg);
+                transition: ALL .4s ease;
+            }
+
+            .collapsed .navbar-toggler-icon {
+                transform: rotate(0deg);
+                transition: ALL .4s ease;
+            }
+
+            i {
+                opacity: .7;
+            }
+
+            .fa-exclamation-triangle {
+                COLOR: goldenrod !important;
+            }
+
+            .fa-plus {
+                COLOR: goldenrod !important;
+            }
+
+            .fa-clock {
+                COLOR: forestgreen !important;
+            }
+
+            .fa-check {
+                COLOR: steelblue !important;
+            }
+
+            .fa-times {
+                COLOR: indianred !important;
+            }
+
+            .fa-history {
+                COLOR: #004A8F !important;
+            }
+
+            .card-icon-bg {
+                COLOR: #4F5A65 !important;
+            }
+
+            .bread-crumb,
+            .breadcrumb {
+                font-size: .8rem;
+                text-align: LEFT;
+                align: LEFT;
+                WIDTH: 90%;
+                margin: auto;
+                padding: 5px 10px;
+                border-radius: 4px;
+                MAX-WIDTH: 1200px;
+                background-color: #ddd;
+                COLOR: c_text_dark;
+            }
+
+            .zoom {
+                transition: ALL .4s ease;
+                animation-name: area-initialize;
+                animation-duration: .8s;
+            }
+
+            .zoom:hover {
+                transform: scale(1.1);
+            }
+
+            .zoom-min {
+                transition: ALL .4s ease;
+            }
+
+            .zoom-min:hover {
+                transform: scale(1.03);
+            }
+
+            .no-zoom {
+                transform: scale(1) !important;
+            }
+
+            .header-big-text * {
+                DISPLAY: NONE;
+            }
+
+            .ss_texto,
+            .sc_texto,
+            .pp_texto,
+            .bt_texto,
+            .v_texto {
+                font-size: .7rem;
+            }
+
+            .dssypp {
+                DISPLAY: inline-block;
+            }
+
+            .header {
+                padding: 6px;
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+            }
+
+            /*Small*/
+            @media (min-width: 576px) {
+
+                .ss_texto,
+                .sc_texto,
+                .pp_texto,
+                .bt_texto,
+                .v_texto {
+                    font-size: 1rem;
+                }
+            }
+
+            /*Medium*/
+            @media (min-width: 768px) {
+                .header-big-text * {
+                    DISPLAY: BLOCK;
+                }
+
+                .dssypp {
+                    DISPLAY: NONE !important;
+                }
+
+                IF get-value("wk_cve_tipo_oferta")="DSP" THEN
+
+                /*Quita padding cuando es registro de oferta para centrar el heading*/
+                .header {
+                    padding: 0px 10px 0 10px;
+                }
+
+                ELSE .header {
+                    padding: 0px 10px 10px 10px;
+                }
+
+                /*ScrollAppear*/
+                .hide {
+                    opacity: 0;
+                    transform: scale(0.1);
+                    transition: all .3s ease;
+                }
+
+                .show {
+                    opacity: 1;
+                    transform: scale(1);
+                    transition: all .3s ease;
+                }
+            }
+
+            /*Large*/
+            @media (min-width: 992px) {}
+
+            /*VeryLarge*/
+            @media (min-width: 1200px) {
+                .wra-areas {
+                    width: 100%;
+                    MAX-WIDTH: 1000px;
+                }
+
+                .ss_texto,
+                .sc_texto,
+                .pp_texto,
+                .bt_texto,
+                .v_texto {
+                    font-size: 1rem;
+                }
+            }
+
+            /*TV*/
+            @media (min-width: 2560px) {
+                .wra-areas {
+                    width: 100%;
+                    MAX-WIDTH: 1000px;
+                }
+
+                .ss_texto,
+                .sc_texto,
+                .pp_texto,
+                .bt_texto,
+                .v_texto {
+                    font-size: 1.3rem;
+                }
+            }
+        </style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DN81BCCZTF"></script>
+        <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-DN81BCCZTF");</script>
+</head>
+
+<body style="background:url('https://deimos.dgi.uanl.mx/uanlimg/ws/dsp_bg1.png')">
+    <div id="main-container" class="container shadow-container p-4 text-center" style="background-color:#f4f4f4">
+        <form method="POST"
+            action="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/control.p?HTMLUsuario=2132062&HTMLtrim=05879244&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+            name="mi_forma">
+            <input name="HTMLTrund" type="hidden" value="">
+            <input name="HTMLPeriodo" type="hidden" value="0x00000000003b9101">
+            <input name="HTMLResill" type="hidden" value="85789">
+            <!-- ENCABEZADO -->
+            <div class="container">
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-sm-8 text-start">
+                            <div>Periodo :&nbsp;<b>Enero - Junio 2026</b></div>
+                            <div>Alumno:&nbsp;<b>2132062&nbsp;Loredo Perez Axel Arturo</b></div>
+                            <div>Carrera:&nbsp;<b>Ingeniero En Tecnologia De Software</b></div>
+                            <div>Plan de Estudio:&nbsp;<b>401</b></div>
+                            <div>Tutor:&nbsp;<b>RÍOS MERCADO ROGER ZIRAHUEN</b></div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="text-end"><b>06/01/2026</b></div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="container-fluid sticky-top" style="background-color:#f4f4f4; border-radius:0 5px 5px 0;">
+                    <div class="row d-flex align-items-center justify-content-center ">
+                        <div class="col-12 col-sm-6">
+                            <h6>Consulta de Horario</h6>
+                        </div>
+                        <div id="id_rpPnlEst" class="col-12 col-sm-6 text-end">
+                            <div class="container"><button class="boton m-2" onclick="regresar();"><i
+                                        class="fas fa-arrow-left"></i>&nbsp;&nbsp;Regresar</button><button
+                                    class="boton m-2" onclick="imprimir();"><i
+                                        class="fas fa-print"></i>&nbsp;&nbsp;Imprimir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <table>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <Th>Lunes</TD>
+                        <Th>Martes</TD>
+                        <Th>Miercoles</TD>
+                        <Th>Jueves</TD>
+                        <Th>Viernes</TD>
+                        <Th>Sabado</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 7:00 am a<BR> 7:50 am</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / A1<br>MODE<br>001<B> / </B>4113</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 7:50 am a<BR> 8:40 am</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / A1<br>MODE<br>001<B> / </B>4113</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 8:40 am a<BR> 9:30 am</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / A1<br>MODE<br>001<B> / </B>4113</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 1:40 pm a<BR> 2:30 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / LB<br>SISINT<br>505<B> / </B>4106</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 5:00 pm a<BR> 5:50 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / LB<br>VISIO<br>207<B> / </B>4111</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / LB<br>CONTRL<br>407<B> / </B>9103</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 5:50 pm a<BR> 6:40 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / LB<br>VISIO<br>207<B> / </B>4111</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / LB<br>CONTRL<br>407<B> / </B>9103</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 7:30 pm a<BR> 8:20 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / CO<br>INFCRI<br>008<B> / </B>3107</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 8:20 pm a<BR> 9:10 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / CO<br>INFCRI<br>008<B> / </B>3107</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / CO<br>PP<br>068<B> / </B>PP99</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                    <TR>
+                        <TD class="text-center" style="background-color:#FBC43D"> 9:10 pm a<BR>10:00 pm</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / CO<br>INFCRI<br>008<B> / </B>3107</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                        <TD class="text-center p-1"><b>F-01</b> / CO<br>PP<br>068<B> / </B>PP99</TD>
+                        <TD class="text-center p-1">&nbsp;</TD>
+                    </tr>
+                </TABLE>
+                <div class="container-fluid px-0">
+                    <div class="row">
+                        <div class="col-12 col-xxl-8">
+                            <h6>Nomenclatura de Materias</h6>
+                            <hr>
+                            <table>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Clave<br>Materia</th>
+                                    <th>Materia</th>
+                                    <th>Abreviación<br>de Materia</th>
+                                    <th>Unidad<br>Oferta</th>
+                                    <th>Grupo</th>
+                                    <th>Tipo<br>Oferta</th>
+                                    <th>Frec.Pres</th>
+                                    <th>Frec.Línea</th>
+                                    <th>Frec.Total</th>
+                                    <th>Cred</th>
+                                    <th>Op</th>
+                                    <th>Depcia.</th>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">064</TD>
+                                    <TD class="text-start">PENSAMIENTO CREATIVO</TD>
+                                    <TD class="text-start">PENSA</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">008</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>No Escolarizada</b>
+                                    </TD>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">3</td>
+                                    <td>2</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">LB</TD>
+                                    <TD class="text-center">270</TD>
+                                    <TD class="text-start">CONTROLADORES Y MICROCONTRL. PROGRAMABLES</TD>
+                                    <TD class="text-start">CONTRL</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">407</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">2</td>
+                                    <td>1</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">772</TD>
+                                    <TD class="text-start">PRACTICAS PROFESIONALES</TD>
+                                    <TD class="text-start">PP</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">068</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">2</td>
+                                    <td>6</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">833</TD>
+                                    <TD class="text-start">PROYECTO INTEGRADOR 2</TD>
+                                    <TD class="text-start">PROYINT</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">004</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>No Escolarizada</b>
+                                    </TD>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">3</td>
+                                    <td>4</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">A1</TD>
+                                    <TD class="text-center">844</TD>
+                                    <TD class="text-start">MODELADO Y SIMULACION DE SIST. DINAMICOS</TD>
+                                    <TD class="text-start">MODE</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">001</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td>3</td>
+                                    <TD class="text-center">3</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">847</TD>
+                                    <TD class="text-start">SEGURIDAD DE LA INFORMACION Y CRIPTOGRAFIA</TD>
+                                    <TD class="text-start">INFCRI</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">008</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td>3</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">852</TD>
+                                    <TD class="text-start">TEMAS SEL. DE SISTEMAS INTELIGENTES</TD>
+                                    <TD class="text-start">SISINT</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">002</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>No Escolarizada</b>
+                                    </TD>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">3</td>
+                                    <td>2</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">LB</TD>
+                                    <TD class="text-center">852</TD>
+                                    <TD class="text-start">TEMAS SEL. DE SISTEMAS INTELIGENTES</TD>
+                                    <TD class="text-start">SISINT</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">505</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">1</td>
+                                    <td>1</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">CO</TD>
+                                    <TD class="text-center">859</TD>
+                                    <TD class="text-start">VISION COMPUTACIONAL</TD>
+                                    <TD class="text-start">VISIO</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">002</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>No Escolarizada</b>
+                                    </TD>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">3</td>
+                                    <td>3</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <TR>
+                                    <TD class="text-center">LB</TD>
+                                    <TD class="text-center">859</TD>
+                                    <TD class="text-start">VISION COMPUTACIONAL</TD>
+                                    <TD class="text-start">VISIO</TD>
+                                    <TD class="text-center" style="background-color:#2DB92D;">01</TD>
+                                    <TD class="text-center">207</TD>
+                                    <TD class="text-center" style="background-color:#FBC43D;"><b>Escolarizada</b></TD>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-center">2</td>
+                                    <td>1</td>
+                                    <TD class="text-center">1</TD>
+                                    <TD class="text-center">FIME</TD>
+                                </tr>
+                                <tr>
+                                    <td colspan=7 class="fw-bold">TOTALES</td>
+                                    <td class="fw-bold">13</td>
+                                    <td class="fw-bold">12</td>
+                                    <td class="fw-bold">25</td>
+                                    <td class="fw-bold">26</td>
+                                    <td colspan=2></td>
+                                </tr>
+                            </table>
+                            <h6>Total de Horas</h6>
+                            <hr>
+                            <table>
+                                <tr>
+                                    <th>Presenciales</th>
+                                    <th>Asíncronas</th>
+                                    <th>Totales</th>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>12</td>
+                                    <td>25</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-12 col-xxl-4">
+                            <div>
+                                <h6>Nomenclatura Horario</h6>
+                                <hr>
+                                <TABLE>
+                                    <TR>
+                                        <Th>Hora</Th>
+                                        <Th>Día</Th>
+                                    </TR>
+                                    <TR>
+                                        <TD class="text-center">Hora Inicial a<BR>Hora Final<BR></TD>
+                                        <TD class="text-center">Tipo de Inscripcion<BR>Materia Abreviada<BR>Grupo <B> /
+                                            </B> Salon</TD>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h6>Nomeclatura de Fases</h6>
+                                <hr>
+                                <TABLE>
+                                    <TR>
+                                        <Th>Fase</Th>
+                                        <Th>Se Cursara</Th>
+                                    </TR>
+                                    <TR>
+                                        <TD class="text-center">F-01</TD>
+                                        <TD>&nbsp;</TD>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h6>Nomeclatura de Unidades</h6>
+                                <hr>
+                                <TABLE>
+                                    <TR>
+                                        <Th>Unidad<br>Oferta</Th>
+                                        <Th>Descripción</Th>
+                                    </TR>
+                                    <TR>
+                                        <TD style="background-color:#2DB92D;">01</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERÍA MECÁNICA Y ELÉCTRICA
+                                            <code>(Mi Unidad)</code></TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">02</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA LINARES </TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">03</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA SANTIAGO
+                                        </TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">04</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA SABINAS
+                                            HIDALGO </TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">05</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA CADEREYTA
+                                        </TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">06</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA JUAREZ </TD>
+                                    </tr>
+                                    <TR>
+                                        <TD style="background-color:#FBC43D;">07</TD>
+                                        <TD class="text-start">FACULTAD DE INGENIERIA MECANICA Y ELECTRICA GARCIA </TD>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--VARV-->
+                <!---->
+                <!-- FIN DETALLE -->
+                <div class="card">
+                    <div class="msg alert alert-warning"><i class="fas fa-info"></i>&nbsp;&nbsp;Alumnos que inscribieron
+                        cursos de asesoría ordinaria, la fecha de vencimiento del pago del curso es el 24 de Enero de
+                        2025, de no efectuar el pago correspondiente, quedarán inscritos en automático en el primer
+                        examen de regularización, que será del 17 al 21 de Febrero de 2025, consulta el calendario
+                        oficial.</div>
+                    <TABLE>
+                        <tr>
+                            <td>MODELADO Y SIMULACION DE SIST. DINAMICOS</td>
+                        </tr>
+                    </TABLE>
+                </div><br>
+            </div> <!-- VARV: Container - Se cambio de table -->
+        </form>
+    </div>
+</body>
+<script type="text/javascript" language="Javascript">
+    function regresar() {
+        document.mi_forma.HTMLTrund.value = "echalm01";
+        document.mi_forma.submit();
+        /*window.history.back(2); */
+    }    
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+    function imprimir() {
+        document.querySelector("#main-container").classList.toggle("shadow-container");
+        document.getElementById("id_rpPnlEst").style.display = "none";
+        window.print();
+        document.getElementById("id_rpPnlEst").style.display = "inline-block";
+        document.mi_forma.HTMLTrund.value = "echalm02";
+        document.querySelector("#main-container").classList.toggle("shadow-container");
+    }
+</SCRIPT>
+
+</html>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->

@@ -1,0 +1,304 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- E4GL Disabled: meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" / -->
+    <title>SIASE - Situacion Estudiante UANL</title>
+    <style type="text/css">
+        .Titulo {
+            font-size: 14px;
+        }
+
+        .TitDoctos {
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+        .Doctos {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .Instrucciones {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .EtapasTit {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            text-align: center;
+        }
+
+        .EtapasNum {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            text-align: right;
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        .EtapasDesc {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+            border-top-width: thin;
+            border-right-width: thin;
+            border-bottom-width: thin;
+            border-left-width: thin;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-bottom-style: solid;
+            border-left-style: solid;
+        }
+
+        .TitReglamento {
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+        .Reglamentos {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8px;
+        }
+
+        .Atte {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10px;
+        }
+
+        .TitDA {
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 16px;
+        }
+
+        .SubTitDA {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        .ContenidoDA {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            line-height: 20px;
+        }
+
+        .Manifiesto {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            text-align: justify;
+        }
+
+        .Firma {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+        }
+
+        .HorarioInscripcion {
+            font-family: Verdana, Geneva, sans-serif;
+        }
+
+        .HorarioInscripcion {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+        }
+
+        .Credencial {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .NombreAlumno {
+            text-align: left;
+            position: absolute;
+            top: 75px;
+            left: 160px;
+            color: #FFC20E;
+            font-size: small;
+        }
+
+        .CodQR {
+            position: absolute;
+            //top: 50%;
+            //left: 50%;
+            //transform: translate(-50%, -50%);
+            top: 100px;
+            left: 365px;
+        }
+
+        .FotoAl {
+            position: absolute;
+            //top: 50%;
+            //left: 50%;
+            //transform: translate(-50%, -50%);
+            top: 11px;
+            left: 380px;
+        }
+    </style>
+    <!-- <script src="`vcImagenes`jquery/jquery-1.3.2.js"></script>  -->
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws/SiaseEscolar/css/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/SiaseEscolar/js/jquery-1.9.1.js"></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/SiaseEscolar/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery-qrcode-0.18.0/jquery-qrcode-0.18.0.js"></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery-qrcode-0.18.0/demo/scripts.js"></script>
+    <script src="`vcImagenes`jquery/jquery.barcode.0.3.js" height="200" width="200"></script>
+    <script language="JavaScript">
+        $(document).ready(function () {
+            $("#idAvisoPosgrado").dialog({
+                closeOnEscape: false,
+                // autoOpen: false, 
+                modal: true,
+                show: "blind",
+                hide: "blind",
+                width: 500,
+                // position: 'center', 
+                resizable: false,
+                draggable: false,
+                buttons: {
+                    Continuar: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <center>
+        <div align="center" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+            <table width="600px" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td rowspan="4" width="23">&nbsp;</td>
+                    <td width="555" align="center" class="Titulo">
+                        <p>DEPARTAMENTO ESCOLAR Y DE ARCHIVO DE LA UANL</p>
+                    </td>
+                    <td rowspan="4" width="22" align="right" valign="middle">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="center" class="Titulo">SEMESTRE : Enero - Junio 2026</td>
+                </tr>
+            </table>
+        </div>
+        &nbsp;
+        <div align="left" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:16px">
+            ESTUDIANTE:&nbsp;<strong>2132062&nbsp;LOREDO&nbsp;PEREZ&nbsp;AXEL ARTURO</strong></div>
+        &nbsp;
+        <div align="center" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:20px">
+            Identificación Virtual Temporal</div>
+        &nbsp;
+        <div align="left" id="idCredencial" style="width:600px" class="Credencial">
+            <img src="https://deimos.dgi.uanl.mx/uanlimg/ws/credencial_uanl-3b.jpg">
+            <div class="NombreAlumno">
+                LOREDO<br>
+                PEREZ<br>
+                AXEL ARTURO<br>
+                2132062<br><br>
+                Enero - Junio 2026 </div>
+            <br><br>
+            <div class="FotoAl"><img
+                    src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA3LjEtYzAwMCA3OS45Y2NjNGRlOTMsIDIwMjIvMDMvMTQtMTQ6MDc6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI0RkJBNTdCMDZBNTExRURBNDI4QzA2QkVEN0JBMDZEIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI0RkJBNTdBMDZBNTExRURBNDI4QzA2QkVEN0JBMDZEIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMDIyIFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBOEY4N0JBRjA2QTMxMUVEQkMyNkU5Q0MxMERBRTM4NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBOEY4N0JCMDA2QTMxMUVEQkMyNkU5Q0MxMERBRTM4NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEABALCwsMCxAMDBAXDw0PFxsU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"
+                    width="68" height="78" border="1">
+            </div>
+            <div class="CodQR" id="qrcode"></div>
+            <script>
+                //jQuery('#qrcode').qrcode("Hola esta es la informacion de Clemente Pereda Rodriguez");
+                jQuery('#qrcode').qrcode({
+                    render: "canvas",
+                    minVersion: 1,
+                    maxVersion: 40,
+                    ecLevel: 'H',
+                    left: 0,
+                    top: 0,
+                    size: 85,
+                    fill: '#FFC20E',
+                    background: null,
+                    text: "2132062|AXEL ARTURO|LOREDO|PEREZ|Inscrito en. Enero - Junio 2026",
+                    radius: 0,
+                    quiet: 0,
+                    mode: 4,
+                    mSize: 0.12,
+                    mPosX: 0.5,
+                    mPosY: 0.5,
+                    label: 'UANL',
+                    fontname: 'sans',
+                    fontcolor: '#FF9818',
+                    image: 'uanlU.jpg'
+                });
+                //jQuery('#qrcodeCanvas').qrcode({
+                //      text    : "1851156|Alejandro Pereda Martínez|Inscrito en Agoso 2020-Enero 2021"
+                //}); 
+            </script>
+        </div>
+        &nbsp;
+        <div align="left" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:12px">
+            Divisi&oacute;n:-Inscripciones y Credencializaci&oacute;n</div>
+        <div align="left"
+            style="width:594px; border-style:solid; border-width:thin; font-family: Arial, Helvetica, sans-serif; font-size:12px; padding:3px">
+            <div>SITUACI&Oacute;N DEL ESTUDIANTE: &nbsp;DEFINITIVO </div>
+            <div>TIPO DE INSCRIPCIÓN:&nbsp;REINGRESO</div>
+        </div>
+        &nbsp;
+        <div align="left" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:12px">FOTO ACEPTADA:
+            SI</div>
+        &nbsp;
+        <!--     <div align="left" style="width:600px; border-style:solid; border-width:thin; font-family: Arial, Helvetica, sans-serif; font-size:12px">                                                      -->
+        <!--         <p>A todos los Alumnos Pendientes de Recoger su Credencial Universitaria</p>                                                                                                              -->
+        <!--         <p>Se les informa que por motivos de la contingencia de salud que priva en nuestro estado, la entrega física de la misma, será programada cuando la emergencia sanitaria lo permita.</p>  -->
+        <!--         <p>Por lo anterior te pedimos estar atento a los comunicados que este Departamento emita para poder reanudar actividades presenciales.</p>                                                -->
+        <!--         <p>Agradecemos su comprensión a la situación emergente que nos afecta.</p>                                                                                                                -->
+        <!--         <br>                                                                                                                                                                                      -->
+        <!--         <p align="center">Atentamente<br>Dirección del Departamento Escolar y de Archivo.</p>                                                                                                     -->
+        <!--     </div>                                                                                                                                                                                        -->
+        &nbsp;
+        <div align="left" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:14px">
+            <strong>Nota: El tramite es unicamente al estudiante</strong>
+        </div>
+        <br />
+        <div align="center" style="width:600px; font-family: Arial, Helvetica, sans-serif; font-size:12px"><input
+                name="Imprimir" type="button" value="Imprimir" onclick="JavaScript:Imprime();" /></div>
+    </center>
+</body>
+
+</html>
+<script language="JavaScript">
+    function Imprime() {
+        var vcParam = {
+            "HTMLCve_Dependencia": "02316",
+            "HTMLCve_Unidad": "01",
+            "HTMLMatricula": "2132062",
+            "HTMLCve_Nivel_Academico": "02",
+            "HTMLCve_Grado_Academico": "03",
+            "HTMLCve_Modalidad": "1",
+            "HTMLCve_Plan_Estudio": "401",
+            "HTMLCve_Carrera": "10",
+            "HTMLAccion": "2"
+        };
+        $.ajax({
+            url: 'ecSitEst30.htm',
+            data: vcParam,
+            type: 'POST',
+            dataType: 'html',
+            success: function (a) {
+                window.print();
+            },
+            error: function (xhr, status) {
+                alert('No se puedo realizar la impresion, vuelva a intentarlo.');
+            },
+            complete: function (xhr, status) {
+                //alert('Petición realizada');
+            }
+        });
+        //window.print() ;  
+    };
+</script>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->

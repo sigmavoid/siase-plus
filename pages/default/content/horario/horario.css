@@ -1,0 +1,707 @@
+/* ============================================
+   SIASE+ — horario.css
+   Alineado con califs.css
+   Light by default · toggle activa modo OSCURO
+   Aplica a: echalm01 (selector de periodo horario)
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-anthropic-sans: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-primario: #007bff;
+    --bg-surface: #ffffff;
+    --bg-surface-2: #f8fafc;
+    --texto-principal: #111827;
+    --texto-secundario: #4b5563;
+    --texto-terciario: #6b7280;
+    --borde: #e2e8f0;
+    --sombra-card: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.05);
+    --radio: 14px;
+    --radio-sm: 8px;
+    --pill-bg: #f1f5f9;
+    --pill-color: #475569;
+    --pill-border: #e2e8f0;
+}
+
+/* ── Modo oscuro (activado por body.dark-mode / html.dark-mode desde califs.js) ── */
+html.dark-mode,
+body.dark-mode {
+    background-color: #080c18 !important;
+    color: #e2e8f0 !important;
+    --bg-surface: #131c31;
+    --bg-surface-2: #0f1829;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #a3b8cc;
+    --texto-terciario: #64748b;
+    --borde: rgba(130, 177, 255, 0.15);
+    --sombra-card: 0 2px 16px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+    --pill-bg: #0f1829;
+    --pill-color: #a3b8cc;
+    --pill-border: rgba(130, 177, 255, 0.18);
+}
+
+/* ── Base: neutralizar estilos legacy del frame ── */
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    font-family: var(--font-anthropic-sans) !important;
+    background-color: var(--bg-surface-2) !important;
+    background-image: none !important;
+    color: var(--texto-principal) !important;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Ocultar todo el contenido legacy del frame */
+body>.container,
+body>.container-init,
+.container.container-init {
+    display: none !important;
+}
+
+/* ══════════════════════════════════════════
+   SELECTOR DE PERIODO — HORARIO
+   Idéntico en estructura a #cfs-selector-wrap
+   ══════════════════════════════════════════ */
+
+#hrr-selector-wrap {
+    width: 100%;
+    max-width: 520px;
+    margin: 48px auto 0;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: var(--font-anthropic-sans);
+}
+
+/* Tarjeta */
+#hrr-selector-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#hrr-selector-card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    margin: 0;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-left: 12px;
+    font-family: var(--font-anthropic-sans);
+}
+
+#hrr-selector-card h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario);
+    border-radius: 2px;
+}
+
+/* Lista de periodos como botones */
+#hrr-periodo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#hrr-periodo-list li {
+    width: 100%;
+}
+
+#hrr-periodo-list button {
+    width: 100%;
+    text-align: left;
+    background: var(--pill-bg);
+    color: var(--pill-color);
+    border: 1px solid var(--pill-border);
+    border-radius: var(--radio-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: var(--font-anthropic-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+
+#hrr-periodo-list button:hover {
+    background: #e8f0fe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+body.dark-mode #hrr-periodo-list button:hover {
+    background: #1a2a4a;
+    color: #bfdbfe;
+    border-color: #1d4ed8;
+}
+
+/* Botón Aceptar */
+#hrr-btn-aceptar {
+    width: 100%;
+    padding: 11px 0;
+    background: #1d4ed8;
+    color: #fff;
+    border: none;
+    border-radius: var(--radio-sm);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-anthropic-sans);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
+}
+
+#hrr-btn-aceptar:hover {
+    background: #1e40af;
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.4);
+    transform: translateY(-1px);
+}
+
+#hrr-btn-aceptar:active {
+    transform: translateY(0);
+}
+
+body.dark-mode #hrr-btn-aceptar {
+    background: #1d4ed8;
+    color: #bfdbfe;
+}
+
+body.dark-mode #hrr-btn-aceptar:hover {
+    background: #2563eb;
+}
+
+tbody {
+    border: solid 1px var(--borde) !important;
+}
+
+/* ══════════════════════════════════════════
+   CONTROL DE HORARIO (echalm02 / control.p)
+   Estilos migrados desde horario.js
+   ══════════════════════════════════════════ */
+/* ── Reset forzado del contenedor legacy ── */
+#main-container {
+    background-color: var(--bg-surface-2, #f8fafc) !important;
+    background-image: none !important;
+    color: var(--texto-principal, #111827) !important;
+    font-family: var(--font-anthropic-sans, system-ui, sans-serif) !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* ── Dark mode forzado sobre elementos internos del legacy ── */
+html.dark-mode #main-container,
+body.dark-mode #main-container {
+    background-color: var(--bg-surface-2) !important;
+}
+
+/* ── Wrapper principal ── */
+#hrr-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--font-anthropic-sans, system-ui, sans-serif);
+}
+
+/* ── Nav de periodos ── */
+#hrr-periodo-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 20px;
+    background: var(--bg-surface, #fff);
+    border: 1px solid var(--borde, #e2e8f0);
+    border-radius: var(--radio, 14px);
+    box-shadow: var(--sombra-card, 0 2px 12px rgba(0, 0, 0, .07));
+}
+
+#hrr-periodo-nav span {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--texto-terciario, #6b7280);
+    align-self: center;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+.hrr-nav-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--pill-border, #e2e8f0);
+    background: var(--pill-bg, #f1f5f9);
+    color: var(--pill-color, #475569);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    white-space: nowrap;
+}
+
+.hrr-nav-btn:hover {
+    background: #e8f0fe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+.hrr-nav-btn.activo {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+}
+
+body.dark-mode .hrr-nav-btn:hover {
+    background: #1a2a4a;
+    color: #bfdbfe;
+    border-color: #1d4ed8;
+}
+
+body.dark-mode .hrr-nav-btn.activo {
+    background: #1d4ed8;
+    color: #bfdbfe;
+    border-color: #2563eb;
+}
+
+/* ── Tarjeta genérica ── */
+.hrr-card {
+    background: var(--bg-surface, #fff);
+    border: 1px solid var(--borde, #e2e8f0);
+    border-radius: var(--radio, 14px);
+    box-shadow: var(--sombra-card, 0 2px 12px rgba(0, 0, 0, .07));
+    padding: 24px;
+    overflow: hidden;
+}
+
+/* ── Encabezado info alumno ── */
+#hrr-header-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#hrr-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+#hrr-header-info .hrr-info-row {
+    font-size: 13px;
+    color: var(--texto-secundario, #4b5563);
+    line-height: 1.5;
+    text-align: left;
+    width: 100%;
+}
+
+#hrr-header-info .hrr-info-row * {
+    text-align: left !important;
+}
+
+#hrr-header-info .hrr-info-row b,
+#hrr-header-info .hrr-info-row strong {
+    color: var(--texto-principal, #111827);
+    font-weight: 600;
+}
+
+#hrr-header-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#hrr-header-title h2 {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: var(--texto-principal, #111827) !important;
+    margin: 0 !important;
+    letter-spacing: -.01em !important;
+    position: relative;
+    padding-left: 12px;
+}
+
+#hrr-header-title h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario, #007bff);
+    border-radius: 2px;
+}
+
+#hrr-header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hrr-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--borde, #e2e8f0);
+    background: var(--pill-bg, #f1f5f9);
+    color: var(--pill-color, #475569);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .15s;
+    text-decoration: none;
+}
+
+.hrr-action-btn:hover {
+    background: #e8f0fe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+.hrr-action-btn.primary {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, .25);
+}
+
+.hrr-action-btn.primary:hover {
+    background: #1e40af;
+    border-color: #1e40af;
+}
+
+body.dark-mode .hrr-action-btn {
+    background: var(--pill-bg);
+    color: var(--pill-color);
+    border-color: var(--pill-border);
+}
+
+body.dark-mode .hrr-action-btn:hover {
+    background: #1a2a4a;
+    color: #bfdbfe;
+    border-color: #1d4ed8;
+}
+
+/* ── Tarjeta de tabla con scroll horizontal ── */
+.hrr-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── Tabla moderna compartida ── */
+.hrr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    font-family: inherit;
+    border: none !important;
+}
+
+.hrr-table th {
+    background: #1d4ed8 !important;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 9px 10px;
+    text-align: center;
+    border: none !important;
+    white-space: nowrap;
+}
+
+body.dark-mode .hrr-table th {
+    background: #1e3a6e !important;
+    color: #bfdbfe !important;
+}
+
+.hrr-table td {
+    padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--borde, #e2e8f0) !important;
+    border-right: 1px solid var(--borde, #e2e8f0) !important;
+    border-top: none !important;
+    border-left: none !important;
+    color: var(--texto-principal, #111827) !important;
+    vertical-align: middle;
+    line-height: 1.35;
+}
+
+.hrr-table td:first-child {
+    font-weight: 600;
+    font-size: 11px;
+    background: rgba(29, 78, 216, .06);
+    color: #1d4ed8 !important;
+    white-space: nowrap;
+}
+
+body.dark-mode .hrr-table td {
+    color: var(--texto-principal) !important;
+    border-color: var(--borde) !important;
+}
+
+body.dark-mode .hrr-table td:first-child {
+    background: rgba(29, 78, 216, .12);
+    color: #93c5fd !important;
+}
+
+.hrr-table tr:hover td {
+    background: rgba(29, 78, 216, .04);
+}
+
+body.dark-mode .hrr-table tr:hover td {
+    background: rgba(29, 78, 216, .08);
+}
+
+/* Celda con contenido de materia */
+.hrr-cell-materia {
+    font-size: 11px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.hrr-cell-materia-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+}
+
+.hrr-cell-materia .hrr-fase {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+
+body.dark-mode .hrr-cell-materia .hrr-fase {
+    color: #93c5fd;
+}
+
+.hrr-cell-materia .hrr-tipo {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(29, 78, 216, .1);
+    color: #1d4ed8;
+}
+
+body.dark-mode .hrr-cell-materia .hrr-tipo {
+    background: rgba(29, 78, 216, .25);
+    color: #93c5fd;
+}
+
+.hrr-cell-materia .hrr-abrev {
+    font-weight: 700;
+    font-size: 11.5px;
+    display: block;
+    text-align: center;
+}
+
+.hrr-cell-materia .hrr-nombre {
+    font-size: 9px;
+    color: var(--texto-terciario, #6b7280);
+    display: block;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.3;
+    max-width: 90px;
+    overflow-wrap: break-word;
+}
+
+.hrr-cell-materia .hrr-salon {
+    font-size: 10px;
+    color: var(--texto-terciario, #6b7280);
+    display: block;
+    text-align: center;
+}
+
+/* ── Totales row ── */
+.hrr-table tr.hrr-totales td {
+    font-weight: 700;
+    background: rgba(29, 78, 216, .05) !important;
+}
+
+/* ── Subtítulos de sección ── */
+.hrr-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--texto-principal, #111827);
+    margin: 0 0 12px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.hrr-section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario, #007bff);
+    border-radius: 2px;
+}
+
+/* ── Grid para tablas de nomenclatura y horas ── */
+#hrr-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 700px) {
+    #hrr-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #hrr-header-card {
+        flex-direction: column;
+    }
+
+    #hrr-header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* ── Badge de unidad ── */
+.hrr-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 11px;
+    color: #1d4ed8;
+    background: rgba(29, 78, 216, .12);
+    border: 1px solid rgba(29, 78, 216, .2);
+}
+
+/* Unidad propia destacada */
+.hrr-badge.mia {
+    background: rgba(45, 185, 45, .15);
+    color: #166534;
+    border-color: rgba(45, 185, 45, .3);
+}
+
+body.dark-mode .hrr-badge.mia {
+    background: rgba(45, 185, 45, .2);
+    color: #86efac;
+}
+
+body.dark-mode .hrr-badge {
+    color: #93c5fd;
+}
+
+/* ── Tipo oferta pill ── */
+.hrr-oferta-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+}
+
+.hrr-oferta-pill.escolarizada {
+    background: rgba(29, 78, 216, .1);
+    color: #1d4ed8;
+}
+
+.hrr-oferta-pill.no-escolarizada {
+    background: rgba(251, 196, 61, .2);
+    color: #92400e;
+}
+
+body.dark-mode .hrr-oferta-pill.escolarizada {
+    background: rgba(29, 78, 216, .25);
+    color: #93c5fd;
+}
+
+body.dark-mode .hrr-oferta-pill.no-escolarizada {
+    background: rgba(251, 196, 61, .15);
+    color: #fcd34d;
+}
+
+/* ── Alerta ── */
+.hrr-alert {
+    background: rgba(251, 196, 61, .1);
+    border: 1px solid rgba(251, 196, 61, .35);
+    border-radius: var(--radio-sm, 8px);
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: var(--texto-secundario, #4b5563);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.hrr-alert svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #d97706;
+}
+
+body.dark-mode .hrr-alert {
+    background: rgba(251, 196, 61, .08);
+    border-color: rgba(251, 196, 61, .2);
+}
+
+/* ── Print ── */
+@media print {
+
+    #hrr-periodo-nav,
+    #hrr-header-actions {
+        display: none !important;
+    }
+
+    .hrr-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}

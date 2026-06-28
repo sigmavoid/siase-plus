@@ -1,0 +1,467 @@
+/* ============================================
+   SIASE+ — calificaciones.css
+   Alineado con kardex.css
+   Light by default · toggle activa modo OSCURO
+   Aplica a: econcfs01 (selector) y econcfs02 (tabla de califs)
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-anthropic-sans: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --bg-surface: #ffffff;
+    --bg-surface-2: #f8fafc;
+    --texto-principal: #111827;
+    --texto-secundario: #4b5563;
+    --texto-terciario: #6b7280;
+    --borde: #e2e8f0;
+    --sombra-card: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.05);
+    --sombra-card-hover: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.07);
+    --radio: 14px;
+    --radio-sm: 8px;
+    --notice-accent: #1d4ed8;
+    --success: #16a34a;
+    --warning: #d97706;
+    --pill-active-bg: #1d4ed8;
+    --pill-active-color: #ffffff;
+    --pill-bg: #f1f5f9;
+    --pill-color: #475569;
+    --pill-border: #e2e8f0;
+}
+
+/* ── Modo oscuro ── */
+html.dark-mode,
+body.dark-mode {
+    background-color: #080c18 !important;
+    color: #e2e8f0 !important;
+    --bg-surface: #131c31;
+    --bg-surface-2: #0f1829;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #a3b8cc;
+    --texto-terciario: #64748b;
+    --borde: rgba(130, 177, 255, 0.15);
+    --sombra-card: 0 2px 16px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+    --sombra-card-hover: 0 8px 32px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(0, 123, 255, 0.18);
+    --notice-accent: #82b1ff;
+    --warning: #fbbf24;
+    --success: #4ade80;
+    --pill-active-bg: #1d4ed8;
+    --pill-active-color: #bfdbfe;
+    --pill-bg: #0f1829;
+    --pill-color: #a3b8cc;
+    --pill-border: rgba(130, 177, 255, 0.18);
+}
+
+/* ── Base ── */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-anthropic-sans) !important;
+    background-color: var(--bg-surface-2) !important;
+    color: var(--texto-principal);
+    line-height: 1.55;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    /* Eliminar fondo legacy */
+    background-image: none !important;
+}
+
+/* Anular overrides legacy de tablas globales */
+table,
+td,
+tr {
+    background-color: transparent !important;
+    color: inherit !important;
+    border-color: var(--borde) !important;
+    text-align: center !important;
+}
+
+/* ══════════════════════════════════════════
+   SECCIÓN A — ECONCFS01 (selector de periodo)
+   Contenedor principal
+   ══════════════════════════════════════════ */
+
+#cfs-selector-wrap {
+    width: 100%;
+    max-width: 520px;
+    margin: 48px auto 0;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: var(--font-anthropic-sans);
+}
+
+/* Tarjeta del selector */
+#cfs-selector-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#cfs-selector-card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    margin: 0;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-left: 12px;
+    font-family: var(--font-anthropic-sans);
+}
+
+#cfs-selector-card h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario);
+    border-radius: 2px;
+}
+
+/* Lista de periodos como pills */
+#cfs-periodo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#cfs-periodo-list li {
+    width: 100%;
+}
+
+#cfs-periodo-list button {
+    width: 100%;
+    text-align: left;
+    background: var(--pill-bg);
+    color: var(--pill-color);
+    border: 1px solid var(--pill-border);
+    border-radius: var(--radio-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-family: var(--font-anthropic-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+
+#cfs-periodo-list button:hover {
+    background: #e8f0fe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+body.dark-mode #cfs-periodo-list button:hover {
+    background: #1a2a4a;
+    color: #bfdbfe;
+    border-color: #1d4ed8;
+}
+
+#cfs-periodo-list button.activo {
+    /* background: var(--pill-active-bg);
+    color: var(--pill-active-color);
+    border-color: var(--pill-active-bg);
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25); */
+}
+
+body.dark-mode #cfs-periodo-list button.activo {
+    /* box-shadow: 0 2px 12px rgba(29, 78, 216, 0.4); */
+}
+
+/* Botón Aceptar */
+#cfs-btn-aceptar {
+    width: 100%;
+    padding: 11px 0;
+    background: #1d4ed8;
+    color: #fff;
+    border: none;
+    border-radius: var(--radio-sm);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-anthropic-sans);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
+}
+
+#cfs-btn-aceptar:hover {
+    background: #1e40af;
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.4);
+    transform: translateY(-1px);
+}
+
+#cfs-btn-aceptar:active {
+    transform: translateY(0);
+}
+
+body.dark-mode #cfs-btn-aceptar {
+    background: #1d4ed8;
+    color: #bfdbfe;
+}
+
+body.dark-mode #cfs-btn-aceptar:hover {
+    background: #2563eb;
+}
+
+/* ══════════════════════════════════════════
+   SECCIÓN B — ECONCFS02 / CONTROL (tabla de calificaciones)
+   ══════════════════════════════════════════ */
+
+/* Ocultar forma legacy y body background */
+body>form>b,
+body>form>br:first-of-type,
+table[width="97%"],
+table[width="70%"] {
+    display: none !important;
+}
+
+/* Contenedor raíz */
+#cfs-wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    font-family: var(--font-anthropic-sans);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Nav de periodos (barra superior en control) ── */
+#cfs-period-nav {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#cfs-period-nav .cfs-nav-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--texto-terciario);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#cfs-period-nav .cfs-nav-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.cfs-nav-pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-anthropic-sans);
+    border: 1px solid var(--pill-border);
+    background: var(--pill-bg);
+    color: var(--pill-color);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    line-height: 1;
+}
+
+.cfs-nav-pill:hover {
+    background: #e8f0fe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+body.dark-mode .cfs-nav-pill:hover {
+    background: #1a2a4a;
+    color: #bfdbfe;
+    border-color: #1d4ed8;
+}
+
+.cfs-nav-pill.activo {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+    font-weight: 700;
+}
+
+body.dark-mode .cfs-nav-pill.activo {
+    color: #bfdbfe;
+}
+
+/* ── Encabezado del periodo activo ── */
+#cfs-header {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    padding: 16px 20px 14px;
+    font-family: var(--font-anthropic-sans);
+}
+
+#cfs-header .cfs-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+}
+
+#cfs-header .cfs-periodo-activo {
+    font-size: 13px;
+    color: var(--texto-secundario);
+}
+
+#cfs-header .cfs-periodo-activo span {
+    font-weight: 600;
+    color: var(--notice-accent);
+}
+
+/* ── Tabla de calificaciones ── */
+#cfs-table-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+#cfs-table-wrap table {
+    width: 100% !important;
+    border-collapse: collapse;
+    font-family: var(--font-anthropic-sans);
+    font-size: 12px;
+    background: transparent !important;
+}
+
+/* Cancelar overrides globales dentro de la tabla */
+#cfs-table-wrap table,
+#cfs-table-wrap table td,
+#cfs-table-wrap table tr {
+    background-color: unset !important;
+    color: unset !important;
+    border-color: unset !important;
+}
+
+/* Encabezado de columnas */
+#cfs-table-wrap table tr:first-child td {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 9px 8px;
+    text-align: center;
+    border-bottom: 2px solid #1e40af !important;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+html.dark-mode #cfs-table-wrap table tr:first-child td {
+    background: #1e3a8a !important;
+    color: #bfdbfe !important;
+    border-bottom-color: #1e40af !important;
+}
+
+/* Celdas de datos */
+#cfs-table-wrap table tr td {
+    padding: 7px 8px;
+    color: #1e3a5f !important;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.10) !important;
+    white-space: nowrap;
+    background-color: unset !important;
+}
+
+html.dark-mode #cfs-table-wrap table tr td {
+    color: #c8deff !important;
+    border-bottom-color: rgba(130, 177, 255, 0.12) !important;
+}
+
+/* Filas alternadas — light */
+#cfs-table-wrap table tr[bgcolor="#eeefe7"] td,
+#cfs-table-wrap table tr.cfs-row-alt td {
+    background: #eff6ff !important;
+}
+
+#cfs-table-wrap table tr[bgcolor="#ffffff"] td,
+#cfs-table-wrap table tr.cfs-row-base td {
+    background: #ffffff !important;
+}
+
+/* Filas alternadas — dark */
+html.dark-mode #cfs-table-wrap table tr[bgcolor="#eeefe7"] td,
+html.dark-mode #cfs-table-wrap table tr.cfs-row-alt td {
+    background: #0f1e38 !important;
+}
+
+html.dark-mode #cfs-table-wrap table tr[bgcolor="#ffffff"] td,
+html.dark-mode #cfs-table-wrap table tr.cfs-row-base td {
+    background: #0a1628 !important;
+}
+
+/* Columna Cfs (calificación) — resaltada */
+#cfs-table-wrap table tr:first-child td:nth-child(6) {
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+#cfs-table-wrap table tr td:nth-child(6) {
+    font-weight: 700;
+    color: #1e40af !important;
+}
+
+html.dark-mode #cfs-table-wrap table tr:first-child td:nth-child(6) {
+    color: #93c5fd !important;
+}
+
+
+/* Materia — alineada a la izquierda */
+#cfs-table-wrap table tr td:nth-child(2) {
+    text-align: left !important;
+    font-weight: 600;
+}
+
+/* Ocultar botón Regresar legacy */
+input[value="Regresar"],
+input[onclick*="regresar"] {
+    display: none !important;
+}
+
+/* Ocultar tabla legacy original (no la clon dentro de #cfs-table-wrap) */
+body>form>table[width="94%"],
+body>table[width="94%"] {
+    display: none !important;
+}

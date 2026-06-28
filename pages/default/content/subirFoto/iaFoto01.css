@@ -1,0 +1,781 @@
+/* ============================================
+   SIASE+ — iafoto01.css
+   Frame: iaFoto01.htm (Entrega de Documentos)
+   Paleta: azul / glassmorphism — igual a maincenter
+   Light by default · modo OSCURO vía .dark-mode
+   Fuente: Anthropic Sans / system-ui
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-base: "Anthropic Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-primario: #007bff;
+    --color-secundario: #82b1ff;
+    --bg-surface: #ffffff;
+    --bg-surface-2: #f8fafc;
+    --bg-input: #f8fafc;
+    --texto-principal: #111827;
+    --texto-secundario: #4b5563;
+    --texto-terciario: #6b7280;
+    --texto-label: #374151;
+    --borde: #e2e8f0;
+    --borde-input: #d1d5db;
+    --borde-focus: #007bff;
+    --sombra-card: 0 2px 12px rgba(0, 0, 0, .07), 0 1px 3px rgba(0, 0, 0, .05);
+    --sombra-card-hover: 0 8px 28px rgba(0, 0, 0, .12), 0 2px 8px rgba(0, 0, 0, .07);
+    --radio: 14px;
+    --radio-sm: 8px;
+    --radio-xs: 6px;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --warning: #d97706;
+    --info: #2563eb;
+    --status-accepted-bg: #f0fdf4;
+    --status-accepted-text: #15803d;
+    --status-accepted-border: #bbf7d0;
+    --status-loaded-bg: #eff6ff;
+    --status-loaded-text: #1d4ed8;
+    --status-loaded-border: #bfdbfe;
+    --status-pending-bg: #fffbeb;
+    --status-pending-text: #b45309;
+    --status-pending-border: #fde68a;
+    --status-rejected-bg: #fef2f2;
+    --status-rejected-text: #b91c1c;
+    --status-rejected-border: #fecaca;
+    --progress-track: #e2e8f0;
+    --progress-fill: #007bff;
+    --progress-text: #ffffff;
+}
+
+html.dark-mode,
+body.dark-mode {
+    --bg-surface: #131c31;
+    --bg-surface-2: #0f1829;
+    --bg-input: #1a2640;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #a3b8cc;
+    --texto-terciario: #64748b;
+    --texto-label: #94a3b8;
+    --borde: rgba(130, 177, 255, .15);
+    --borde-input: rgba(130, 177, 255, .25);
+    --borde-focus: #82b1ff;
+    --sombra-card: 0 2px 16px rgba(0, 0, 0, .4), 0 1px 4px rgba(0, 0, 0, .3);
+    --sombra-card-hover: 0 8px 32px rgba(0, 0, 0, .55), 0 2px 10px rgba(0, 123, 255, .18);
+    --status-accepted-bg: #052e16;
+    --status-accepted-text: #4ade80;
+    --status-accepted-border: #166534;
+    --status-loaded-bg: #0c1e3a;
+    --status-loaded-text: #93c5fd;
+    --status-loaded-border: #1e3a5f;
+    --status-pending-bg: #2a1f00;
+    --status-pending-text: #fbbf24;
+    --status-pending-border: #78350f;
+    --status-rejected-bg: #2d0a0a;
+    --status-rejected-text: #f87171;
+    --status-rejected-border: #7f1d1d;
+    --progress-track: rgba(130, 177, 255, .15);
+    --progress-fill: #82b1ff;
+}
+
+html,
+body {
+    height: 100%;
+    background: var(--bg-surface-2);
+    color: var(--texto-principal);
+    font-family: var(--font-base);
+    font-size: 13px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    /* anular el width:750px del original */
+    width: auto !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* ── Contenedor raíz ── */
+#sp-wrap {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: var(--font-base);
+}
+
+/* ── Cabecera ── */
+.sp-page-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 4px;
+}
+
+.sp-page-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: -.01em;
+    position: relative;
+    padding-left: 12px;
+    margin: 0;
+}
+
+.sp-page-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--color-primario);
+    border-radius: 2px;
+}
+
+.sp-help-btn {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radio-sm);
+    border: 1px solid var(--borde);
+    background: var(--bg-surface);
+    color: var(--texto-secundario);
+    font-size: 12px;
+    font-family: var(--font-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s, box-shadow .15s;
+    box-shadow: var(--sombra-card);
+}
+
+.sp-help-btn:hover {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+    background: rgba(0, 123, 255, .05);
+    box-shadow: var(--sombra-card-hover);
+}
+
+.sp-help-btn svg {
+    flex-shrink: 0;
+}
+
+/* ── Tarjeta base ── */
+.sp-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    overflow: hidden;
+    font-family: var(--font-base);
+}
+
+.sp-card-header {
+    padding: 12px 18px 11px;
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 123, 255, .03);
+}
+
+body.dark-mode .sp-card-header {
+    background: rgba(0, 123, 255, .06);
+}
+
+.sp-card-header-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: -.005em;
+    margin: 0;
+}
+
+.sp-card-body {
+    padding: 18px 18px 16px;
+}
+
+/* ── Formulario ── */
+.sp-form-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 12px 14px;
+    align-items: center;
+}
+
+.sp-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-label);
+    text-align: right;
+    font-family: var(--font-base);
+    line-height: 1.4;
+}
+
+.sp-select,
+.sp-file-input {
+    font-family: var(--font-base);
+    font-size: 12.5px;
+    color: var(--texto-principal);
+    background: var(--bg-input);
+    border: 1px solid var(--borde-input);
+    border-radius: var(--radio-xs);
+    padding: 6px 10px;
+    width: 100%;
+    transition: border-color .15s, box-shadow .15s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.sp-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+body.dark-mode .sp-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+.sp-select:focus,
+.sp-file-input:focus {
+    border-color: var(--borde-focus);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, .15);
+}
+
+body.dark-mode .sp-select:focus,
+body.dark-mode .sp-file-input:focus {
+    box-shadow: 0 0 0 3px rgba(130, 177, 255, .18);
+}
+
+.sp-select option {
+    background: var(--bg-surface);
+    color: var(--texto-principal);
+}
+
+/* File input wrapper */
+.sp-file-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sp-file-input {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.sp-file-input::file-selector-button {
+    font-family: var(--font-base);
+    font-size: 11.5px;
+    font-weight: 600;
+    background: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background .15s;
+}
+
+.sp-file-input::file-selector-button:hover {
+    background: #0062cc;
+}
+
+body.dark-mode .sp-file-input::file-selector-button {
+    background: #1d4ed8;
+}
+
+/* ── Botones de acción ── */
+.sp-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 4px;
+    grid-column: 2;
+}
+
+.sp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-base);
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: var(--radio-sm);
+    border: 1px solid transparent;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background .15s, box-shadow .15s, transform .1s, border-color .15s;
+    white-space: nowrap;
+}
+
+.sp-btn:active {
+    transform: scale(.97);
+}
+
+.sp-btn--primary {
+    background: var(--color-primario);
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 123, 255, .35);
+}
+
+.sp-btn--primary:hover {
+    background: #0062cc;
+    box-shadow: 0 3px 10px rgba(0, 123, 255, .45);
+}
+
+.sp-btn--primary:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.sp-btn--secondary {
+    background: var(--bg-surface);
+    color: var(--texto-secundario);
+    border-color: var(--borde);
+    box-shadow: var(--sombra-card);
+}
+
+.sp-btn--secondary:hover {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+    background: rgba(0, 123, 255, .04);
+}
+
+body.dark-mode .sp-btn--primary {
+    background: #1d4ed8;
+    box-shadow: 0 1px 4px rgba(29, 78, 216, .45);
+}
+
+body.dark-mode .sp-btn--primary:hover {
+    background: #2563eb;
+}
+
+/* ── Tabla de documentos ── */
+.sp-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-base);
+    font-size: 12px;
+}
+
+.sp-table thead th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--texto-terciario);
+    background: var(--bg-surface-2);
+    border-bottom: 1px solid var(--borde);
+    white-space: nowrap;
+}
+
+body.dark-mode .sp-table thead th {
+    background: rgba(0, 0, 0, .25);
+}
+
+.sp-table tbody tr {
+    border-bottom: 1px solid var(--borde);
+    transition: background .15s;
+    height: auto;
+}
+
+.sp-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.sp-table tbody tr:hover {
+    background: rgba(0, 123, 255, .04);
+}
+
+body.dark-mode .sp-table tbody tr:hover {
+    background: rgba(130, 177, 255, .06);
+}
+
+.sp-table tbody td {
+    padding: 10px 14px;
+    color: var(--texto-secundario);
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+.sp-table tbody td:first-child {
+    color: var(--texto-principal);
+    font-weight: 500;
+}
+
+.sp-table .sp-empty-row td {
+    text-align: center;
+    color: var(--texto-terciario);
+    padding: 28px 14px;
+    font-style: italic;
+}
+
+/* ── Badge de estatus ── */
+.sp-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-family: var(--font-base);
+}
+
+.sp-status--accepted {
+    background: var(--status-accepted-bg);
+    color: var(--status-accepted-text);
+    border-color: var(--status-accepted-border);
+}
+
+.sp-status--loaded {
+    background: var(--status-loaded-bg);
+    color: var(--status-loaded-text);
+    border-color: var(--status-loaded-border);
+}
+
+.sp-status--pending {
+    background: var(--status-pending-bg);
+    color: var(--status-pending-text);
+    border-color: var(--status-pending-border);
+}
+
+.sp-status--rejected {
+    background: var(--status-rejected-bg);
+    color: var(--status-rejected-text);
+    border-color: var(--status-rejected-border);
+}
+
+/* ── Barra de progreso ── */
+.sp-progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sp-progress-label {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    font-family: var(--font-base);
+    line-height: 1.4;
+}
+
+.sp-progress-label strong {
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+.sp-progress-track {
+    width: 100%;
+    height: 20px;
+    background: var(--progress-track);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.sp-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--progress-fill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--progress-text);
+    font-family: var(--font-base);
+    letter-spacing: .02em;
+    transition: width .6s cubic-bezier(.4, 0, .2, 1);
+    min-width: 100px;
+}
+
+body.dark-mode .sp-progress-bar {
+    color: #0f1829;
+}
+
+/* ── Diálogos custom (reemplazo de jQuery UI dialog) ── */
+#sp-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 20px;
+    animation: sp-fade-in .22s ease;
+    font-family: var(--font-base);
+}
+
+#sp-dialog-overlay.sp-closing {
+    animation: sp-fade-out .2s ease forwards;
+}
+
+@keyframes sp-fade-in {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes sp-fade-out {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.sp-dialog-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .22), 0 4px 16px rgba(0, 0, 0, .10);
+    width: 100%;
+    max-width: 560px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: sp-slide-up .26s cubic-bezier(.22, 1, .36, 1);
+    font-family: var(--font-base);
+}
+
+body.dark-mode .sp-dialog-box {
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .55), 0 4px 16px rgba(0, 123, 255, .10);
+}
+
+#sp-dialog-overlay.sp-closing .sp-dialog-box {
+    animation: sp-slide-down .2s ease forwards;
+}
+
+@keyframes sp-slide-up {
+    from {
+        transform: translateY(16px) scale(.97);
+        opacity: 0
+    }
+
+    to {
+        transform: none;
+        opacity: 1
+    }
+}
+
+@keyframes sp-slide-down {
+    from {
+        transform: none;
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(12px) scale(.97);
+        opacity: 0
+    }
+}
+
+.sp-dialog-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px 12px;
+    border-bottom: 1px solid var(--borde);
+    flex-shrink: 0;
+    background: rgba(0, 123, 255, .03);
+}
+
+body.dark-mode .sp-dialog-header {
+    background: rgba(0, 123, 255, .07);
+}
+
+.sp-dialog-title {
+    flex: 1;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    font-family: var(--font-base);
+}
+
+.sp-dialog-close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    font-size: 13px;
+    color: var(--texto-terciario);
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    font-family: var(--font-base);
+    line-height: 1;
+}
+
+.sp-dialog-close:hover {
+    background: rgba(220, 38, 38, .10);
+    color: var(--danger);
+    border-color: rgba(220, 38, 38, .30);
+}
+
+.sp-dialog-body {
+    flex: 1;
+    overflow: auto;
+    padding: 16px 18px;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    line-height: 1.65;
+    font-family: var(--font-base);
+}
+
+.sp-dialog-body ul {
+    padding-left: 20px;
+}
+
+.sp-dialog-body ul li {
+    margin-bottom: 6px;
+}
+
+.sp-dialog-footer {
+    padding: 12px 18px;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ── Tabla de búsqueda DataTables (override limpio) ── */
+.sp-dt-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--borde);
+    flex-wrap: wrap;
+}
+
+.sp-dt-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--texto-terciario);
+}
+
+.sp-dt-search-input {
+    font-family: var(--font-base);
+    font-size: 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--borde-input);
+    border-radius: var(--radio-xs);
+    padding: 5px 10px;
+    color: var(--texto-principal);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    width: 180px;
+}
+
+.sp-dt-search-input:focus {
+    border-color: var(--borde-focus);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, .12);
+}
+
+.sp-dt-info {
+    font-size: 11.5px;
+    color: var(--texto-terciario);
+    font-family: var(--font-base);
+}
+
+.sp-dt-pagination {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.sp-dt-page-btn {
+    font-family: var(--font-base);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radio-xs);
+    border: 1px solid var(--borde);
+    background: var(--bg-surface);
+    color: var(--texto-secundario);
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+
+.sp-dt-page-btn:hover:not(:disabled) {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+    background: rgba(0, 123, 255, .05);
+}
+
+.sp-dt-page-btn.is-active {
+    background: var(--color-primario);
+    border-color: var(--color-primario);
+    color: #fff;
+}
+
+.sp-dt-page-btn:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+body.dark-mode .sp-dt-page-btn.is-active {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .sp-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-label {
+        text-align: left;
+    }
+
+    .sp-actions {
+        grid-column: 1;
+        flex-wrap: wrap;
+    }
+}

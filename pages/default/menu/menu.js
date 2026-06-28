@@ -23,7 +23,6 @@
 
 (function refactorMenu() {
 
-    document.title = 'SIASE+ | Menú';
     // document.querySelector("html > frameset > frameset > frame:nth-child(1)>html>body>'siase-header'")?.remove();
     //document.querySelector("#siase-header").remove();
     // ══════════════════════════════════════════════════════════════

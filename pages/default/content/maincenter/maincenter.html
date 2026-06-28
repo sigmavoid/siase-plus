@@ -1,0 +1,247 @@
+<!-- Programa:  maincenter.htm                                    -->
+<!-- Autor:     DTI/UANL                                          -->
+<!--           Inicializa la pantalla central                     -->
+<!--           (espacio reservado para informacion)               -->
+<!-- Fecha:      03/Juinio/2002                                   -->
+<!-- Modificado: 09-11-2018 Se actualizaron avisos                -->
+<HTML>
+
+<HEAD>
+    <!-- E4GL Disabled: meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" -->
+    <meta http-equiv="Pragma" content="No-Cache" />
+    <meta http-equiv="Cache-Control" content="No-Cache" />
+    <meta http-equiv="Cache-Control" content="No-Store" />
+    <meta name="document-state" content="Dynamic" />
+    <TITLE>SIASE - Central</TITLE>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DN81BCCZTF"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-DN81BCCZTF");</script>
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws//jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.css"
+        rel="stylesheet">
+    <script
+        src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/external/jquery/jquery.js "></script>
+    <script src="https://deimos.dgi.uanl.mx/uanlimg/ws/jquery/jquery-ui-1.11.2.SiaseEscolar/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../uanlimg/ws/slider/easySlider1.7.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Instrucciones").dialog({
+                closeOnEscape: false,
+                // autoOpen: false, 
+                modal: true,
+                show: "blind",
+                hide: "blind",
+                width: 600,
+                // position: 'center', 
+                resizable: false,
+                draggable: false
+                //buttons: {
+                //Continuar: function() {
+                //    $( this ).dialog( "close" );
+                //    $("#idForma").submit();
+                //},
+                //Cancelar: function() {
+                //    $( this ).dialog( "close" );
+                //}
+                //}
+            });
+            $("#slider").easySlider({
+                auto: true,
+                continuous: true
+            });
+        });   
+    </script>
+    <link href="https://deimos.dgi.uanl.mx/uanlimg/ws/slider/screen2019.css" rel="stylesheet" type="text/css"
+        media="screen">
+    <style type="text/css">
+        <!--
+        .auto-style6 {
+            color: #FF0000;
+        }
+
+        .auto-style8 {
+            border-width: 0px;
+        }
+
+        .auto-style9 {
+            border-style: solid;
+            border-width: 3px;
+            text-align: center;
+        }
+        -->
+    </style>
+</HEAD>
+<SCRIPT>window.history.go(1) </SCRIPT>
+
+<body>
+    <!-- +++++++++++++++++++++++++++++ 
+                                                   Seccion de Avisos  
+                                        +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- +++++++++++ Aviso para Actualizacion de Datos  ++++++++++++++++++ -->
+    <!--
+<div id="Instrucciones" title="Aviso Importante">
+    <iframe width="600" height="200" src="../../uanlimg/AvisoActualizaDatos.htm" frameborder="0" allowfullscreen></iframe>
+</div>
+-->
+    <!-- *-*-*-* /// RAGG - Aviso para periodo intersemestral 2025 -->
+    <div id="Instrucciones" title="Aviso Importante para Periodo Intersemestral 2026">
+        <iframe width="600" height="700" src="../../uanlimg/AvisoIntersemestral.htm" frameborder="0"
+            allowfullscreen></iframe>
+    </div>
+    <!-- *-*-*-* /// Aviso de la DEyA  -->
+    <!--
+-->
+    <!-- +-+-+-+-+-+-+ Banners de publicidad para empleados +-+-+-+-+-+-+-+ -->
+    <!-- +-+-+-+-+-+-+ Banners de publicidad (se limiito solo a alumnos) +-+-+-+-+-+-+ -->
+    <div id="container">
+        <div id="header">
+            <h1>Avisos de Interés</h1>
+        </div>
+        <div id="slider" align="center">
+            <ul>
+                <li><a href="https://educacionsuperior.sep.gob.mx/censo-iaestudiantes/inicio" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/CensoIAG-SIASE-estudiantes.png" width="590"
+                            height="90" alt="Censo Nacional sobre Inteligencia Artificial Generativa"></a></li>
+                <!--                 <li><a href="../../uanlimg/deya/ProgrReselloFacultades.pdf" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_cred.jpg" width= "590" height="90" alt="ProgramacionResello"></a></li> -->
+                <!--                 <li><a href="https://transmisiones.uanl.mx/it-summit/" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner-ITSummit.jpg" width= "590" height="90" alt="IT SUMMIT UANL 2023"></a></li>                                                       -->
+                <!--                 <li><a href="https://transmisiones.uanl.mx/it-summit/challenge-convocatoria.html" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner-WaHey.jpg" width= "590" height="90" alt="Woman in Data Science Challenge 2023"></a></li>              -->
+                <!--                 <li><a href="https://transmisiones.uanl.mx/it-summit/hackathon_minecraft.html" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner siase.png" width= "590" height="90" alt="Hackathon Transformando mi entorno en un lugar mejor"></a></li> -->
+                <li><a href="https://www.youtube.com/watch?v=NjEVkKOPyDs" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner_Becas_Escasos_Recursos.jpg" width="590"
+                            height="90" alt="Pasos para Tramite de Becas de Escasos Recursos"></a></li>
+                <!--                 <li><a href="../../uanlimg/deya/credencial_univ.pdf" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/credencial_univ.jpg" width= "590" height="90" alt="Credenciales"></a></li> -->
+                <li><a href="../../uanlimg/tc/PagosTarjetasCredito.pdf" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner_TDC.jpg" width="590" height="90"
+                            alt="Pagos con Tarjeta de Credito"></a></li>
+                <li><a href="../../uanlimg/tc/InstruccionesCreditos.pdf" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner_Creditos.jpg" width="590" height="90"
+                            alt="Créditos Tesorería"></a></li>
+                <!--                 <li><a href="../../uanlimg/dsspp_docs/Voluntariado2019.jpg" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase-reconocimiento.png" width= "590" height="90" alt="Responsabilidad Social"></a></li> -->
+                <li><a href="../../uanlimg/tc/AvisoPagoServicios.pdf" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner_TE2.jpg" width="590" height="90"
+                            alt="Transferencias"></a></li>
+                <li><a href="https://www.uanl.mx/tramites/becas-de-escasos-recursos/" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_becas_1o.jpg" width="590" height="90"
+                            alt="Becas"></a></li>
+                <!--                 <li><a href="https://bit.ly/2uHcyBY" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/banner_hachette.jpg" width= "590" height="90" alt="Libros"></a></li> -->
+                <li><a href="../../uanlimg/tc/AvisoCFDIS.pdf" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Banner_TG.jpg" width="590" height="90"
+                            alt="Facturacion UANL"></a></li>
+                <!--                 <li><a href="http://dti.uanl.mx/red-inalambrica-wuanl/" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/red-wuanl-siase.png" width= "590" height="90" alt="WUANL"></a></li> -->
+                <li><a href="https://login.microsoftonline.com/?whr=uanl.edu.mx" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/Correo_SIASE.jpg" width="590" height="90"
+                            alt="Correo"></a></li>
+                <!--                 <li><a href="https://www.facebook.com/paraTIuanl/" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/SIASE_590x90.jpg" width= "590" height="90" alt="SoporteTI"></a></li> -->
+                <li><a href="../../uanlimg/tc/avisoimss.pdf" target="_blank"><img
+                            src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_imss.jpg" width="590" height="90"
+                            alt="Becas"></a></li>
+                <!--                 <li><a href="http://www.uanl.mx/novedades/app-uanl.html" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_appuanl.png" width= "590" height="90" alt="AppUANL"></a></li> -->
+                <!--                 <li><a href="https://www.youtube.com/watch?feature=player_embedded&v=vKwjPwxgJuA" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_huella.jpg" width= "590" height="90" alt="Campaña Dejando Huella"></a></li> -->
+                <!--                 <li><a href="http://www.uanl.mx/alumnos/CHIP" target="_blank"><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/siase_chip.jpg" width= "590" height="90" alt="CHIP"></a></li> -->
+                <li><img src="https://deimos.dgi.uanl.mx/uanlimg/ws/dudas_servenlinea_siase.png" width="590" height="90"
+                        alt="Dudas"></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <!--/// Aviso de DEYA (Duplicado de Credenciales)-->
+    <!-- *-*-*-* /// <!-- Aviso de Tesoreria General (CFDI) -->
+    <table align="center" style="width: 90%" class="auto-style8">
+        <tr>
+            <td class="auto-style9" valign="top">
+                <strong>Departamento Escolar y de Archivo</strong><br><br>
+                <span class="auto-style6"><strong>ENCUESTA DE SEGURIDAD SOCIAL</strong></span><em><br></em>
+                Favor de realizar el llenado de la Encuesta de Seguridad Social antes
+                del <strong>19 de junio de 2026,</strong> con el objetivo de integrar correctamente
+                su expediente académico - administrativo en la UANL, y garantizar su
+                protección en materia de salud durante su permanencia en la Universidad.
+            </td>
+            <td class="auto-style9">
+                <strong>Departamento Escolar y de Archivo<br>División - Inscripciones y
+                    Credencialización</strong><br><span class="auto-style6"><strong>AVISO
+                        IMPORTANTE</strong></span><em><br></em>
+                A los estudiantes inscritos en el periodo escolar <strong>Agosto - Diciembre
+                    2025</strong> que fueron citados para la entrega de su credencial
+                universitaria y no acudieron, se les informa que estarán siendo
+                reprogramando durante la semana, teniendo como fecha límite el <strong>
+                    12 de diciembre de 2025.<br></strong><br>Se les invita a revisar su
+                programación y presentarse en la fecha indicada. Esto debido al término
+                del periodo escolar.<br><br>El servicio de entrega de credenciales
+                <strong>se reanudará en el periodo Enero &#8211; Junio 2026</strong>, a
+                partir del <strong>26 de enero de 2026</strong>.<br><br>
+            </td>
+            <!--                                                                           
+          <td class="auto-style9">
+         <span class="auto-style6"><strong>AVISO IMPORTANTE - TESORERÍA GENERAL</strong></span><em><br></em></strong>          
+         Con motivo de la reforma al artículo 29-A del Codigo Fiscal de la 
+                 Federación para 2022, publicado en el Diario Oficial de la Federación 
+                 el 12 de noviembre de 2021, <strong>a partir del 1 de enero de 2022 los 
+                 Comprobantes Fiscales (CFDI) solo podrán ser cancelados a mas tardar el 
+                 <br>31 de marzo del año siguiente a su expedición para personas morales 
+                 y el 30 de abril para personas físicas.</strong> <br>-<strong>Por 
+                 tal motivo no se podrán realizar cancelaciones ni refacturaciones de 
+                 ejercicios anteriores.</strong> </td> -->
+        </tr>
+    </table>
+    <br>
+    <!-- *-*-*-* /// Aviso de DEYA (Carga de Documentos Pendientes)-->
+    <!-- 
+         <table align="center" style="width: 90%">                                               
+     <tr>                                                                                 
+         <td class="auto-style1">
+         <em><br></em><span class="auto-style6"><strong>AVISO IMPORTANTE</strong></span><em><br></em></strong>          
+         Alumnos con inscripción provisional que realizaron la entrega de documentos 
+         para la inscripción a través de la plataforma SIASE, se les informa que ya 
+         se encuentra habilitada la opción para realizar la carga de la documentación pendiente.<br>
+         Ingresar a https://www.uanl.mx/enlinea/, dentro de la sesión en el menú de la 
+         izquierda se encuentra la opción <span class="auto-style5"><strong>Carga 
+         Documentos Pendientes.</strong></span><br>
+         Antes de realizar la carga de documentos, le sugerimos consultar el menú de ayuda 
+         ubicado en la parte superior derecha.<br>
+         Revise su estatus después de 48h en días hábiles.<br><br>
+         ATENTAMENTE<br>
+         Secretaria General<br>
+                 Departamento Escolar y Archivo<br>
+                 División de Inscripciones y Credencialización
+         </td>                                                                       
+     </tr>                                                                                
+ </table>                                                                                 
+ <br>                                                                                     
+-->
+    <!--  *~*~*~*~* /// Aviso para Encuestas de la DGPPE -->
+    <iframe id="aviso" name="aviso"
+        src="https://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/blanco.r?HTMLUsuario=2132062&HTMLtrim=65148862&HTMLCve_Dependencia=02316&HTMLCve_Unidad=01&HTMLCve_Nivel_Academico=02&HTMLCve_Grado_Academico=03&HTMLCve_Modalidad=1&HTMLCve_Plan_Estudio=401&HTMLCve_Carrera=10&HTMLTipCve=01"
+        width="100%" height="100%" scrolling="yes" frameborder="0" marginwidth="0" marginheight="0" align="center">
+    </iframe>
+    <div id="idMensajeEncDti" title="Aviso Importante">
+        <p>Tiene encuestas pendientes por llenar.
+        <p>
+        <p>Entre a la opci&oacute;n <strong>Encuestas Adicionales</strong>
+        <p>
+    </div>
+</BODY>
+
+</HTML>
+<script language="JavaScript">
+    $(document).ready(function () {
+        //alert('hola-no');
+        vlgEncDtiPndte = 'yes';
+        if (vlgEncDtiPndte == 'no') {
+            $("#idMensajeEncDti").dialog({
+                autoOpen: false,
+                resizable: false,
+                show: "fade",
+                hide: "fade",
+                width: 600,
+                modal: true,
+                buttons: {
+                    Aceptar: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            $("#idMensajeEncDti").dialog("open");
+        };
+    });
+</script>
+
+
+<!-- Generated by Webspeed: http://www.webspeed.com/ -->
